@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioBasics Medical Wiki</title>
+    <title>Myocardial Infarction (Heart Attack)</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -729,29 +729,322 @@
         .bookmark-btn.animate .bookmark-icon {
             animation: bookmarkPulse 0.3s ease-out;
         }
+
+        /* ===== TOP METADATA (inside main content) ===== */
+        .article-meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .meta-stats {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .meta-separator {
+            color: var(--accent-tertiary);
+        }
+
+        .meta-views,
+        .meta-last-viewed {
+            color: var(--text-secondary);
+        }
+
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        /* ===== SIDEBAR STYLES ===== */
+        .page-wrapper {
+            display: flex;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .article-content {
+            flex: 1;
+            min-width: 0;
+            max-width: 900px;
+            order: 1;
+        }
+
+        .article-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            order: 2;
+        }
+
+        .sidebar-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-section:first-child {
+            margin-top: 0;
+        }
+
+        .sidebar-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 12px 0;
+            padding: 0;
+        }
+
+        /* Table of Contents */
+        .toc-nav {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-item {
+            margin-bottom: 6px;
+        }
+
+        .toc-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .toc-item.toc-h3 {
+            padding-left: 16px;
+        }
+
+        .toc-link {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border-left: 2px solid transparent;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .toc-link:hover {
+            color: var(--accent-primary);
+            background: rgba(0, 245, 208, 0.1);
+            border-left-color: var(--accent-primary);
+        }
+
+        .toc-link.active {
+            color: var(--accent-primary);
+            background: rgba(0, 245, 208, 0.15);
+            border-left-color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Tags (in top bar) */
+        .tag-chip {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0, 245, 208, 0.3);
+            border-radius: 20px;
+            color: var(--accent-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .tag-chip:hover {
+            background: rgba(0, 245, 208, 0.15);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Related Articles */
+        .related-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .related-item {
+            margin-bottom: 10px;
+        }
+
+        .related-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .related-link {
+            display: block;
+            padding: 10px 12px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .related-link:hover {
+            background: rgba(255, 107, 157, 0.1);
+            transform: translateX(4px);
+        }
+
+        .related-title {
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .related-category {
+            display: block;
+            color: var(--accent-secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sidebar scrollbar */
+        .article-sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .article-sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .article-sidebar::-webkit-scrollbar-thumb {
+            background: var(--bg-card);
+            border-radius: 2px;
+        }
+
+        .article-sidebar::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary);
+        }
+
+        /* TOC scrollbar */
+        .toc-nav::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .toc-nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .toc-nav::-webkit-scrollbar-thumb {
+            background: rgba(0, 245, 208, 0.3);
+            border-radius: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .article-meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .meta-tags {
+                margin-left: 0;
+            }
+
+            .page-wrapper {
+                flex-direction: column;
+                padding: 0 20px 80px;
+            }
+
+            .article-sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                max-height: none;
+                order: -1;
+            }
+
+            .toc-section {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .meta-stats {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .meta-separator {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container clearfix">
-        <!-- Bookmark Button -->
-        <div class="bookmark-container">
-            <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">
-                <svg class="bookmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <span class="bookmark-text">Bookmark</span>
-            </button>
-        </div>
-        
-        <h1>Myocardial Infarction (Heart Attack)</h1>
+    <div class="page-wrapper">
+        <main class="article-content clearfix">
+            <div class="article-meta-info">
+<div class="meta-stats">
+<span class="meta-views">12,847 views</span>
+<span class="meta-separator">•</span>
+<span class="meta-last-viewed">Last viewed: 2 minutes ago</span>
+</div>
+<div class="meta-tags">
+<a href="/wiki/tag/cardiology" class="tag-chip">Cardiology</a>
+<a href="/wiki/tag/emergency-medicine" class="tag-chip">Emergency Medicine</a>
+<a href="/wiki/tag/heart-disease" class="tag-chip">Heart Disease</a>
+<a href="/wiki/tag/first-aid" class="tag-chip">First Aid</a>
+<a href="/wiki/tag/cardiovascular" class="tag-chip">Cardiovascular</a>
+</div>
+</div>
+            
+            <!-- Bookmark Button -->
+            <div class="bookmark-container">
+                <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">
+                    <svg class="bookmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span class="bookmark-text">Bookmark</span>
+                </button>
+            </div>
+            
+            <h1 id="myocardial-infarction-heart-attack">Myocardial Infarction (Heart Attack)</h1>
 <p>A <strong>myocardial infarction</strong> (MI), commonly known as a <em>heart attack</em>, occurs when blood flow to a part of the heart muscle is blocked, usually by a <a href="#blood clot" class="wiki-link">blood clot</a>. This blockage prevents oxygen from reaching the heart tissue, causing damage or death to that area of the <a href="#cardiac muscle" class="wiki-link">cardiac muscle</a>. The condition represents one of the most serious <a href="#cardiovascular emergencies" class="wiki-link">cardiovascular emergencies</a> and requires immediate medical attention to prevent permanent damage or death.</p>
 <hr class="section-divider">
-<h2>Understanding the Condition</h2>
+<h2 id="understanding-the-condition">Understanding the Condition</h2>
 <div class="image-container image-left"><img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=400&q=80" alt="Diagram of heart with blocked artery" loading="lazy" /></div>
 <p>Myocardial infarction stands as one of the leading causes of death worldwide, affecting millions of people annually and representing a critical public health challenge. The heart muscle, known medically as the <a href="#myocardium" class="wiki-link">myocardium</a>, requires a constant and uninterrupted supply of oxygen-rich blood to function properly and maintain its vital role in circulating blood throughout the body. When one or more of the <a href="#coronary arteries" class="wiki-link">coronary arteries</a> becomes blocked, the affected heart tissue begins to die within minutes, initiating a cascade of potentially fatal events.</p>
 <p>The severity and outcomes of a heart attack depend on multiple interconnected factors including the precise location of the blockage within the coronary circulation, the duration of blocked blood flow before treatment is initiated, the total amount of heart tissue affected by the <a href="#ischemia" class="wiki-link">ischemia</a>, and critically, how quickly emergency treatment is received. Early recognition of symptoms and immediate medical intervention are absolutely critical for survival and can dramatically improve long-term recovery outcomes. According to the <a href="https://www.heart.org/en/health-topics/heart-attack" class="external-link" target="_blank" rel="noopener">American Heart Association</a>, prompt treatment within the first hour significantly reduces mortality and preserves heart function.</p>
 <hr class="section-divider">
-<h2>Risk Factors</h2>
+<h2 id="risk-factors">Risk Factors</h2>
 <p>Understanding the risk factors for myocardial infarction is essential for both prevention and early intervention strategies. Risk factors fall into several distinct categories, each contributing differently to overall cardiovascular risk profiles.</p>
 <div class="table-wrapper"><table class="wiki-table">
 <thead><tr><th>Category</th><th>Risk Factors</th></tr></thead><tbody>
@@ -761,7 +1054,7 @@
 </tbody></table></div>
 <p><strong>Modifiable risk factors</strong> can be addressed through lifestyle changes and medical treatment. Smoking damages blood vessel linings and accelerates <a href="#atherosclerosis" class="wiki-link">atherosclerosis</a>. High blood pressure strains the heart and damages arteries over time. Elevated <a href="#cholesterol" class="wiki-link">cholesterol</a> levels contribute to plaque buildup, while <a href="#diabetes" class="wiki-link">diabetes</a> damages blood vessels and nerves. Research published by the <a href="https://www.nhlbi.nih.gov/health/heart-attack" class="external-link" target="_blank" rel="noopener">National Heart, Lung, and Blood Institute</a> emphasizes that addressing modifiable risk factors can reduce heart attack incidence by up to 80%.</p>
 <hr class="section-divider">
-<h2>Warning Signs & Symptoms</h2>
+<h2 id="warning-signs-symptoms">Warning Signs & Symptoms</h2>
 <div class="image-container image-right"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&q=80" alt="Person clutching chest in pain" loading="lazy" /></div>
 <p>Recognizing the symptoms of a heart attack can literally save lives, yet many people delay seeking help because they don't recognize what's happening or hope the symptoms will resolve on their own. Common symptoms include:</p>
 <ul class="bullet-list">
@@ -771,7 +1064,7 @@
 <li><strong>Cold sweat</strong>: Breaking out in a cold sweat</li>
 <li><strong>Nausea or lightheadedness</strong>: Feeling sick to your stomach or dizzy</li>
 </ul>
-<h3>Atypical Symptoms</h3>
+<h3 id="atypical-symptoms">Atypical Symptoms</h3>
 <p>Women, elderly individuals, and people with <a href="#diabetes" class="wiki-link">diabetes</a> may experience what physicians call <em>atypical symptoms</em> that differ from the classic presentation:</p>
 <ul class="bullet-list">
 <li>Unusual fatigue</li>
@@ -782,11 +1075,11 @@
 <p>The <a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106" class="external-link" target="_blank" rel="noopener">Mayo Clinic</a> notes that women are more likely than men to experience these atypical presentations.</p>
 <p><strong>IMPORTANT</strong>: If you suspect a heart attack, call emergency services immediately by dialing 911 or your local emergency number. Do not attempt to drive yourself to the hospital, as your condition could deteriorate rapidly during transport, and emergency medical services can begin life-saving treatment en route to the hospital.</p>
 <hr class="section-divider">
-<h2>Pathophysiology</h2>
+<h2 id="pathophysiology">Pathophysiology</h2>
 <div class="image-container image-center"><img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80" alt="Cross-section showing atherosclerosis progression" loading="lazy" /></div>
 <p class="image-description">Progression of atherosclerosis leading to arterial blockage</p>
 <p>The most common cause of myocardial infarction is <strong>coronary artery disease</strong> (CAD), a chronic condition characterized by <a href="#atherosclerosis" class="wiki-link">atherosclerosis</a>, which involves the progressive buildup of fatty deposits called <a href="#plaques" class="wiki-link">plaques</a> in the arterial walls. This process typically develops over many years or even decades before causing symptoms.</p>
-<h3>The Process:</h3>
+<h3 id="the-process">The Process:</h3>
 <p>1. <strong>Plaque formation</strong>: Cholesterol and other substances accumulate in artery walls over years</p>
 <p>2. <strong>Plaque rupture</strong>: The plaque cap breaks, exposing the interior</p>
 <p>3. <strong>Clot formation</strong>: Platelets aggregate at the rupture site, forming a blood clot</p>
@@ -794,12 +1087,12 @@
 <p>5. <strong>Tissue death</strong>: Heart muscle cells begin dying within 20-40 minutes</p>
 <p>Understanding this mechanism has led to revolutionary treatments targeting different stages of this process, as documented by the <a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link" target="_blank" rel="noopener">World Health Organization</a> in their comprehensive cardiovascular disease guidelines.</p>
 <hr class="section-divider">
-<h2>Types of Heart Attacks</h2>
+<h2 id="types-of-heart-attacks">Types of Heart Attacks</h2>
 <p>Heart attacks are medically classified into two major categories based on <a href="#electrocardiogram" class="wiki-link">electrocardiogram</a> findings and the extent of arterial blockage, each requiring different treatment approaches and carrying different prognoses.</p>
 <p><strong>ST-Elevation Myocardial Infarction (STEMI)</strong> represents a <em>complete blockage</em> of a major coronary artery and constitutes the most severe type of heart attack requiring immediate emergency intervention. The characteristic ST-segment elevation visible on an electrocardiogram indicates transmural myocardial injury, meaning the damage extends through the full thickness of the heart wall. STEMI carries the highest risk of death and severe complications, making it a true medical emergency where every minute counts. The <a href="https://www.acc.org/guidelines" class="external-link" target="_blank" rel="noopener">American College of Cardiology</a> recommends emergency <a href="#percutaneous coronary intervention" class="wiki-link">percutaneous coronary intervention</a> within 90 minutes of first medical contact.</p>
 <p><strong>Non-ST-Elevation Myocardial Infarction (NSTEMI)</strong> involves a <em>partial blockage</em> that still damages heart muscle but typically to a lesser extent than STEMI. The affected artery may be completely blocked distally, partially blocked, or have severely reduced blood flow due to a critical stenosis. While generally less immediately life-threatening than STEMI, NSTEMI still represents a serious cardiac event requiring prompt treatment and hospitalization. The absence of ST-elevation doesn't mean the heart attack is mild or can be taken lightly.</p>
 <hr class="section-divider">
-<h2>Diagnosis</h2>
+<h2 id="diagnosis">Diagnosis</h2>
 <div class="image-container image-left"><img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80" alt="ECG readout showing heart rhythm" loading="lazy" /></div>
 <p>Healthcare providers employ multiple diagnostic tests to confirm a heart attack diagnosis, assess the extent of damage, and guide treatment decisions:</p>
 <ul class="bullet-list">
@@ -810,16 +1103,16 @@
 <li><strong>Cardiac CT or MRI</strong>: Detailed imaging of heart structure</li>
 </ul>
 <hr class="section-divider">
-<h2>Emergency Treatment</h2>
+<h2 id="emergency-treatment">Emergency Treatment</h2>
 <p><strong>Time is muscle</strong> - immediate treatment improves survival and reduces heart damage. Every minute of delay results in more heart muscle death.</p>
-<h3>Initial Response:</h3>
+<h3 id="initial-response">Initial Response:</h3>
 <ul class="bullet-list">
 <li><strong>Call 911 immediately</strong></li>
 <li>Chew one adult aspirin (325 mg) if not allergic</li>
 <li>Rest and remain calm</li>
 <li>Take nitroglycerin if prescribed</li>
 </ul>
-<h3>Hospital Interventions:</h3>
+<h3 id="hospital-interventions">Hospital Interventions:</h3>
 <div class="table-wrapper"><table class="wiki-table">
 <thead><tr><th>Treatment</th><th>Description</th><th>Timeframe</th></tr></thead><tbody>
 <tr><td><strong>Medications</strong></td><td>Clot-busting drugs (thrombolytics), antiplatelet agents, anticoagulants</td><td>Within 30-90 minutes</td></tr>
@@ -828,10 +1121,10 @@
 </tbody></table></div>
 <p>Research from the <a href="https://www.escardio.org/Guidelines" class="external-link" target="_blank" rel="noopener">European Society of Cardiology</a> demonstrates that achieving these time targets significantly reduces mortality and preserves left ventricular function.</p>
 <hr class="section-divider">
-<h2>Recovery & Rehabilitation</h2>
+<h2 id="recovery-rehabilitation">Recovery & Rehabilitation</h2>
 <div class="image-container image-right"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Cardiac rehabilitation exercise session" loading="lazy" /></div>
 <p>Recovery from a heart attack involves both physical healing and lifestyle modifications:</p>
-<h3>Cardiac Rehabilitation Program</h3>
+<h3 id="cardiac-rehabilitation-program">Cardiac Rehabilitation Program</h3>
 <p>A comprehensive program including:</p>
 <ul class="bullet-list">
 <li><strong>Medical evaluation</strong>: Regular monitoring by healthcare team</li>
@@ -839,7 +1132,7 @@
 <li><strong>Education</strong>: Understanding heart disease and risk reduction</li>
 <li><strong>Counseling</strong>: Managing stress, anxiety, and depression</li>
 </ul>
-<h3>Lifestyle Modifications</h3>
+<h3 id="lifestyle-modifications">Lifestyle Modifications</h3>
 <ul class="bullet-list">
 <li>Adopt a heart-healthy diet (Mediterranean diet, DASH diet)</li>
 <li>Engage in regular physical activity (150 minutes/week moderate exercise)</li>
@@ -850,7 +1143,7 @@
 <li>Take medications as prescribed</li>
 </ul>
 <hr class="section-divider">
-<h2>Medications for Long-term Management</h2>
+<h2 id="medications-for-long-term-management">Medications for Long-term Management</h2>
 <p>After a heart attack, patients typically need lifelong medications:</p>
 <ul class="bullet-list">
 <li><strong>Antiplatelet agents</strong> (aspirin, clopidogrel): Prevent blood clots</li>
@@ -861,10 +1154,10 @@
 </ul>
 <p>Medication adherence remains crucial for long-term outcomes, as discontinuing these medications significantly increases the risk of recurrent cardiac events and death.</p>
 <hr class="section-divider">
-<h2>Prevention Strategies</h2>
+<h2 id="prevention-strategies">Prevention Strategies</h2>
 <div class="image-container image-center"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80" alt="Healthy lifestyle choices" loading="lazy" /></div>
 <p class="image-description">Prevention through healthy lifestyle choices is the best medicine</p>
-<h3>Primary Prevention (Before First Heart Attack):</h3>
+<h3 id="primary-prevention-before-first-heart-attack">Primary Prevention (Before First Heart Attack):</h3>
 <p>1. <strong>Control risk factors</strong>: Manage blood pressure, cholesterol, and diabetes</p>
 <p>2. <strong>Healthy diet</strong>: Emphasize fruits, vegetables, whole grains, lean proteins</p>
 <p>3. <strong>Regular exercise</strong>: At least 30 minutes most days</p>
@@ -873,7 +1166,7 @@
 <p>6. <strong>Limit alcohol</strong>: No more than 1-2 drinks per day</p>
 <p>7. <strong>Manage stress</strong>: Practice relaxation techniques</p>
 <p>8. <strong>Regular check-ups</strong>: Screen for risk factors annually</p>
-<h3>Secondary Prevention (After Heart Attack):</h3>
+<h3 id="secondary-prevention-after-heart-attack">Secondary Prevention (After Heart Attack):</h3>
 <p>All primary prevention measures <strong>plus</strong>:</p>
 <ul class="bullet-list">
 <li>Strict medication adherence</li>
@@ -883,7 +1176,7 @@
 <li>Know warning signs for quick response</li>
 </ul>
 <hr class="section-divider">
-<h2>Complications</h2>
+<h2 id="complications">Complications</h2>
 <p>Potential complications following myocardial infarction include:</p>
 <ul class="bullet-list">
 <li><strong>Heart failure</strong>: Weakened pumping ability</li>
@@ -894,7 +1187,7 @@
 <li><strong>Depression and anxiety</strong>: Psychological impact requiring treatment</li>
 </ul>
 <hr class="section-divider">
-<h2>Prognosis & Statistics</h2>
+<h2 id="prognosis-statistics">Prognosis & Statistics</h2>
 <div class="image-container image-left"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Medical statistics chart" loading="lazy" /></div>
 <p><strong>Survival rates</strong> have improved dramatically with modern treatments:</p>
 <ul class="bullet-list">
@@ -911,8 +1204,8 @@
 </ul>
 <p>These statistics from the <a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link" target="_blank" rel="noopener">World Health Organization</a> emphasize the importance of prevention and rapid treatment.</p>
 <hr class="section-divider">
-<h2>When to Seek Help</h2>
-<h3>Emergency (Call 911):</h3>
+<h2 id="when-to-seek-help">When to Seek Help</h2>
+<h3 id="emergency-call-911">Emergency (Call 911):</h3>
 <ul class="bullet-list">
 <li>Chest pain or discomfort lasting more than 5 minutes</li>
 <li>Severe shortness of breath</li>
@@ -920,7 +1213,7 @@
 <li>Sudden cold sweat with nausea</li>
 <li>Loss of consciousness</li>
 </ul>
-<h3>Urgent (Contact Doctor Soon):</h3>
+<h3 id="urgent-contact-doctor-soon">Urgent (Contact Doctor Soon):</h3>
 <ul class="bullet-list">
 <li>Unusual fatigue or weakness</li>
 <li>Persistent mild chest discomfort</li>
@@ -928,7 +1221,7 @@
 <li>Increasing shortness of breath with activity</li>
 </ul>
 <hr class="section-divider">
-<h2>Living After a Heart Attack</h2>
+<h2 id="living-after-a-heart-attack">Living After a Heart Attack</h2>
 <p>A heart attack is a life-changing event, but most patients can return to active, fulfilling lives with proper care and lifestyle adjustments. Success depends on:</p>
 <ul class="bullet-list">
 <li><strong>Commitment to change</strong>: Adopting and maintaining healthy habits</li>
@@ -939,7 +1232,7 @@
 </ul>
 <p>Remember: <em>Having a heart attack doesn't mean your life is over - it means a new, healthier chapter begins.</em></p>
 <hr class="section-divider">
-<h2 class="sources-header">Sources</h2>
+<h2 id="sources" class="sources-header">Sources</h2>
 <ul class="bullet-list">
 <li><a href="https://www.heart.org/en/health-topics/heart-attack" class="external-link" target="_blank" rel="noopener">American Heart Association - Heart Attack</a></li>
 <li><a href="https://www.nhlbi.nih.gov/health/heart-attack" class="external-link" target="_blank" rel="noopener">National Heart, Lung, and Blood Institute - Heart Attack</a></li>
@@ -976,12 +1269,157 @@
             </div>
         </div>
         
+        </main>
+        
+        <aside class="article-sidebar">
+<div class="sidebar-section toc-section">
+<h3 class="sidebar-title">Table of Contents</h3>
+<nav class="toc-nav">
+<ul class="toc-list">
+<li class="toc-item toc-h2">
+<a href="#understanding-the-condition" class="toc-link">Understanding the Condition</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#risk-factors" class="toc-link">Risk Factors</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#warning-signs-symptoms" class="toc-link">Warning Signs & Symptoms</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#atypical-symptoms" class="toc-link">Atypical Symptoms</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#pathophysiology" class="toc-link">Pathophysiology</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#the-process" class="toc-link">The Process:</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#types-of-heart-attacks" class="toc-link">Types of Heart Attacks</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#diagnosis" class="toc-link">Diagnosis</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#emergency-treatment" class="toc-link">Emergency Treatment</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#initial-response" class="toc-link">Initial Response:</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#hospital-interventions" class="toc-link">Hospital Interventions:</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#recovery-rehabilitation" class="toc-link">Recovery & Rehabilitation</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#cardiac-rehabilitation-program" class="toc-link">Cardiac Rehabilitation Program</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#lifestyle-modifications" class="toc-link">Lifestyle Modifications</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#medications-for-long-term-management" class="toc-link">Medications for Long-term Management</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#prevention-strategies" class="toc-link">Prevention Strategies</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#primary-prevention-before-first-heart-attack" class="toc-link">Primary Prevention (Before First Heart Attack):</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#secondary-prevention-after-heart-attack" class="toc-link">Secondary Prevention (After Heart Attack):</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#complications" class="toc-link">Complications</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#prognosis-statistics" class="toc-link">Prognosis & Statistics</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#when-to-seek-help" class="toc-link">When to Seek Help</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#emergency-call-911" class="toc-link">Emergency (Call 911):</a>
+</li>
+<li class="toc-item toc-h3">
+<a href="#urgent-contact-doctor-soon" class="toc-link">Urgent (Contact Doctor Soon):</a>
+</li>
+<li class="toc-item toc-h2">
+<a href="#living-after-a-heart-attack" class="toc-link">Living After a Heart Attack</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class="sidebar-section related-section">
+<h3 class="sidebar-title">Related Articles</h3>
+<ul class="related-list">
+<li class="related-item">
+<a href="/wiki/coronary-artery-disease" class="related-link">
+<span class="related-title">Coronary Artery Disease</span>
+<span class="related-category">Cardiology</span>
+</a>
+</li>
+<li class="related-item">
+<a href="/wiki/cardiac-arrest-vs-heart-attack" class="related-link">
+<span class="related-title">Cardiac Arrest vs Heart Attack</span>
+<span class="related-category">Emergency Medicine</span>
+</a>
+</li>
+<li class="related-item">
+<a href="/wiki/blood-pressure-management" class="related-link">
+<span class="related-title">Blood Pressure Management</span>
+<span class="related-category">Cardiovascular Health</span>
+</a>
+</li>
+<li class="related-item">
+<a href="/wiki/atherosclerosis" class="related-link">
+<span class="related-title">Atherosclerosis</span>
+<span class="related-category">Cardiology</span>
+</a>
+</li>
+<li class="related-item">
+<a href="/wiki/cpr-basics" class="related-link">
+<span class="related-title">CPR Basics</span>
+<span class="related-category">First Aid</span>
+</a>
+</li>
+</ul>
+</div>
+</aside>
     </div>
 
     <div class="back-to-top" id="backToTop">
     </div>
 
     <script>
+        // TOC Active State Tracking
+        document.addEventListener('DOMContentLoaded', () => {
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const headers = document.querySelectorAll('h2[id], h3[id]');
+            
+            if (tocLinks.length > 0 && headers.length > 0) {
+                const observerOptions = {
+                    rootMargin: '-20% 0% -80% 0%',
+                    threshold: 0
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            tocLinks.forEach(link => link.classList.remove('active'));
+                            const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                            if (activeLink) {
+                                activeLink.classList.add('active');
+                            }
+                        }
+                    });
+                }, observerOptions);
+                
+                headers.forEach(header => observer.observe(header));
+            }
+        });
+
         // Discussion System State
         let comments = [
             {

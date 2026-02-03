@@ -4,7 +4,7 @@ Converts custom medical markdown format to styled HTML pages with interactive di
 """
 
 import re
-from typing import List, Tuple, Optional
+from typing import List, Tuple, Optional, Dict
 
 
 class BioBasicsMarkdownConverter:
@@ -24,22 +24,165 @@ class BioBasicsMarkdownConverter:
     - Tables: | Header | Header |
     - Sources section (special formatting)
     - Discussion section with comments, replies, likes/dislikes (auto-added)
+    - Table of contents (auto-generated from headers)
+    - Article metadata (view count, last viewed, tags, related articles)
     """
     
     def __init__(self):
         self.in_table = False
         self.in_list = False
         self.table_headers = []
+        self.toc_entries: List[Dict] = []  # Stores {level, text, id} for TOC
+        self.article_title = ""
         
-    def convert(self, markdown_text: str) -> str:
-        """Convert markdown text to complete HTML document."""
+    def convert(self, markdown_text: str, 
+                view_count: int = 0,
+                last_viewed_at: str = "",
+                tags: List[str] = None,
+                related_articles: List[Dict] = None) -> str:
+        """
+        Convert markdown text to complete HTML document.
+        
+        Args:
+            markdown_text: The markdown content
+            view_count: Number of times article has been viewed
+            last_viewed_at: Formatted datetime string of last view
+            tags: List of tag names
+            related_articles: List of dicts with 'title', 'slug', 'category' keys
+        """
+        if tags is None:
+            tags = []
+        if related_articles is None:
+            related_articles = []
+            
+        # Reset state
+        self.toc_entries = []
+        self.article_title = ""
+        
         lines = markdown_text.strip().split('\n')
+        
+        # First pass: extract headers for TOC
+        self._extract_toc(lines)
+        
+        # Second pass: convert content
         body_html = self._convert_lines(lines)
+        
+        # Generate top metadata bar (view count, last viewed, tags)
+        top_meta_html = self._generate_top_metadata(view_count, last_viewed_at, tags)
+        
+        # Generate sidebar content (TOC + related articles only)
+        sidebar_html = self._generate_sidebar(related_articles)
         
         # Add discussion section after the main content
         discussion_html = self._generate_discussion_section()
         
-        return self._wrap_in_html(body_html + discussion_html)
+        return self._wrap_in_html(top_meta_html, sidebar_html, body_html + discussion_html)
+    
+    def _extract_toc(self, lines: List[str]) -> None:
+        """Extract headers from markdown for table of contents."""
+        for line in lines:
+            line = line.strip()
+            if line.startswith('#'):
+                match = re.match(r'^(#{1,6})\s+(.+)$', line)
+                if match:
+                    level = len(match.group(1))
+                    text = match.group(2)
+                    # Remove inline formatting for TOC text
+                    clean_text = re.sub(r'\*\*([^\*]+)\*\*', r'\1', text)
+                    clean_text = re.sub(r'\*([^\*]+)\*', r'\1', clean_text)
+                    clean_text = re.sub(r'\[\[([^\]]+)\]\]', r'\1', clean_text)
+                    clean_text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', clean_text)
+                    
+                    # Generate ID from text
+                    header_id = self._generate_header_id(clean_text)
+                    
+                    # Store title for h1
+                    if level == 1 and not self.article_title:
+                        self.article_title = clean_text
+                    
+                    # Only include h2 and h3 in TOC (skip h1 title and Sources)
+                    if level in [2, 3] and 'Sources' not in clean_text:
+                        self.toc_entries.append({
+                            'level': level,
+                            'text': clean_text,
+                            'id': header_id
+                        })
+    
+    def _generate_header_id(self, text: str) -> str:
+        """Generate a URL-safe ID from header text."""
+        # Convert to lowercase, replace spaces with hyphens, remove special chars
+        header_id = text.lower()
+        header_id = re.sub(r'[^\w\s-]', '', header_id)
+        header_id = re.sub(r'\s+', '-', header_id)
+        return header_id
+    
+    def _generate_sidebar(self, related_articles: List[Dict]) -> str:
+        """Generate the sidebar with TOC and related articles."""
+        html_parts = []
+        
+        html_parts.append('<aside class="article-sidebar">')
+        
+        # Table of Contents
+        if self.toc_entries:
+            html_parts.append('<div class="sidebar-section toc-section">')
+            html_parts.append('<h3 class="sidebar-title">Table of Contents</h3>')
+            html_parts.append('<nav class="toc-nav">')
+            html_parts.append('<ul class="toc-list">')
+            
+            for entry in self.toc_entries:
+                indent_class = 'toc-h3' if entry['level'] == 3 else 'toc-h2'
+                html_parts.append(f'<li class="toc-item {indent_class}">')
+                html_parts.append(f'<a href="#{entry["id"]}" class="toc-link">{entry["text"]}</a>')
+                html_parts.append('</li>')
+            
+            html_parts.append('</ul>')
+            html_parts.append('</nav>')
+            html_parts.append('</div>')
+        
+        # Related Articles
+        if related_articles:
+            html_parts.append('<div class="sidebar-section related-section">')
+            html_parts.append('<h3 class="sidebar-title">Related Articles</h3>')
+            html_parts.append('<ul class="related-list">')
+            for article in related_articles:
+                html_parts.append('<li class="related-item">')
+                html_parts.append(f'<a href="/wiki/{article.get("slug", "")}" class="related-link">')
+                html_parts.append(f'<span class="related-title">{article.get("title", "")}</span>')
+                if article.get('category'):
+                    html_parts.append(f'<span class="related-category">{article["category"]}</span>')
+                html_parts.append('</a>')
+                html_parts.append('</li>')
+            html_parts.append('</ul>')
+            html_parts.append('</div>')
+        
+        html_parts.append('</aside>')
+        
+        return '\n'.join(html_parts)
+    
+    def _generate_top_metadata(self, view_count: int, last_viewed_at: str, tags: List[str]) -> str:
+        """Generate the top metadata section with view count, last viewed, and tags."""
+        html_parts = []
+        
+        html_parts.append('<div class="article-meta-info">')
+        
+        # View stats (italic)
+        html_parts.append('<div class="meta-stats">')
+        html_parts.append(f'<span class="meta-views">{view_count:,} views</span>')
+        if last_viewed_at:
+            html_parts.append('<span class="meta-separator">•</span>')
+            html_parts.append(f'<span class="meta-last-viewed">Last viewed: {last_viewed_at}</span>')
+        html_parts.append('</div>')
+        
+        # Tags
+        if tags:
+            html_parts.append('<div class="meta-tags">')
+            for tag in tags:
+                html_parts.append(f'<a href="/wiki/tag/{tag.lower().replace(" ", "-")}" class="tag-chip">{tag}</a>')
+            html_parts.append('</div>')
+        
+        html_parts.append('</div>')
+        
+        return '\n'.join(html_parts)
     
     def _convert_lines(self, lines: List[str]) -> str:
         """Convert lines of markdown to HTML body content."""
@@ -157,17 +300,21 @@ class BioBasicsMarkdownConverter:
         return '\n'.join(html_parts)
     
     def _convert_header(self, line: str) -> str:
-        """Convert header markdown to HTML."""
+        """Convert header markdown to HTML with ID for TOC linking."""
         match = re.match(r'^(#{1,6})\s+(.+)$', line)
         if match:
             level = len(match.group(1))
             text = self._convert_inline(match.group(2))
             
+            # Generate ID from plain text (without inline formatting)
+            plain_text = re.sub(r'<[^>]+>', '', text)
+            header_id = self._generate_header_id(plain_text)
+            
             # Special styling for Sources header
             if level == 2 and 'Sources' in text:
-                return f'<h{level} class="sources-header">{text}</h{level}>'
+                return f'<h{level} id="{header_id}" class="sources-header">{text}</h{level}>'
             
-            return f'<h{level}>{text}</h{level}>'
+            return f'<h{level} id="{header_id}">{text}</h{level}>'
         return line
     
     def _convert_image(self, line: str) -> Tuple[str, Optional[str]]:
@@ -262,14 +409,14 @@ class BioBasicsMarkdownConverter:
         </div>
         '''
     
-    def _wrap_in_html(self, body_content: str) -> str:
+    def _wrap_in_html(self, top_meta_content: str, sidebar_content: str, body_content: str) -> str:
         """Wrap content in complete HTML document with BioBasics styling and discussion functionality."""
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioBasics Medical Wiki</title>
+    <title>{self.article_title or 'BioBasics Medical Wiki'}</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {{
@@ -995,27 +1142,337 @@ class BioBasicsMarkdownConverter:
         .bookmark-btn.animate .bookmark-icon {{
             animation: bookmarkPulse 0.3s ease-out;
         }}
+
+        /* ===== TOP METADATA (inside main content) ===== */
+        .article-meta-info {{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }}
+
+        .meta-stats {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }}
+
+        .meta-separator {{
+            color: var(--accent-tertiary);
+        }}
+
+        .meta-views,
+        .meta-last-viewed {{
+            color: var(--text-secondary);
+        }}
+
+        .meta-tags {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-left: auto;
+        }}
+
+        /* ===== SIDEBAR STYLES ===== */
+        .page-wrapper {{
+            display: flex;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+            position: relative;
+            z-index: 1;
+        }}
+
+        .article-content {{
+            flex: 1;
+            min-width: 0;
+            max-width: 900px;
+            order: 1;
+        }}
+
+        .article-sidebar {{
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            order: 2;
+        }}
+
+        .sidebar-section {{
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }}
+
+        .sidebar-section:first-child {{
+            margin-top: 0;
+        }}
+
+        .sidebar-title {{
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 12px 0;
+            padding: 0;
+        }}
+
+        /* Table of Contents */
+        .toc-nav {{
+            max-height: 350px;
+            overflow-y: auto;
+        }}
+
+        .toc-list {{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }}
+
+        .toc-item {{
+            margin-bottom: 6px;
+        }}
+
+        .toc-item:last-child {{
+            margin-bottom: 0;
+        }}
+
+        .toc-item.toc-h3 {{
+            padding-left: 16px;
+        }}
+
+        .toc-link {{
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border-left: 2px solid transparent;
+            transition: var(--transition);
+            text-decoration: none;
+        }}
+
+        .toc-link:hover {{
+            color: var(--accent-primary);
+            background: rgba(0, 245, 208, 0.1);
+            border-left-color: var(--accent-primary);
+        }}
+
+        .toc-link.active {{
+            color: var(--accent-primary);
+            background: rgba(0, 245, 208, 0.15);
+            border-left-color: var(--accent-primary);
+            font-weight: 600;
+        }}
+
+        /* Tags (in top bar) */
+        .tag-chip {{
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(0, 245, 208, 0.3);
+            border-radius: 20px;
+            color: var(--accent-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            text-decoration: none;
+        }}
+
+        .tag-chip:hover {{
+            background: rgba(0, 245, 208, 0.15);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }}
+
+        /* Related Articles */
+        .related-list {{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }}
+
+        .related-item {{
+            margin-bottom: 10px;
+        }}
+
+        .related-item:last-child {{
+            margin-bottom: 0;
+        }}
+
+        .related-link {{
+            display: block;
+            padding: 10px 12px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: var(--transition);
+        }}
+
+        .related-link:hover {{
+            background: rgba(255, 107, 157, 0.1);
+            transform: translateX(4px);
+        }}
+
+        .related-title {{
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }}
+
+        .related-category {{
+            display: block;
+            color: var(--accent-secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }}
+
+        /* Sidebar scrollbar */
+        .article-sidebar::-webkit-scrollbar {{
+            width: 4px;
+        }}
+
+        .article-sidebar::-webkit-scrollbar-track {{
+            background: transparent;
+        }}
+
+        .article-sidebar::-webkit-scrollbar-thumb {{
+            background: var(--bg-card);
+            border-radius: 2px;
+        }}
+
+        .article-sidebar::-webkit-scrollbar-thumb:hover {{
+            background: var(--accent-primary);
+        }}
+
+        /* TOC scrollbar */
+        .toc-nav::-webkit-scrollbar {{
+            width: 3px;
+        }}
+
+        .toc-nav::-webkit-scrollbar-track {{
+            background: transparent;
+        }}
+
+        .toc-nav::-webkit-scrollbar-thumb {{
+            background: rgba(0, 245, 208, 0.3);
+            border-radius: 2px;
+        }}
+
+        /* Responsive */
+        @media (max-width: 1100px) {{
+            .article-meta-info {{
+                flex-direction: column;
+                align-items: flex-start;
+            }}
+
+            .meta-tags {{
+                margin-left: 0;
+            }}
+
+            .page-wrapper {{
+                flex-direction: column;
+                padding: 0 20px 80px;
+            }}
+
+            .article-sidebar {{
+                width: 100%;
+                position: relative;
+                top: 0;
+                max-height: none;
+                order: -1;
+            }}
+
+            .toc-section {{
+                display: none;
+            }}
+        }}
+
+        @media (max-width: 600px) {{
+            .meta-stats {{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }}
+
+            .meta-separator {{
+                display: none;
+            }}
+        }}
     </style>
 </head>
 <body>
-    <div class="container clearfix">
-        <!-- Bookmark Button -->
-        <div class="bookmark-container">
-            <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">
-                <svg class="bookmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <span class="bookmark-text">Bookmark</span>
-            </button>
-        </div>
+    <div class="page-wrapper">
+        <main class="article-content clearfix">
+            {top_meta_content}
+            
+            <!-- Bookmark Button -->
+            <div class="bookmark-container">
+                <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">
+                    <svg class="bookmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span class="bookmark-text">Bookmark</span>
+                </button>
+            </div>
+            
+            {body_content}
+        </main>
         
-        {body_content}
+        {sidebar_content}
     </div>
 
     <div class="back-to-top" id="backToTop">
     </div>
 
     <script>
+        // TOC Active State Tracking
+        document.addEventListener('DOMContentLoaded', () => {{
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const headers = document.querySelectorAll('h2[id], h3[id]');
+            
+            if (tocLinks.length > 0 && headers.length > 0) {{
+                const observerOptions = {{
+                    rootMargin: '-20% 0% -80% 0%',
+                    threshold: 0
+                }};
+                
+                const observer = new IntersectionObserver((entries) => {{
+                    entries.forEach(entry => {{
+                        if (entry.isIntersecting) {{
+                            tocLinks.forEach(link => link.classList.remove('active'));
+                            const activeLink = document.querySelector(`.toc-link[href="#${{entry.target.id}}"]`);
+                            if (activeLink) {{
+                                activeLink.classList.add('active');
+                            }}
+                        }}
+                    }});
+                }}, observerOptions);
+                
+                headers.forEach(header => observer.observe(header));
+            }}
+        }});
+
         // Discussion System State
         let comments = [
             {{
@@ -1496,32 +1953,90 @@ class BioBasicsMarkdownConverter:
 </html>"""
 
 
-def convert_file(input_path: str, output_path: str) -> None:
+def convert_file(input_path: str, output_path: str,
+                 view_count: int = 0,
+                 last_viewed_at: str = "",
+                 tags: list = None,
+                 related_articles: list = None) -> None:
     """
     Convert a BioBasics markdown file to HTML.
     
     Args:
         input_path: Path to input .md file
         output_path: Path to output .html file
+        view_count: Number of views for the article
+        last_viewed_at: Formatted datetime string
+        tags: List of tag strings
+        related_articles: List of dicts with 'title', 'slug', 'category'
     """
     with open(input_path, 'r', encoding='utf-8') as f:
         markdown_content = f.read()
     
     converter = BioBasicsMarkdownConverter()
-    html_content = converter.convert(markdown_content)
+    html_content = converter.convert(
+        markdown_content,
+        view_count=view_count,
+        last_viewed_at=last_viewed_at,
+        tags=tags or [],
+        related_articles=related_articles or []
+    )
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"✓ Converted {{input_path}} to {{output_path}}")
+    print(f"✓ Converted {input_path} to {output_path}")
 
 
 def main():
-    """Main function with hardcoded input and output paths."""
-    input_path = r'test/7-infographic/markdown.md'
-    output_path = r'test/7-infographic/demo.html'
+    """Main function with hardcoded input and output paths and sample metadata."""
+    input_path = r'markdown.md'
+    output_path = r'demo.html'
     
-    convert_file(input_path, output_path)
+    # Sample metadata for demonstration
+    sample_tags = [
+        "Cardiology",
+        "Emergency Medicine", 
+        "Heart Disease",
+        "First Aid",
+        "Cardiovascular"
+    ]
+    
+    sample_related_articles = [
+        {
+            "title": "Coronary Artery Disease",
+            "slug": "coronary-artery-disease",
+            "category": "Cardiology"
+        },
+        {
+            "title": "Cardiac Arrest vs Heart Attack",
+            "slug": "cardiac-arrest-vs-heart-attack",
+            "category": "Emergency Medicine"
+        },
+        {
+            "title": "Blood Pressure Management",
+            "slug": "blood-pressure-management",
+            "category": "Cardiovascular Health"
+        },
+        {
+            "title": "Atherosclerosis",
+            "slug": "atherosclerosis",
+            "category": "Cardiology"
+        },
+        {
+            "title": "CPR Basics",
+            "slug": "cpr-basics",
+            "category": "First Aid"
+        }
+    ]
+    
+    convert_file(
+        input_path, 
+        output_path,
+        view_count=12847,
+        last_viewed_at="2 minutes ago",
+        tags=sample_tags,
+        related_articles=sample_related_articles
+    )
 
 
 if __name__ == "__main__":

@@ -240,16 +240,6 @@ CREATE TABLE user_daily_streak (
 -- SECTION 6: ARTICLE SYSTEM (MEDICAL ENCYCLOPEDIA)
 -- ============================================================================
 
--- Article categories
-CREATE TABLE category (
-    id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-    name NVARCHAR(200) NOT NULL UNIQUE,
-    description NVARCHAR(1000),
-    order_index INT NOT NULL,
-    created_at DATETIME2 DEFAULT GETDATE(),
-    updated_at DATETIME2 DEFAULT GETDATE()
-);
-
 -- Article tags
 CREATE TABLE tag (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -260,16 +250,16 @@ CREATE TABLE tag (
 -- Articles (medical encyclopedia entries)
 CREATE TABLE article (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-    category_id UNIQUEIDENTIFIER NOT NULL,
-    terminology NVARCHAR(300) NOT NULL UNIQUE,
+    theme_id UNIQUEIDENTIFIER NOT NULL,
+    name NVARCHAR(300) NOT NULL,
     slug NVARCHAR(300) NOT NULL UNIQUE,
-    content_html NVARCHAR(MAX) NOT NULL,
+    content_markdown NVARCHAR(MAX) NOT NULL,
     author_admin_id UNIQUEIDENTIFIER,
     is_published BIT DEFAULT 0,
     published_at DATETIME2,
     created_at DATETIME2 DEFAULT GETDATE(),
     updated_at DATETIME2 DEFAULT GETDATE(),
-    FOREIGN KEY (category_id) REFERENCES category(id),
+    FOREIGN KEY (theme_id) REFERENCES theme(id),
     FOREIGN KEY (author_admin_id) REFERENCES [user](id)
 );
 
@@ -375,7 +365,7 @@ CREATE TABLE notification (
 -- ============================================================================
 
 PRINT 'BioBasics database schema created successfully!';
-PRINT 'Total tables created: 24';
+PRINT 'Total tables created: 23';
 PRINT 'Note: JSON content structures documented in:';
 PRINT '  - CONTENT_STRUCTURE.md';
 PRINT '  - INITIAL_ASSESSMENT_STRUCTURE.md';
