@@ -1,0 +1,174 @@
+{
+  "version": "1.0",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
+        "summaryText": "Choking is a life-threatening emergency that occurs when an object blocks the airway, preventing oxygen from reaching the lungs. According to medical statistics, choking is responsible for nearly 5,000 deaths annually in the United States alone. Recognizing the signs early and acting quickly can save a life."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "infographic",
+      "orderIndex": 2,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80",
+        "summaryText": "The universal choking sign is when a person clutches their throat with both hands. Other signs include: inability to speak or cry out, difficulty breathing or noisy breathing, weak or ineffective coughing, skin turning blue (cyanosis), and loss of consciousness if the blockage is not cleared."
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "quiz",
+      "orderIndex": 3,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "What is the universal sign that someone is choking?",
+        "explanation": "The universal choking sign is recognized worldwide and indicates a complete airway obstruction. When someone clutches their throat with both hands, it's a clear signal they need immediate help.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Waving hands frantically above their head",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "text": "Clutching the throat with both hands",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "text": "Pointing at their mouth repeatedly",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Holding their chest with one hand",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "infographic",
+      "orderIndex": 4,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
+        "summaryText": "The Heimlich maneuver (abdominal thrusts) is the primary first aid technique for choking adults and children over 1 year old. Stand behind the person, make a fist above their navel, grasp it with your other hand, and perform quick upward thrusts. Each thrust should be separate and distinct, attempting to dislodge the object."
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Back blows should be delivered forcefully between the shoulder blades when someone is choking.",
+        "explanation": "Back blows are most effective when delivered with the heel of your hand to the area between the shoulder blades. This technique is often used in combination with abdominal thrusts and is especially recommended for infants and can be effective for adults as well.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-006",
+      "type": "infographic",
+      "orderIndex": 6,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80",
+        "summaryText": "For choking infants (under 1 year), NEVER perform the Heimlich maneuver. Instead, use a combination of back blows and chest thrusts. Hold the infant face-down on your forearm, support their head, and deliver 5 firm back blows. Then turn them face-up and give 5 chest thrusts with two fingers in the center of the chest."
+      }
+    },
+    {
+      "id": "screen-007",
+      "type": "quiz",
+      "orderIndex": 7,
+      "content": {
+        "questionType": "matching",
+        "sentence": "If you see someone choking and unable to breathe, immediately call <1>.\nIf they become unconscious and stop breathing, begin <2>.\nThe primary technique for conscious adults is the <3> maneuver.",
+        "correctAnswers": [
+          "911",
+          "CPR",
+          "Heimlich"
+        ],
+        "wrongAnswers": [
+          "411",
+          "back blows only",
+          "rescue breathing",
+          "chest compressions only"
+        ]
+      }
+    },
+    {
+      "id": "screen-008",
+      "type": "infographic",
+      "orderIndex": 8,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80",
+        "summaryText": "If the person becomes unconscious, carefully lower them to the ground and immediately begin CPR, even if you're not trained. Call 911 if you haven't already. Each time you open the airway to give rescue breaths, look for the object. If you see it and can easily remove it, do so. Continue CPR until emergency services arrive or the person starts breathing."
+      }
+    },
+    {
+      "id": "screen-009",
+      "type": "quiz",
+      "orderIndex": 9,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "What should you do if a choking person can still cough forcefully?",
+        "explanation": "A forceful cough is the body's natural way of clearing an obstruction. Encouraging the person to keep coughing is often the most effective approach. Only intervene with back blows or abdominal thrusts if the cough becomes weak or ineffective, or if the person cannot breathe, speak, or make sounds.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Immediately start performing the Heimlich maneuver",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "text": "Encourage them to keep coughing and monitor closely",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "text": "Lay them down on their back",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Give them water to drink",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-010",
+      "type": "infographic",
+      "orderIndex": 10,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1609188076864-c35269136a09?w=800&q=80",
+        "summaryText": "Prevention is key! Common choking hazards include: hard candies, grapes (especially for children), hot dogs, popcorn, nuts, and raw vegetables. Always supervise young children while eating, cut food into small pieces, and encourage slow, careful chewing. Avoid talking or laughing while chewing, and never lie down while eating."
+      }
+    },
+    {
+      "id": "screen-011",
+      "type": "quiz",
+      "orderIndex": 11,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "You should perform a finger sweep in an unconscious choking victim's mouth, even if you cannot see the object.",
+        "explanation": "You should ONLY perform a finger sweep if you can clearly see the object. Blind finger sweeps can push the object deeper into the airway or cause injury. When performing CPR on an unconscious choking victim, check the mouth visually each time before giving rescue breaths.",
+        "correctAnswer": false
+      }
+    },
+    {
+      "id": "screen-012",
+      "type": "infographic",
+      "orderIndex": 12,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80",
+        "summaryText": "Congratulations on completing this course! You now know how to recognize choking, perform the Heimlich maneuver, deliver back blows, handle infant choking, and respond if someone becomes unconscious. Remember: quick action saves lives. Consider taking a certified CPR and first aid course for hands-on practice. Stay safe and be prepared!"
+      }
+    }
+  ]
+}
