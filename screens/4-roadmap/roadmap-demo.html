@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Roadmap - Emergency Care</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header with Progress Bar */
+        .header {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .theme-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .theme-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+        }
+
+        .progress-bar-wrapper {
+            flex: 1;
+            height: 12px;
+            background: #e5e5e5;
+            border-radius: 20px;
+            overflow: visible;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
+            border-radius: 20px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .progress-star {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #FFD700;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .progress-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            white-space: nowrap;
+            min-width: 90px;
+            text-align: right;
+        }
+
+        /* Streak Section */
+        .streak-section {
+            max-width: 800px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .streak-section.hidden {
+            display: none;
+        }
+
+        .streak-card {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+            border: 2px solid #FFB74D;
+            position: relative;
+        }
+
+        .streak-close-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+
+        .streak-close-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .streak-close-button:active {
+            transform: scale(0.95);
+        }
+
+        .streak-close-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .streak-close-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #F57C00;
+        }
+
+        .streak-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
+        }
+
+        .streak-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .streak-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: white;
+        }
+
+        .streak-content {
+            flex: 1;
+        }
+
+        .streak-header {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .streak-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #E65100;
+            line-height: 1;
+        }
+
+        .streak-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F57C00;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .streak-message {
+            font-size: 14px;
+            color: #6D4C41;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 200px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        /* Course Path */
+        .course-path {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .course-item {
+            margin-bottom: 0;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .course-connector {
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #ddd 0%, #eee 100%);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .course-connector.active {
+            background: linear-gradient(180deg, #FFB347 0%, #FFCC80 100%);
+        }
+
+        .course-button {
+            width: 100%;
+            padding: 20px 24px;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .course-button:hover:not(.locked) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .course-button:active:not(.locked) {
+            transform: translateY(0);
+        }
+
+        /* Course States */
+        .course-button.completed {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            color: white;
+        }
+
+        .course-button.unlocked {
+            background: linear-gradient(135deg, #FFB347 0%, #FFCC80 100%);
+            color: #333;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .course-button.locked {
+            background: #E0E0E0;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .course-button.test {
+            background: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%);
+            color: white;
+            border: 3px solid #7B1FA2;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 179, 71, 0.6);
+            }
+        }
+
+        .course-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .course-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.3);
+            color: inherit;
+        }
+
+        .course-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .course-name {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .course-quiz-score {
+            font-size: 13px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .lock-icon {
+            width: 24px;
+            height: 24px;
+            opacity: 0.5;
+        }
+
+        .lock-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        .checkmark-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .checkmark-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        .arrow-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .arrow-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        /* Bottom Sheet - Continue Learning */
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            transform: translateY(calc(100% - 90px));
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 200;
+            max-height: 90vh;
+        }
+
+        .bottom-sheet.expanded {
+            transform: translateY(0);
+        }
+
+        .handle-bar {
+            width: 40px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            margin: 12px auto;
+            cursor: pointer;
+        }
+
+        .bottom-sheet-content {
+            padding: 0 24px 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .continue-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .continue-left {
+            flex: 1;
+        }
+
+        .continue-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #FF6B6B;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .continue-label.test-label {
+            color: #9C27B0;
+        }
+
+        .continue-course-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .continue-course-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0;
+        }
+
+        .continue-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .continue-button {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            flex-shrink: 0;
+        }
+
+        .continue-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .continue-button:active {
+            transform: scale(0.95);
+        }
+
+        .continue-button.test-button {
+            background: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%);
+            box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
+        }
+
+        .continue-button.test-button:hover {
+            box-shadow: 0 6px 20px rgba(156, 39, 176, 0.4);
+        }
+
+        .continue-arrow {
+            width: 28px;
+            height: 28px;
+        }
+
+        .continue-arrow svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+
+        .start-button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: none; /* Hidden by default, shown when expanded */
+        }
+
+        .bottom-sheet.expanded .start-button {
+            display: block;
+        }
+
+        .start-button.primary {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+        }
+
+        .start-button.test {
+            background: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%);
+            color: white;
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .start-button:active {
+            transform: translateY(0);
+        }
+
+        /* Completion Message */
+        .completion-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #FFD54F 0%, #FFEB3B 100%);
+            border-radius: 24px;
+            margin-top: 40px;
+        }
+
+        .completion-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .completion-icon svg {
+            width: 50px;
+            height: 50px;
+            fill: #F57C00;
+        }
+
+        .completion-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .completion-text {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .theme-title {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .course-button {
+                padding: 16px 20px;
+                font-size: 15px;
+            }
+
+            .course-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .continue-button {
+                width: 56px;
+                height: 56px;
+            }
+
+            .continue-arrow {
+                width: 24px;
+                height: 24px;
+            }
+
+            .streak-card {
+                padding: 16px 20px;
+                gap: 16px;
+            }
+
+            .streak-icon-wrapper {
+                width: 48px;
+                height: 48px;
+            }
+
+            .streak-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .streak-number {
+                font-size: 24px;
+            }
+
+            .streak-message {
+                font-size: 13px;
+            }
+        }
+
+        /* Hidden by default */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Progress -->
+    <div class="header">
+        <div class="theme-info">
+            <h1 class="theme-title">Emergency Care</h1>
+            <div class="progress-container">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar" style="width: 35%;">
+                        <span class="progress-star"></span>
+                    </div>
+                </div>
+                <span class="progress-text">7/20 courses</span>
+            </div>
+        </div>
+
+        <!-- Streak Section -->
+        <div class="streak-section" id="streakSection">
+            <div class="streak-card">
+                <button class="streak-close-button" onclick="closeStreakCard()" aria-label="Close streak card">
+                    <span class="streak-close-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="streak-icon-wrapper">
+                    <span class="streak-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+                        </svg>
+                    </span>
+                </div>
+                <div class="streak-content">
+                    <div class="streak-header">
+                        <span class="streak-number">7</span>
+                        <span class="streak-label">Day Streak</span>
+                    </div>
+                    <p class="streak-message">You're building a strong learning habit. Keep it up!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Section 1: Anaphylactic Shock -->
+        <div class="section">
+            <h2 class="section-title">Anaphylactic Shock</h2>
+            <div class="course-path">
+                <!-- Course 1 - Completed -->
+                <div class="course-item">
+                    <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 1)">
+                        <div class="course-content">
+                            <span class="course-icon">1</span>
+                            <div class="course-info">
+                                <span class="course-name">Recognizing Anaphylaxis</span>
+                                <span class="course-quiz-score">8/10 questions correct</span>
+                            </div>
+                        </div>
+                        <span class="checkmark-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector active"></div>
+
+                <!-- Course 2 - Completed -->
+                <div class="course-item">
+                    <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 2)">
+                        <div class="course-content">
+                            <span class="course-icon">2</span>
+                            <div class="course-info">
+                                <span class="course-name">Initial First Aid</span>
+                                <span class="course-quiz-score">9/10 questions correct</span>
+                            </div>
+                        </div>
+                        <span class="checkmark-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector active"></div>
+
+                <!-- Course 3 - Unlocked (current) -->
+                <div class="course-item">
+                    <button class="course-button unlocked" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 3)">
+                        <div class="course-content">
+                            <span class="course-icon">3</span>
+                            <div class="course-info">
+                                <span class="course-name">Advanced Treatment</span>
+                                <span class="course-quiz-score">4/10 questions correct</span>
+                            </div>
+                        </div>
+                        <span class="arrow-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector"></div>
+
+                <!-- Course 4 - Locked -->
+                <div class="course-item">
+                    <button class="course-button locked">
+                        <div class="course-content">
+                            <span class="course-icon">4</span>
+                            <div class="course-info">
+                                <span class="course-name">Patient Monitoring</span>
+                                <span class="course-quiz-score">0/10</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector"></div>
+
+                <!-- Section Test - Locked -->
+                <div class="course-item">
+                    <button class="course-button test locked">
+                        <div class="course-content">
+                            <span class="course-icon">T</span>
+                            <div class="course-info">
+                                <span class="course-name">Section Test: Anaphylactic Shock</span>
+                                <span class="course-quiz-score">15 questions</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Cardiopulmonary Resuscitation (CPR) -->
+        <div class="section">
+            <h2 class="section-title">Cardiopulmonary Resuscitation (CPR)</h2>
+            <div class="course-path">
+                <!-- Course 1 - Locked -->
+                <div class="course-item">
+                    <button class="course-button locked">
+                        <div class="course-content">
+                            <span class="course-icon">1</span>
+                            <div class="course-info">
+                                <span class="course-name">When to Perform CPR</span>
+                                <span class="course-quiz-score">0/8</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector"></div>
+
+                <!-- Course 2 - Locked -->
+                <div class="course-item">
+                    <button class="course-button locked">
+                        <div class="course-content">
+                            <span class="course-icon">2</span>
+                            <div class="course-info">
+                                <span class="course-name">Chest Compression Technique</span>
+                                <span class="course-quiz-score">0/10</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector"></div>
+
+                <!-- Course 3 - Locked -->
+                <div class="course-item">
+                    <button class="course-button locked">
+                        <div class="course-content">
+                            <span class="course-icon">3</span>
+                            <div class="course-info">
+                                <span class="course-name">Rescue Breathing</span>
+                                <span class="course-quiz-score">0/8</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Choking -->
+        <div class="section">
+            <h2 class="section-title">Choking</h2>
+            <div class="course-path">
+                <!-- Course 1 - Locked -->
+                <div class="course-item">
+                    <button class="course-button locked">
+                        <div class="course-content">
+                            <span class="course-icon">1</span>
+                            <div class="course-info">
+                                <span class="course-name">Recognizing Choking</span>
+                                <span class="course-quiz-score">0/10</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="course-connector"></div>
+
+                <!-- Course 2 - Locked -->
+                <div class="course-item">
+                    <button class="course-button locked">
+                        <div class="course-content">
+                            <span class="course-icon">2</span>
+                            <div class="course-info">
+                                <span class="course-name">Heimlich Maneuver</span>
+                                <span class="course-quiz-score">0/12</span>
+                            </div>
+                        </div>
+                        <span class="lock-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completion Message (hidden by default, shown when all completed) -->
+        <div class="completion-message hidden">
+            <div class="completion-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            </div>
+            <h2 class="completion-title">Congratulations!</h2>
+            <p class="completion-text">You've completed all courses in Emergency Care</p>
+        </div>
+    </div>
+
+    <!-- Bottom Sheet - Continue Learning -->
+    <div class="bottom-sheet" id="bottomSheet">
+        <div class="handle-bar" onclick="toggleBottomSheet()"></div>
+        <div class="bottom-sheet-content">
+            <div class="continue-header">
+                <div class="continue-left">
+                    <div class="continue-label">Continue</div>
+                    <div class="continue-course-title">Anaphylactic Shock - Course 3</div>
+                    <h3 class="continue-course-name">Advanced Treatment</h3>
+                </div>
+                <button class="continue-button" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 3)">
+                    <span class="continue-arrow">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <p class="continue-description">Learn advanced treatment methods for severe anaphylactic reactions and emergency medical protocols.</p>
+            <button class="start-button primary" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 3)">
+                Start Course
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Close streak card
+        function closeStreakCard() {
+            const streakSection = document.getElementById('streakSection');
+            if (streakSection) {
+                streakSection.classList.add('hidden');
+                // Optional: Save to localStorage so it stays closed
+                localStorage.setItem('streakCardClosed', 'true');
+            }
+        }
+
+        // Check if streak card was previously closed
+        function checkStreakCardState() {
+            const streakSection = document.getElementById('streakSection');
+            const wasClosed = localStorage.getItem('streakCardClosed');
+            
+            if (wasClosed === 'true' && streakSection) {
+                streakSection.classList.add('hidden');
+            }
+        }
+
+        // Call on page load
+        document.addEventListener('DOMContentLoaded', checkStreakCardState);
+
+        // Motivational messages based on streak
+        const motivationalMessages = {
+            0: "Start your learning journey today!",
+            1: "Great start! Come back tomorrow to build your streak.",
+            2: "Two days in a row! You're forming a habit.",
+            3: "Three days strong! Keep the momentum going.",
+            5: "Amazing! Five days of consistent learning.",
+            7: "You're building a strong learning habit. Keep it up!",
+            10: "Double digits! Your dedication is impressive.",
+            14: "Two weeks straight! You're on fire!",
+            30: "30 days of learning! This is truly remarkable.",
+            50: "Incredible! 50 days shows real commitment.",
+            100: "Legendary! 100 days of continuous learning!"
+        };
+
+        function getMotivationalMessage(streak) {
+            // Find the closest message for the streak count
+            const streakMilestones = Object.keys(motivationalMessages)
+                .map(Number)
+                .sort((a, b) => a - b);
+            
+            let message = motivationalMessages[0];
+            for (let milestone of streakMilestones) {
+                if (streak >= milestone) {
+                    message = motivationalMessages[milestone];
+                } else {
+                    break;
+                }
+            }
+            return message;
+        }
+
+        // Update streak display (this would be called with real data from backend)
+        function updateStreakDisplay(streakCount) {
+            const streakNumber = document.querySelector('.streak-number');
+            const streakMessage = document.querySelector('.streak-message');
+            
+            if (streakNumber) streakNumber.textContent = streakCount;
+            if (streakMessage) streakMessage.textContent = getMotivationalMessage(streakCount);
+            
+            // Show streak card again when updating (user might want to see new milestone)
+            const streakSection = document.getElementById('streakSection');
+            if (streakSection) {
+                streakSection.classList.remove('hidden');
+                localStorage.removeItem('streakCardClosed');
+            }
+        }
+
+        // Toggle Bottom Sheet
+        function toggleBottomSheet() {
+            const sheet = document.getElementById('bottomSheet');
+            sheet.classList.toggle('expanded');
+        }
+
+        // Navigate to course
+        function navigateToCourse(themeSlug, sectionSlug, courseIndex) {
+            const url = `/${themeSlug}/${sectionSlug}/${courseIndex}`;
+            console.log('Navigating to:', url);
+            // In production: window.location.href = url;
+            alert(`Navigating to: ${url}`);
+        }
+
+        // Swipe gestures for bottom sheet
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        const bottomSheet = document.getElementById('bottomSheet');
+
+        bottomSheet.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        bottomSheet.addEventListener('touchmove', (e) => {
+            touchEndY = e.touches[0].clientY;
+        }, { passive: true });
+
+        bottomSheet.addEventListener('touchend', () => {
+            const swipeDistance = touchStartY - touchEndY;
+            
+            if (Math.abs(swipeDistance) > 50) {
+                if (swipeDistance > 0) {
+                    // Swipe up - expand
+                    bottomSheet.classList.add('expanded');
+                } else {
+                    // Swipe down - collapse
+                    bottomSheet.classList.remove('expanded');
+                }
+            }
+        });
+
+        // Example: Update for section test bottom sheet
+        function showSectionTestInBottomSheet() {
+            const content = document.querySelector('.bottom-sheet-content');
+            content.innerHTML = `
+                <div class="continue-header">
+                    <div class="continue-left">
+                        <div class="continue-label test-label">Test</div>
+                        <div class="continue-course-title">Section Test</div>
+                        <h3 class="continue-course-name">Anaphylactic Shock</h3>
+                    </div>
+                    <button class="continue-button test-button" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 'test')">
+                        <span class="continue-arrow">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <p class="continue-description">Complete the test to unlock the next section. 15 questions - Need ≥70% to pass.</p>
+                <button class="start-button test" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 'test')">
+                    Start Test
+                </button>
+            `;
+        }
+
+        // Example: You can update streak dynamically
+        // updateStreakDisplay(15); // This would show "Two weeks straight! You're on fire!"
+    </script>
+</body>
+</html>
