@@ -120,6 +120,7 @@ CREATE TABLE course (
     id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     section_id UNIQUEIDENTIFIER NOT NULL,
     name NVARCHAR(200) NOT NULL,
+    description NVARCHAR(1000),
     slug NVARCHAR(300) NOT NULL,
     order_index INT NOT NULL,
     estimated_duration_minutes INT DEFAULT 7,
