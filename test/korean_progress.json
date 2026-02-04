@@ -1,0 +1,4437 @@
+{
+  "created": "2026-02-05T00:18:08.250882",
+  "current_level": 4,
+  "levels": {
+    "1": {
+      "name": "Basic Vowels",
+      "items": [
+        [
+          "ㅏ",
+          "a"
+        ],
+        [
+          "ㅓ",
+          "eo"
+        ],
+        [
+          "ㅗ",
+          "o"
+        ],
+        [
+          "ㅜ",
+          "u"
+        ],
+        [
+          "ㅡ",
+          "eu"
+        ],
+        [
+          "ㅣ",
+          "i"
+        ],
+        [
+          "ㅐ",
+          "ae"
+        ],
+        [
+          "ㅔ",
+          "e"
+        ],
+        [
+          "ㅑ",
+          "ya"
+        ],
+        [
+          "ㅕ",
+          "yeo"
+        ],
+        [
+          "ㅛ",
+          "yo"
+        ],
+        [
+          "ㅠ",
+          "yu"
+        ],
+        [
+          "ㅒ",
+          "yae"
+        ],
+        [
+          "ㅖ",
+          "ye"
+        ],
+        [
+          "ㅘ",
+          "wa"
+        ],
+        [
+          "ㅙ",
+          "wae"
+        ],
+        [
+          "ㅚ",
+          "oe"
+        ],
+        [
+          "ㅝ",
+          "wo"
+        ],
+        [
+          "ㅞ",
+          "we"
+        ],
+        [
+          "ㅟ",
+          "wi"
+        ],
+        [
+          "ㅢ",
+          "ui"
+        ]
+      ],
+      "stats": {
+        "ㅏ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅓ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅗ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅜ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅡ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅣ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅐ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅔ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅑ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 1
+        },
+        "ㅕ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅛ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅠ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅒ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅖ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅘ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅙ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅚ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅝ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅞ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅟ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅢ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        }
+      }
+    },
+    "2": {
+      "name": "Basic Consonants",
+      "items": [
+        [
+          "ㄱ",
+          "g"
+        ],
+        [
+          "ㄴ",
+          "n"
+        ],
+        [
+          "ㄷ",
+          "d"
+        ],
+        [
+          "ㄹ",
+          "r"
+        ],
+        [
+          "ㅁ",
+          "m"
+        ],
+        [
+          "ㅂ",
+          "b"
+        ],
+        [
+          "ㅅ",
+          "s"
+        ],
+        [
+          "ㅇ",
+          "ng"
+        ],
+        [
+          "ㅈ",
+          "j"
+        ],
+        [
+          "ㅎ",
+          "h"
+        ]
+      ],
+      "stats": {
+        "ㄱ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㄴ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㄷ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㄹ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅁ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅂ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅅ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅇ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅈ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅎ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        }
+      }
+    },
+    "3": {
+      "name": "Advanced Consonants",
+      "items": [
+        [
+          "ㅊ",
+          "ch"
+        ],
+        [
+          "ㅋ",
+          "k"
+        ],
+        [
+          "ㅌ",
+          "t"
+        ],
+        [
+          "ㅍ",
+          "p"
+        ],
+        [
+          "ㄲ",
+          "kk"
+        ],
+        [
+          "ㄸ",
+          "tt"
+        ],
+        [
+          "ㅃ",
+          "pp"
+        ],
+        [
+          "ㅆ",
+          "ss"
+        ],
+        [
+          "ㅉ",
+          "jj"
+        ]
+      ],
+      "stats": {
+        "ㅊ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅋ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅌ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅍ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㄲ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㄸ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅃ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅆ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "ㅉ": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        }
+      }
+    },
+    "4": {
+      "name": "Syllables",
+      "items": [
+        [
+          "흡",
+          "heup"
+        ],
+        [
+          "툡",
+          "tyop"
+        ],
+        [
+          "급",
+          "geup"
+        ],
+        [
+          "곰",
+          "gom"
+        ],
+        [
+          "듕",
+          "dyung"
+        ],
+        [
+          "턷",
+          "teot"
+        ],
+        [
+          "그",
+          "geu"
+        ],
+        [
+          "촘",
+          "chom"
+        ],
+        [
+          "덩",
+          "deong"
+        ],
+        [
+          "축",
+          "chuk"
+        ],
+        [
+          "풍",
+          "pung"
+        ],
+        [
+          "룩",
+          "ruk"
+        ],
+        [
+          "쳘",
+          "chyeol"
+        ],
+        [
+          "비",
+          "bi"
+        ],
+        [
+          "펭",
+          "peng"
+        ]
+      ],
+      "stats": {
+        "흡": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "툡": {
+          "streak": 1,
+          "correct": 1,
+          "total": 1
+        },
+        "급": {
+          "streak": 0,
+          "correct": 0,
+          "total": 1
+        },
+        "곰": {
+          "streak": 0,
+          "correct": 0,
+          "total": 2
+        },
+        "듕": {
+          "streak": 1,
+          "correct": 1,
+          "total": 1
+        },
+        "턷": {
+          "streak": 0,
+          "correct": 0,
+          "total": 1
+        },
+        "그": {
+          "streak": 2,
+          "correct": 2,
+          "total": 2
+        },
+        "촘": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "덩": {
+          "streak": 1,
+          "correct": 1,
+          "total": 1
+        },
+        "축": {
+          "streak": 1,
+          "correct": 1,
+          "total": 3
+        },
+        "풍": {
+          "streak": 0,
+          "correct": 0,
+          "total": 2
+        },
+        "룩": {
+          "streak": 2,
+          "correct": 2,
+          "total": 2
+        },
+        "쳘": {
+          "streak": 0,
+          "correct": 0,
+          "total": 1
+        },
+        "비": {
+          "streak": 0,
+          "correct": 0,
+          "total": 0
+        },
+        "펭": {
+          "streak": 1,
+          "correct": 1,
+          "total": 1
+        }
+      }
+    }
+  },
+  "history": [
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:18:31.533573"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:18:39.680210"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:18:46.872802"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:18:58.542698"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:19:26.891119"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:19:33.983994"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:19:39.856885"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:19:43.275693"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:19:50.524094"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:20:04.826903"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:20:12.056042"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:21:00.678401"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:21:08.673975"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:21:48.470768"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:21:51.491211"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:21:55.629300"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:00.612783"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:13.008800"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:22:20.928749"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:23.958434"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:28.822224"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:39.845052"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:47.850226"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:48.604879"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:22:54.565687"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:23:06.378977"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:23:11.606195"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:23:20.563107"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:23:24.842686"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:23:32.295993"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:23:37.299179"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:23:55.048105"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:02.529549"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:10.686576"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:13.935091"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:17.178702"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:24:21.760431"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:33.630588"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:41.304498"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:45.404891"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:24:49.300083"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:24:54.942478"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:01.012006"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:25:07.541974"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:10.969767"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:14.332281"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:25:20.100817"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:25.704324"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:33.868262"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:37.266543"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:25:43.556405"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:25:46.410127"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:50.103590"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:25:58.316908"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:01.986570"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:07.113091"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:26:15.436971"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:19.680320"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:24.270461"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:26:27.426098"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:26:33.257561"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:43.061871"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:50.231446"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:26:56.532525"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:02.818671"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:07.386621"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:10.260788"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:12.105751"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:13.426014"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:14.789946"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:17.100226"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:19.123178"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:21.288130"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:23.052801"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:24.339007"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:26.389418"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:27.763060"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:30.661643"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:32.378461"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:36.491888"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:40.852513"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:44.460605"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:47.172328"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:51.896194"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:27:58.338300"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:02.684354"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:28:07.014410"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:11.448299"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:16.796466"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:22.439528"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:35.257860"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:39.371046"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:44.273984"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:28:48.235116"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:28:54.458990"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:28:59.939665"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:29:07.762963"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:29:16.975752"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:29:21.849978"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:29:28.880144"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:29:38.801250"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:29:50.882537"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:29:58.760341"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:03.526093"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:12.962079"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:30:23.185631"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:26.357265"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:30:29.964966"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:32.987178"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:35.905483"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:30:39.284361"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:30:43.246730"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:30:45.732878"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:48.884244"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:30:54.865401"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:31:03.616896"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:31:10.477377"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:31:12.511954"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:31:18.312013"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:31:22.890917"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:31:26.812139"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:31:31.548181"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:31:43.373597"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:31:51.428927"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:31:55.028844"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:31:57.920652"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:15.445678"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:20.954047"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:24.779331"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:32:32.082881"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:34.897644"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:40.365242"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:45.254717"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:32:51.531148"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:02.132883"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:07.318168"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:07.640776"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:33:15.321077"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:20.892854"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:24.572013"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:29.677765"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:33:34.773294"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:33:39.346992"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:33:44.276271"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:51.232938"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:54.722451"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:33:59.931419"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:03.160726"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:34:10.911637"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:13.718957"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:16.471815"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:25.093883"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:28.318263"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:33.674027"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:34:38.437296"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:34:41.340346"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:34:45.017453"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:34:46.981415"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:34:57.022896"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:35:02.604052"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:35:05.885793"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:35:10.316546"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:35:15.594908"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:35:29.911519"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:35:39.808881"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:35:49.251715"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:35:57.221713"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:36:05.930499"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:36:12.597031"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:36:16.637279"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:36:25.507399"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:36:30.278964"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:36:37.688925"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:36:51.678123"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:36:57.912154"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:37:07.250517"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:37:10.060078"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:37:15.663498"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:37:20.230669"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:37:29.359770"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:37:34.863646"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:37:43.110159"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:37:49.989665"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:37:58.080438"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:38:03.835443"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:38:15.512198"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:38:27.306926"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:38:33.283138"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:38:39.487103"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:38:45.685367"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:39:08.087412"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:39:13.291614"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:39:15.889886"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:39:19.629573"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:39:32.611869"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:39:40.679105"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:39:44.431358"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:39:49.789037"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:39:58.037563"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:40:07.590060"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:40:12.038285"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:40:21.868540"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:40:34.279124"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:40:41.502492"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:40:52.749755"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:40:57.168073"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:40:59.216802"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:41:00.744869"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:41:08.522915"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:18.233684"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:22.239693"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:41:25.669360"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:41:29.600016"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:34.319836"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:40.764523"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:46.415610"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:51.564511"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:41:55.481696"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:42:01.765225"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:42:05.627069"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:42:14.348622"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:42:27.815187"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:42:34.402603"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:42:36.814833"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:42:39.438420"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:42:44.721298"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:42:51.300724"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:42:56.795956"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:03.007999"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:10.875676"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:13.318514"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:16.120252"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:43:34.207455"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:40.215816"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:45.385417"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:48.567890"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:51.224349"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:53.411623"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:56.932010"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:43:59.267746"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:49:25.404245"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:49:37.314169"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:49:43.100614"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:49:56.856093"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:02.890646"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:12.898169"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:20.042230"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:50:25.664099"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:34.337530"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:37.756600"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:50:41.314404"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:46.083874"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:50:49.968846"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:50:58.037125"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:51:01.312269"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:51:06.902448"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:51:14.549060"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:51:17.930736"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:51:29.921529"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:51:37.506748"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:51:40.479699"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:51:46.716067"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:51:53.122415"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:51:56.200760"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:52:00.356236"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:52:06.200801"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:52:19.076718"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:52:26.308671"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:52:31.824684"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:52:34.490945"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:52:49.300064"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:52:52.080802"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:52:54.098962"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:52:55.304275"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:52:59.547113"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:53:06.298450"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:53:28.304043"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:53:35.523287"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:53:43.555492"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:53:47.523354"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:53:53.201248"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:53:54.975090"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:53:57.160870"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:53:58.550475"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:01.001731"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:02.863565"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:04.509445"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:13.905348"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:54:20.576871"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:54:24.466397"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:32.556137"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:39.147790"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:54:45.965836"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:51.402563"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:53.250796"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:54:56.682081"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:54:59.143026"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:06.689817"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:11.711976"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:55:17.793895"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:55:20.382596"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:23.691606"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:55:27.393538"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:29.580816"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:34.650279"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:38.685003"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:55:44.346015"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:55:50.453259"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:55:58.773145"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:07.695899"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:56:12.582680"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:56:16.561033"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:20.558620"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:28.794818"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:56:38.870217"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:44.384755"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:47.809844"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:50.173271"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:51.586932"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:55.207563"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:56:59.891706"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:57:09.130177"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:57:20.327532"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:57:29.377129"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:57:34.908334"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:57:35.056117"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:57:41.218710"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:57:43.410701"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:57:53.272253"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:57:58.719169"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:58:07.077968"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:58:13.500737"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:58:29.718057"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:58:35.036224"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:58:43.254324"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:58:55.825445"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:59:00.588707"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:59:06.382337"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:59:11.140245"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:59:24.741647"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": false,
+      "timestamp": "2026-02-05T00:59:36.817130"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:59:49.885579"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T00:59:59.665202"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:00:09.393011"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:00:15.377700"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:00:19.916257"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:00:25.500670"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:00:36.807603"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:00:51.728090"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:00:58.741120"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:01:14.868103"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:01:42.700920"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:01:47.809586"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:01:52.679048"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:01:55.689287"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:01:59.369702"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:02.966989"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:02:05.817383"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:19.763055"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:22.120001"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:26.366888"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:29.810503"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:42.297635"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:46.065995"
+    },
+    {
+      "level": 2,
+      "korean": "ㅇ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:02:58.182410"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:00.885523"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:03:06.236100"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:08.055966"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:12.833780"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:15.639640"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:18.707451"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:03:21.181730"
+    },
+    {
+      "level": 2,
+      "korean": "ㅇ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:03:24.074910"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:26.615679"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:29.322731"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:32.545758"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:34.850109"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:37.789405"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:40.863783"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:43.029054"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:03:45.232474"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:46.946416"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:49.294902"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:52.004199"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:03:56.045472"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:03:57.021021"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:03:59.519753"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:01.768767"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:04.133323"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:09.803649"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:13.380275"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:15.775888"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:30.202758"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:33.126875"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:36.366082"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:42.194150"
+    },
+    {
+      "level": 2,
+      "korean": "ㅇ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:04:46.090228"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:48.001897"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:50.944136"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:04:53.922930"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:05:03.364169"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:05:07.960387"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:05:13.679288"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:05:17.837859"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:11:36.074835"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:11:39.104055"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:11:45.407845"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:11:52.593773"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:11:56.876352"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:11:59.764336"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:12:02.137863"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:12:10.064255"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:12.097565"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:13.651858"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:15.158242"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:17.098199"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:18.053277"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:21.353840"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:23.559504"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:25.032703"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:26.350853"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:31.947458"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:35.748303"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:42.084642"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:45.676453"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:48.076058"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:12:49.998408"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:02.642639"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:05.542858"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:07.508691"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:11.831697"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:15.457023"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:17.778154"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:20.219553"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:21.293437"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:22.896197"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:23.838637"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:13:24.549997"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:34.941902"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:40.424439"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:50.802765"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:53.299449"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:13:56.995362"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:14:02.676826"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:14:07.803555"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:14:13.001378"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:14:21.458083"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:14:24.380242"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:14:27.177591"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:14:32.054320"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:14:36.999778"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:14:48.687813"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:14:51.227443"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:14:54.477417"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:15:04.120755"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:12.690489"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:15:16.207336"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:20.349894"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:21.347671"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:23.756152"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:15:25.297068"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:29.068420"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:36.279987"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:38.675754"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:41.614072"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:48.626347"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:51.082559"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:15:54.145731"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:15:58.210697"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:03.009022"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:04.942885"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:06.503139"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:08.544081"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:10.771362"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:16:13.004279"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:17.321777"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:18.468690"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:19.641248"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:20.320428"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:16:28.118929"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:30.035861"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:31.053571"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:31.918061"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:57.722805"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:16:59.301930"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:02.703235"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:04.649097"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:06.021460"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:17:11.302931"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:14.049509"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:16.803917"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:18.755088"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:20.421303"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:24.710865"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:26.716328"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:17:28.356391"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:33.816271"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:35.087782"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:36.730660"
+    },
+    {
+      "level": 3,
+      "korean": "ㅋ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:37.653309"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:40.484276"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:42.095292"
+    },
+    {
+      "level": 3,
+      "korean": "ㄸ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:45.243699"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:47.302297"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:50.982545"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:17:51.574548"
+    },
+    {
+      "level": 3,
+      "korean": "ㅆ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:53.051693"
+    },
+    {
+      "level": 3,
+      "korean": "ㅊ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:54.281966"
+    },
+    {
+      "level": 3,
+      "korean": "ㅌ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:55.567485"
+    },
+    {
+      "level": 3,
+      "korean": "ㅃ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:57.335106"
+    },
+    {
+      "level": 3,
+      "korean": "ㅍ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:17:58.766099"
+    },
+    {
+      "level": 3,
+      "korean": "ㅉ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:01.204936"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:03.139657"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:04.195003"
+    },
+    {
+      "level": 3,
+      "korean": "ㄲ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:05.421563"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:18:29.893228"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:35.388121"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:37.200819"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:39.760083"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:41.903223"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:43.561742"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:44.990341"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:46.205126"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:18:54.007050"
+    },
+    {
+      "level": 2,
+      "korean": "ㅇ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:56.543387"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:58.203530"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:18:59.837999"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:19:04.930702"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:06.854090"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:08.531106"
+    },
+    {
+      "level": 2,
+      "korean": "ㅇ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:09.720996"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:19:11.082566"
+    },
+    {
+      "level": 2,
+      "korean": "ㅂ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:12.484312"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:13.892593"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:14.785556"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:19:15.793249"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:16.956568"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:18.973976"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:19.847741"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:19:20.942776"
+    },
+    {
+      "level": 2,
+      "korean": "ㅇ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:22.373537"
+    },
+    {
+      "level": 2,
+      "korean": "ㄹ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:30.976052"
+    },
+    {
+      "level": 2,
+      "korean": "ㅎ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:32.556570"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:38.432031"
+    },
+    {
+      "level": 2,
+      "korean": "ㅅ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:39.941543"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:42.624615"
+    },
+    {
+      "level": 2,
+      "korean": "ㄷ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:47.819134"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:49.889654"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:51.681669"
+    },
+    {
+      "level": 2,
+      "korean": "ㅈ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:52.509902"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:53.668361"
+    },
+    {
+      "level": 2,
+      "korean": "ㄴ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:54.731171"
+    },
+    {
+      "level": 2,
+      "korean": "ㄱ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:56.333625"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:57.637009"
+    },
+    {
+      "level": 2,
+      "korean": "ㅁ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:19:58.667528"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:14.784513"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:22.296224"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:20:34.987432"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:20:43.050649"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:47.561861"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:52.698985"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:55.603729"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:56.412818"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:20:58.547387"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:00.201392"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:02.477383"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:06.780493"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:09.867333"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:21:13.588166"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:21:16.599296"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:23.778447"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:26.153135"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:36.742923"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:21:40.114145"
+    },
+    {
+      "level": 1,
+      "korean": "ㅖ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:45.707614"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:49.361692"
+    },
+    {
+      "level": 1,
+      "korean": "ㅏ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:51.521876"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:54.700477"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:57.271057"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:21:59.067316"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:00.911327"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:02.886075"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:03.973940"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:06.416779"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:08.694444"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:22:18.527001"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:22.068286"
+    },
+    {
+      "level": 1,
+      "korean": "ㅚ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:26.242134"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:29.205243"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:22:33.392851"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:37.443946"
+    },
+    {
+      "level": 1,
+      "korean": "ㅔ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:38.334311"
+    },
+    {
+      "level": 1,
+      "korean": "ㅡ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:40.834903"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:46.085495"
+    },
+    {
+      "level": 1,
+      "korean": "ㅣ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:51.279986"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:55.591993"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:22:58.967888"
+    },
+    {
+      "level": 1,
+      "korean": "ㅟ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:01.751011"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:23:04.977576"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:09.736891"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:12.229461"
+    },
+    {
+      "level": 1,
+      "korean": "ㅒ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:13.966982"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:23:17.352879"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:23.296560"
+    },
+    {
+      "level": 1,
+      "korean": "ㅞ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:27.000812"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:32.025322"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:33.761813"
+    },
+    {
+      "level": 1,
+      "korean": "ㅙ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:36.968997"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:41.603582"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:46.175209"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:48.749616"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:23:53.340749"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:23:59.229438"
+    },
+    {
+      "level": 1,
+      "korean": "ㅐ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:01.728347"
+    },
+    {
+      "level": 1,
+      "korean": "ㅕ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:04.059914"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:07.532222"
+    },
+    {
+      "level": 1,
+      "korean": "ㅝ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:12.526795"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:15.119765"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:21.158881"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:24.289975"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:28.991103"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:31.169650"
+    },
+    {
+      "level": 1,
+      "korean": "ㅢ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:36.860943"
+    },
+    {
+      "level": 1,
+      "korean": "ㅠ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:24:43.909638"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:24:55.203149"
+    },
+    {
+      "level": 1,
+      "korean": "ㅗ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:04.286567"
+    },
+    {
+      "level": 1,
+      "korean": "ㅛ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:06.225788"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:09.081356"
+    },
+    {
+      "level": 1,
+      "korean": "ㅜ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:14.340723"
+    },
+    {
+      "level": 1,
+      "korean": "ㅘ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:18.342444"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:21.705618"
+    },
+    {
+      "level": 1,
+      "korean": "ㅓ",
+      "correct": true,
+      "timestamp": "2026-02-05T01:25:22.851001"
+    },
+    {
+      "level": 1,
+      "korean": "ㅑ",
+      "correct": false,
+      "timestamp": "2026-02-05T01:25:37.802983"
+    },
+    {
+      "level": 4,
+      "korean": "곰",
+      "correct": false,
+      "timestamp": "2026-02-05T01:25:59.500276"
+    },
+    {
+      "level": 4,
+      "korean": "급",
+      "correct": false,
+      "timestamp": "2026-02-05T01:26:15.659764"
+    },
+    {
+      "level": 4,
+      "korean": "그",
+      "correct": true,
+      "timestamp": "2026-02-05T01:26:22.735328"
+    },
+    {
+      "level": 4,
+      "korean": "그",
+      "correct": true,
+      "timestamp": "2026-02-05T01:26:25.887260"
+    },
+    {
+      "level": 4,
+      "korean": "턷",
+      "correct": false,
+      "timestamp": "2026-02-05T01:26:51.684848"
+    },
+    {
+      "level": 4,
+      "korean": "풍",
+      "correct": false,
+      "timestamp": "2026-02-05T01:27:03.933826"
+    },
+    {
+      "level": 4,
+      "korean": "툡",
+      "correct": true,
+      "timestamp": "2026-02-05T01:27:41.713921"
+    },
+    {
+      "level": 4,
+      "korean": "축",
+      "correct": false,
+      "timestamp": "2026-02-05T01:32:08.196370"
+    },
+    {
+      "level": 4,
+      "korean": "덩",
+      "correct": true,
+      "timestamp": "2026-02-05T01:32:47.756783"
+    },
+    {
+      "level": 4,
+      "korean": "룩",
+      "correct": true,
+      "timestamp": "2026-02-05T01:42:19.562634"
+    },
+    {
+      "level": 4,
+      "korean": "룩",
+      "correct": true,
+      "timestamp": "2026-02-05T01:42:25.426956"
+    },
+    {
+      "level": 4,
+      "korean": "곰",
+      "correct": false,
+      "timestamp": "2026-02-05T01:42:39.187201"
+    },
+    {
+      "level": 4,
+      "korean": "풍",
+      "correct": false,
+      "timestamp": "2026-02-05T01:42:53.112424"
+    },
+    {
+      "level": 4,
+      "korean": "펭",
+      "correct": true,
+      "timestamp": "2026-02-05T01:43:23.397962"
+    },
+    {
+      "level": 4,
+      "korean": "축",
+      "correct": false,
+      "timestamp": "2026-02-05T01:43:42.910800"
+    },
+    {
+      "level": 4,
+      "korean": "축",
+      "correct": true,
+      "timestamp": "2026-02-05T01:44:00.761105"
+    },
+    {
+      "level": 4,
+      "korean": "듕",
+      "correct": true,
+      "timestamp": "2026-02-05T01:44:17.308377"
+    },
+    {
+      "level": 4,
+      "korean": "쳘",
+      "correct": false,
+      "timestamp": "2026-02-05T01:44:56.050387"
+    }
+  ]
+}
