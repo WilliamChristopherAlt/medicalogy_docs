@@ -451,12 +451,12 @@
         "흡": {
           "streak": 0,
           "correct": 0,
-          "total": 0
+          "total": 1
         },
         "툡": {
-          "streak": 1,
+          "streak": 0,
           "correct": 1,
-          "total": 1
+          "total": 2
         },
         "급": {
           "streak": 0,
@@ -501,7 +501,7 @@
         "풍": {
           "streak": 0,
           "correct": 0,
-          "total": 2
+          "total": 3
         },
         "룩": {
           "streak": 2,
@@ -514,14 +514,14 @@
           "total": 1
         },
         "비": {
-          "streak": 0,
-          "correct": 0,
-          "total": 0
-        },
-        "펭": {
           "streak": 1,
           "correct": 1,
           "total": 1
+        },
+        "펭": {
+          "streak": 0,
+          "correct": 1,
+          "total": 2
         }
       }
     }
@@ -4432,6 +4432,36 @@
       "korean": "쳘",
       "correct": false,
       "timestamp": "2026-02-05T01:44:56.050387"
+    },
+    {
+      "level": 4,
+      "korean": "툡",
+      "correct": false,
+      "timestamp": "2026-02-05T07:37:08.020541"
+    },
+    {
+      "level": 4,
+      "korean": "흡",
+      "correct": false,
+      "timestamp": "2026-02-05T07:37:10.716617"
+    },
+    {
+      "level": 4,
+      "korean": "비",
+      "correct": true,
+      "timestamp": "2026-02-05T07:37:19.735317"
+    },
+    {
+      "level": 4,
+      "korean": "펭",
+      "correct": false,
+      "timestamp": "2026-02-05T07:37:45.001371"
+    },
+    {
+      "level": 4,
+      "korean": "풍",
+      "correct": false,
+      "timestamp": "2026-02-05T07:38:01.450610"
     }
   ]
 }

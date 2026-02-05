@@ -437,6 +437,8 @@ class BioBasicsMarkdownConverter:
             --text-muted: #6b7a94;
             --border-radius: 24px;
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --global-sidebar-width: 280px;
+            --navbar-height: 70px;
         }}
 
         body {{
@@ -467,6 +469,309 @@ class BioBasicsMarkdownConverter:
         @keyframes pulse {{
             0%, 100% {{ transform: translate(0, 0) scale(1); }}
             50% {{ transform: translate(-5%, 5%) scale(1.1); }}
+        }}
+
+        /* ===== GLOBAL NAVIGATION BAR ===== */
+        .global-navbar {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--navbar-height);
+            background: rgba(26, 31, 58, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 245, 208, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }}
+
+        .global-navbar-logo {{
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            margin-right: 40px;
+            white-space: nowrap;
+        }}
+
+        .global-navbar-search {{
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }}
+
+        .global-search-input {{
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }}
+
+        .global-search-input:focus {{
+            outline: none;
+            border-color: var(--accent-primary);
+            background: var(--bg-primary);
+        }}
+
+        .global-navbar-actions {{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: auto;
+        }}
+
+        .global-streak-indicator {{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 217, 61, 0.3);
+        }}
+
+        .global-streak-icon {{
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-tertiary);
+        }}
+
+        .global-streak-count {{
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-tertiary);
+            font-size: 0.9rem;
+        }}
+
+        .global-notification-btn {{
+            position: relative;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }}
+
+        .global-notification-btn:hover {{
+            background: rgba(0, 245, 208, 0.1);
+        }}
+
+        .global-notification-icon {{
+            width: 22px;
+            height: 22px;
+            fill: var(--text-secondary);
+        }}
+
+        .global-notification-badge {{
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--bg-primary);
+        }}
+
+        .global-account-btn {{
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--bg-primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }}
+
+        .global-account-btn:hover {{
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 245, 208, 0.3);
+        }}
+
+        /* ===== GLOBAL SIDEBAR ===== */
+        .global-sidebar {{
+            position: fixed;
+            left: 0;
+            top: var(--navbar-height);
+            width: var(--global-sidebar-width);
+            height: calc(100vh - var(--navbar-height));
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 245, 208, 0.1);
+            overflow-y: auto;
+            padding: 20px 0;
+            z-index: 900;
+        }}
+
+        .global-sidebar-section {{
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }}
+
+        .global-sidebar-title {{
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }}
+
+        .global-sidebar-nav {{
+            list-style: none;
+        }}
+
+        .global-nav-item {{
+            margin-bottom: 4px;
+        }}
+
+        .global-nav-link {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            position: relative;
+        }}
+
+        .global-nav-link:hover {{
+            background: rgba(0, 245, 208, 0.1);
+            color: var(--text-primary);
+        }}
+
+        .global-nav-link.active {{
+            background: rgba(0, 245, 208, 0.15);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }}
+
+        .global-nav-icon {{
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }}
+
+        .global-nav-text {{
+            flex: 1;
+            font-size: 0.95rem;
+        }}
+
+        .global-submenu {{
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-left: 32px;
+            margin-top: 4px;
+        }}
+
+        .global-submenu.expanded {{
+            max-height: 500px;
+        }}
+
+        .global-submenu-link {{
+            display: block;
+            padding: 8px 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }}
+
+        .global-submenu-link:hover {{
+            background: rgba(255, 107, 157, 0.1);
+            color: var(--text-primary);
+        }}
+
+        /* ===== MAIN CONTENT WRAPPER ===== */
+        .main-content-wrapper {{
+            margin-left: var(--global-sidebar-width);
+            margin-top: var(--navbar-height);
+            min-height: calc(100vh - var(--navbar-height));
+            position: relative;
+            z-index: 1;
+        }}
+
+        .global-mobile-menu-btn {{
+            display: none;
+        }}
+
+        @media (max-width: 1100px) {{
+            :root {{
+                --global-sidebar-width: 0px;
+            }}
+
+            .global-sidebar {{
+                width: 280px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }}
+
+            .global-sidebar.mobile-open {{
+                transform: translateX(0);
+            }}
+
+            .main-content-wrapper {{
+                margin-left: 0;
+            }}
+
+            .global-navbar {{
+                padding: 0 15px;
+            }}
+
+            .global-navbar-search {{
+                display: none;
+            }}
+
+            .global-mobile-menu-btn {{
+                display: flex;
+                width: 40px;
+                height: 40px;
+                background: var(--bg-card);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+                margin-right: 10px;
+            }}
         }}
 
         .container {{
@@ -1422,30 +1727,125 @@ class BioBasicsMarkdownConverter:
     </style>
 </head>
 <body>
-    <div class="page-wrapper">
-        <main class="article-content clearfix">
-            {top_meta_content}
-            
-            <!-- Bookmark Button -->
-            <div class="bookmark-container">
-                <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">
-                    <svg class="bookmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    <span class="bookmark-text">Bookmark</span>
-                </button>
+    <!-- GLOBAL NAVIGATION BAR -->
+    <nav class="global-navbar">
+        <button class="global-mobile-menu-btn" onclick="toggleGlobalSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <a href="/" class="global-navbar-logo">BioBasics</a>
+        <div class="global-navbar-search">
+            <input type="text" class="global-search-input" placeholder="Search articles..." style="padding-left: 15px;">
+        </div>
+        <div class="global-navbar-actions">
+            <div class="global-streak-indicator">
+                <svg class="global-streak-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2c1.5 3 4 5 6 8-2-1-4 0-5 2 0 0 0-1-1-2-1-1-2-1-3 0 0-3-3-5-5-8 1 4 0 8-2 12-1 2-1 4 0 6 1 3 4 4 7 4 4 0 7-2 8-5 1-2 1-5-1-8-1-2-3-4-4-9z"/>
+                </svg>
+                <span class="global-streak-count">7</span>
             </div>
+            <button class="global-notification-btn">
+                <svg class="global-notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="global-notification-badge">3</span>
+            </button>
+            <button class="global-account-btn">JD</button>
+        </div>
+    </nav>
+
+    <!-- GLOBAL SIDEBAR -->
+    <aside class="global-sidebar" id="globalSidebar">
+        <div class="global-sidebar-section">
+            <ul class="global-sidebar-nav">
+                <li class="global-nav-item">
+                    <a href="/dashboard" class="global-nav-link">
+                        <svg class="global-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span class="global-nav-text">Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="global-sidebar-section">
+            <h3 class="global-sidebar-title">Learning</h3>
+            <ul class="global-sidebar-nav">
+                <li class="global-nav-item">
+                    <a href="/themes" class="global-nav-link">
+                        <svg class="global-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <span class="global-nav-text">Themes</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="global-sidebar-section">
+            <h3 class="global-sidebar-title">Resources</h3>
+            <ul class="global-sidebar-nav">
+                <li class="global-nav-item">
+                    <a href="/encyclopedia" class="global-nav-link active">
+                        <svg class="global-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        <span class="global-nav-text">Encyclopedia</span>
+                    </a>
+                </li>
+                <li class="global-nav-item">
+                    <a href="/bookmarks" class="global-nav-link">
+                        <svg class="global-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="global-nav-text">Bookmarks</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-content-wrapper">
+        <div class="page-wrapper">
+            <main class="article-content clearfix">
+                {top_meta_content}
+                
+                <!-- Bookmark Button -->
+                <div class="bookmark-container">
+                    <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()">
+                        <svg class="bookmark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="bookmark-text">Bookmark</span>
+                    </button>
+                </div>
+                
+                {body_content}
+            </main>
             
-            {body_content}
-        </main>
-        
-        {sidebar_content}
+            {sidebar_content}
+        </div>
     </div>
 
     <div class="back-to-top" id="backToTop">
     </div>
 
     <script>
+        // Global sidebar toggle for mobile
+        function toggleGlobalSidebar() {{
+            const sidebar = document.getElementById('globalSidebar');
+            sidebar.classList.toggle('mobile-open');
+        }}
+
         // TOC Active State Tracking
         document.addEventListener('DOMContentLoaded', () => {{
             const tocLinks = document.querySelectorAll('.toc-link');
