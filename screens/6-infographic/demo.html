@@ -450,7 +450,7 @@
         }
 
         em {
-            color: var(--accent-tertiary);
+            color: var(--text-primary);
             font-style: italic;
         }
 
@@ -466,8 +466,8 @@
         }
 
         a.wiki-link:hover {
-            color: var(--accent-primary);
-            border-bottom-color: var(--accent-primary);
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-tertiary);
         }
 
         a.external-link {
@@ -476,7 +476,7 @@
 
         a.external-link:hover {
             border-bottom-color: var(--accent-primary);
-            color: var(--accent-secondary);
+            color: var(--text-primary);
         }
 
         /* Images */
@@ -540,6 +540,7 @@
             list-style: none;
             padding-left: 0;
             margin: 25px 0;
+            overflow: hidden;
         }
 
         ul.bullet-list li {
@@ -558,6 +559,56 @@
             color: var(--accent-primary);
             font-size: 1.5rem;
             font-weight: 700;
+        }
+
+        /* Tight list spacing (inside [[[ ]]] blocks) */
+        ul.bullet-list.tight {
+            margin: 15px 0;
+            clear: both;
+        }
+
+        ul.bullet-list.tight li {
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        /* Ordered/Numbered Lists */
+        ol.ordered-list {
+            list-style: none;
+            padding-left: 0;
+            overflow: hidden;
+            margin: 25px 0;
+            counter-reset: item;
+        }
+
+        ol.ordered-list li {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            padding-left: 35px;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.8;
+            counter-increment: item;
+        }
+
+        ol.ordered-list li::before {
+            content: counter(item) '.';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+        }
+
+        ol.ordered-list.tight {
+            margin: 15px 0;
+            clear: both;
+        }
+
+        ol.ordered-list.tight li {
+            margin-bottom: 4px;
+            line-height: 1.5;
         }
 
         /* Tables */
@@ -1430,12 +1481,12 @@
                 </div>
                 
                 <h1 id="myocardial-infarction-heart-attack">Myocardial Infarction (Heart Attack)</h1>
-<p>A <strong>myocardial infarction</strong> (MI), commonly known as a <em>heart attack</em>, occurs when blood flow to a part of the heart muscle is blocked, usually by a <a href="#blood clot" class="wiki-link">blood clot</a>. This blockage prevents oxygen from reaching the heart tissue, causing damage or death to that area of the <a href="#cardiac muscle" class="wiki-link">cardiac muscle</a>. The condition represents one of the most serious <a href="#cardiovascular emergencies" class="wiki-link">cardiovascular emergencies</a> and requires immediate medical attention to prevent permanent damage or death.</p>
+<p>A <strong>myocardial infarction</strong> (MI), commonly known as a <em>heart attack</em>, occurs when blood flow to a part of the heart muscle is blocked, usually by a <a href="#blood-clot" class="wiki-link">blood clot</a>. This blockage prevents oxygen from reaching the heart tissue, causing damage or death to that area of the <a href="#cardiac-muscle" class="wiki-link">cardiac muscle</a>. The condition represents one of the most serious <a href="#cardiovascular-emergencies" class="wiki-link">cardiovascular emergencies</a> and requires immediate medical attention to prevent permanent damage or death.</p>
 <hr class="section-divider">
 <h2 id="understanding-the-condition">Understanding the Condition</h2>
 <div class="image-container image-left"><img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=400&q=80" alt="Diagram of heart with blocked artery" loading="lazy" /></div>
-<p>Myocardial infarction stands as one of the leading causes of death worldwide, affecting millions of people annually and representing a critical public health challenge. The heart muscle, known medically as the <a href="#myocardium" class="wiki-link">myocardium</a>, requires a constant and uninterrupted supply of oxygen-rich blood to function properly and maintain its vital role in circulating blood throughout the body. When one or more of the <a href="#coronary arteries" class="wiki-link">coronary arteries</a> becomes blocked, the affected heart tissue begins to die within minutes, initiating a cascade of potentially fatal events.</p>
-<p>The severity and outcomes of a heart attack depend on multiple interconnected factors including the precise location of the blockage within the coronary circulation, the duration of blocked blood flow before treatment is initiated, the total amount of heart tissue affected by the <a href="#ischemia" class="wiki-link">ischemia</a>, and critically, how quickly emergency treatment is received. Early recognition of symptoms and immediate medical intervention are absolutely critical for survival and can dramatically improve long-term recovery outcomes. According to the <a href="https://www.heart.org/en/health-topics/heart-attack" class="external-link" target="_blank" rel="noopener">American Heart Association</a>, prompt treatment within the first hour significantly reduces mortality and preserves heart function.</p>
+<p>Myocardial infarction stands as one of the leading causes of death worldwide, affecting millions of people annually and representing a critical public health challenge. The heart muscle, known medically as the <a href="#myocardium" class="wiki-link">myocardium</a>, requires a constant and uninterrupted supply of oxygen-rich blood to function properly and maintain its vital role in circulating blood throughout the body. When one or more of the <a href="#coronary-arteries" class="wiki-link">coronary arteries</a> becomes blocked, the affected heart tissue begins to die within minutes, initiating a cascade of potentially fatal events.</p>
+<p>The severity and outcomes of a heart attack depend on multiple interconnected factors including the precise location of the blockage within the coronary circulation, the duration of blocked blood flow before treatment is initiated, the total amount of heart tissue affected by the <a href="#ischemia" class="wiki-link">ischemia</a>, and critically, how quickly emergency treatment is received. Early recognition of symptoms and immediate medical intervention are absolutely critical for survival and can dramatically improve long-term recovery outcomes. According to the <a href="https://www.heart.org/en/health-topics/heart-attack" class="external-link">American Heart Association</a>, prompt treatment within the first hour significantly reduces mortality and preserves heart function.</p>
 <hr class="section-divider">
 <h2 id="risk-factors">Risk Factors</h2>
 <p>Understanding the risk factors for myocardial infarction is essential for both prevention and early intervention strategies. Risk factors fall into several distinct categories, each contributing differently to overall cardiovascular risk profiles.</p>
@@ -1445,88 +1496,90 @@
 <tr><td><strong>Non-modifiable</strong></td><td>Age (men ≥45, women ≥55), family history, previous heart attack</td></tr>
 <tr><td><em>Lifestyle</em></td><td>Excessive alcohol consumption, chronic stress, drug use</td></tr>
 </tbody></table></div>
-<p><strong>Modifiable risk factors</strong> can be addressed through lifestyle changes and medical treatment. Smoking damages blood vessel linings and accelerates <a href="#atherosclerosis" class="wiki-link">atherosclerosis</a>. High blood pressure strains the heart and damages arteries over time. Elevated <a href="#cholesterol" class="wiki-link">cholesterol</a> levels contribute to plaque buildup, while <a href="#diabetes" class="wiki-link">diabetes</a> damages blood vessels and nerves. Research published by the <a href="https://www.nhlbi.nih.gov/health/heart-attack" class="external-link" target="_blank" rel="noopener">National Heart, Lung, and Blood Institute</a> emphasizes that addressing modifiable risk factors can reduce heart attack incidence by up to 80%.</p>
+<p><strong>Modifiable risk factors</strong> can be addressed through lifestyle changes and medical treatment. Smoking damages blood vessel linings and accelerates <a href="#atherosclerosis" class="wiki-link">atherosclerosis</a>. High blood pressure strains the heart and damages arteries over time. Elevated <a href="#cholesterol" class="wiki-link">cholesterol</a> levels contribute to plaque buildup, while <a href="#diabetes" class="wiki-link">diabetes</a> damages blood vessels and nerves. Research published by the <a href="https://www.nhlbi.nih.gov/health/heart-attack" class="external-link">National Heart, Lung, and Blood Institute</a> emphasizes that addressing modifiable risk factors can reduce heart attack incidence by up to 80%.</p>
 <hr class="section-divider">
 <h2 id="warning-signs-symptoms">Warning Signs & Symptoms</h2>
 <div class="image-container image-right"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&q=80" alt="Person clutching chest in pain" loading="lazy" /></div>
 <p>Recognizing the symptoms of a heart attack can literally save lives, yet many people delay seeking help because they don't recognize what's happening or hope the symptoms will resolve on their own. Common symptoms include:</p>
-<ul class="bullet-list">
-<li><strong>Chest discomfort</strong>: Pressure, squeezing, fullness, or pain in the center of the chest lasting more than a few minutes</li>
-<li><strong>Upper body pain</strong>: Discomfort in arms, back, neck, jaw, or stomach</li>
-<li><strong>Shortness of breath</strong>: With or without chest discomfort</li>
-<li><strong>Cold sweat</strong>: Breaking out in a cold sweat</li>
-<li><strong>Nausea or lightheadedness</strong>: Feeling sick to your stomach or dizzy</li>
+<ul class="bullet-list tight">
+<li><strong>Chest discomfort</strong> Pressure, squeezing, fullness, or pain in the center of the chest lasting more than a few minutes</li>
+<li><strong>Upper body pain</strong> Discomfort in arms, back, neck, jaw, or stomach</li>
+<li><strong>Shortness of breath</strong> With or without chest discomfort</li>
+<li><strong>Cold sweat</strong> Breaking out in a cold sweat</li>
+<li><strong>Nausea or lightheadedness</strong> Feeling sick to your stomach or dizzy</li>
 </ul>
 <h3 id="atypical-symptoms">Atypical Symptoms</h3>
 <p>Women, elderly individuals, and people with <a href="#diabetes" class="wiki-link">diabetes</a> may experience what physicians call <em>atypical symptoms</em> that differ from the classic presentation:</p>
-<ul class="bullet-list">
+<ul class="bullet-list tight">
 <li>Unusual fatigue</li>
 <li>Sleep disturbances</li>
 <li>Indigestion or stomach discomfort</li>
 <li>Anxiety or sense of impending doom</li>
 </ul>
-<p>The <a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106" class="external-link" target="_blank" rel="noopener">Mayo Clinic</a> notes that women are more likely than men to experience these atypical presentations.</p>
-<p><strong>IMPORTANT</strong>: If you suspect a heart attack, call emergency services immediately by dialing 911 or your local emergency number. Do not attempt to drive yourself to the hospital, as your condition could deteriorate rapidly during transport, and emergency medical services can begin life-saving treatment en route to the hospital.</p>
+<p>The <a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106" class="external-link">Mayo Clinic</a> notes that women are more likely than men to experience these atypical presentations.</p>
+<p><strong>IMPORTANT</strong> If you suspect a heart attack, call emergency services immediately by dialing 911 or your local emergency number. Do not attempt to drive yourself to the hospital, as your condition could deteriorate rapidly during transport, and emergency medical services can begin life-saving treatment en route to the hospital.</p>
 <hr class="section-divider">
 <h2 id="pathophysiology">Pathophysiology</h2>
 <div class="image-container image-center"><img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80" alt="Cross-section showing atherosclerosis progression" loading="lazy" /></div>
 <p class="image-description">Progression of atherosclerosis leading to arterial blockage</p>
 <p>The most common cause of myocardial infarction is <strong>coronary artery disease</strong> (CAD), a chronic condition characterized by <a href="#atherosclerosis" class="wiki-link">atherosclerosis</a>, which involves the progressive buildup of fatty deposits called <a href="#plaques" class="wiki-link">plaques</a> in the arterial walls. This process typically develops over many years or even decades before causing symptoms.</p>
-<h3 id="the-process">The Process:</h3>
-<p>1. <strong>Plaque formation</strong>: Cholesterol and other substances accumulate in artery walls over years</p>
-<p>2. <strong>Plaque rupture</strong>: The plaque cap breaks, exposing the interior</p>
-<p>3. <strong>Clot formation</strong>: Platelets aggregate at the rupture site, forming a blood clot</p>
-<p>4. <strong>Arterial blockage</strong>: The clot grows and blocks blood flow</p>
-<p>5. <strong>Tissue death</strong>: Heart muscle cells begin dying within 20-40 minutes</p>
-<p>Understanding this mechanism has led to revolutionary treatments targeting different stages of this process, as documented by the <a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link" target="_blank" rel="noopener">World Health Organization</a> in their comprehensive cardiovascular disease guidelines.</p>
+<h3 id="the-process">The Process</h3>
+<ol class="ordered-list tight">
+<li><strong>Plaque formation</strong> Cholesterol and other substances accumulate in artery walls over years</li>
+<li><strong>Plaque rupture</strong> The plaque cap breaks, exposing the interior</li>
+<li><strong>Clot formation</strong> Platelets aggregate at the rupture site, forming a blood clot</li>
+<li><strong>Arterial blockage</strong> The clot grows and blocks blood flow</li>
+<li><strong>Tissue death</strong> Heart muscle cells begin dying within 20-40 minutes</li>
+</ol>
+<p>Understanding this mechanism has led to revolutionary treatments targeting different stages of this process, as documented by the <a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link">World Health Organization</a> in their comprehensive cardiovascular disease guidelines.</p>
 <hr class="section-divider">
 <h2 id="types-of-heart-attacks">Types of Heart Attacks</h2>
 <p>Heart attacks are medically classified into two major categories based on <a href="#electrocardiogram" class="wiki-link">electrocardiogram</a> findings and the extent of arterial blockage, each requiring different treatment approaches and carrying different prognoses.</p>
-<p><strong>ST-Elevation Myocardial Infarction (STEMI)</strong> represents a <em>complete blockage</em> of a major coronary artery and constitutes the most severe type of heart attack requiring immediate emergency intervention. The characteristic ST-segment elevation visible on an electrocardiogram indicates transmural myocardial injury, meaning the damage extends through the full thickness of the heart wall. STEMI carries the highest risk of death and severe complications, making it a true medical emergency where every minute counts. The <a href="https://www.acc.org/guidelines" class="external-link" target="_blank" rel="noopener">American College of Cardiology</a> recommends emergency <a href="#percutaneous coronary intervention" class="wiki-link">percutaneous coronary intervention</a> within 90 minutes of first medical contact.</p>
+<p><strong>ST-Elevation Myocardial Infarction (STEMI)</strong> represents a <em>complete blockage</em> of a major coronary artery and constitutes the most severe type of heart attack requiring immediate emergency intervention. The characteristic ST-segment elevation visible on an electrocardiogram indicates transmural myocardial injury, meaning the damage extends through the full thickness of the heart wall. STEMI carries the highest risk of death and severe complications, making it a true medical emergency where every minute counts. The <a href="https://www.acc.org/guidelines" class="external-link">American College of Cardiology</a> recommends emergency <a href="#percutaneous-coronary-intervention" class="wiki-link">percutaneous coronary intervention</a> within 90 minutes of first medical contact.</p>
 <p><strong>Non-ST-Elevation Myocardial Infarction (NSTEMI)</strong> involves a <em>partial blockage</em> that still damages heart muscle but typically to a lesser extent than STEMI. The affected artery may be completely blocked distally, partially blocked, or have severely reduced blood flow due to a critical stenosis. While generally less immediately life-threatening than STEMI, NSTEMI still represents a serious cardiac event requiring prompt treatment and hospitalization. The absence of ST-elevation doesn't mean the heart attack is mild or can be taken lightly.</p>
 <hr class="section-divider">
 <h2 id="diagnosis">Diagnosis</h2>
 <div class="image-container image-left"><img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80" alt="ECG readout showing heart rhythm" loading="lazy" /></div>
 <p>Healthcare providers employ multiple diagnostic tests to confirm a heart attack diagnosis, assess the extent of damage, and guide treatment decisions:</p>
-<ul class="bullet-list">
-<li><strong>Electrocardiogram (ECG/EKG)</strong>: Records electrical activity of the heart</li>
-<li><strong>Blood tests</strong>: Measure cardiac enzymes (troponin, CK-MB) released when heart muscle is damaged</li>
-<li><strong>Coronary angiography</strong>: X-ray imaging with contrast dye to visualize blockages</li>
-<li><strong>Echocardiogram</strong>: Ultrasound showing heart pumping function</li>
-<li><strong>Cardiac CT or MRI</strong>: Detailed imaging of heart structure</li>
+<ul class="bullet-list tight">
+<li><strong>Electrocardiogram (ECG/EKG)</strong> Records electrical activity of the heart</li>
+<li><strong>Blood tests</strong> Measure cardiac enzymes (troponin, CK-MB) released when heart muscle is damaged</li>
+<li><strong>Coronary angiography</strong> X-ray imaging with contrast dye to visualize blockages</li>
+<li><strong>Echocardiogram</strong> Ultrasound showing heart pumping function</li>
+<li><strong>Cardiac CT or MRI</strong> Detailed imaging of heart structure</li>
 </ul>
 <hr class="section-divider">
 <h2 id="emergency-treatment">Emergency Treatment</h2>
 <p><strong>Time is muscle</strong> - immediate treatment improves survival and reduces heart damage. Every minute of delay results in more heart muscle death.</p>
-<h3 id="initial-response">Initial Response:</h3>
-<ul class="bullet-list">
+<h3 id="initial-response">Initial Response</h3>
+<ul class="bullet-list tight">
 <li><strong>Call 911 immediately</strong></li>
 <li>Chew one adult aspirin (325 mg) if not allergic</li>
 <li>Rest and remain calm</li>
 <li>Take nitroglycerin if prescribed</li>
 </ul>
-<h3 id="hospital-interventions">Hospital Interventions:</h3>
+<h3 id="hospital-interventions">Hospital Interventions</h3>
 <div class="table-wrapper"><table class="wiki-table">
 <thead><tr><th>Treatment</th><th>Description</th><th>Timeframe</th></tr></thead><tbody>
 <tr><td><strong>Medications</strong></td><td>Clot-busting drugs (thrombolytics), antiplatelet agents, anticoagulants</td><td>Within 30-90 minutes</td></tr>
 <tr><td><strong>Angioplasty & Stenting</strong></td><td>Catheter procedure to open blocked artery and insert stent</td><td>Within 90 minutes (door-to-balloon time)</td></tr>
 <tr><td><em>Coronary Artery Bypass</em></td><td>Surgical creation of new blood flow pathway around blockage</td><td>When angioplasty not suitable</td></tr>
 </tbody></table></div>
-<p>Research from the <a href="https://www.escardio.org/Guidelines" class="external-link" target="_blank" rel="noopener">European Society of Cardiology</a> demonstrates that achieving these time targets significantly reduces mortality and preserves left ventricular function.</p>
+<p>Research from the <a href="https://www.escardio.org/Guidelines" class="external-link">European Society of Cardiology</a> demonstrates that achieving these time targets significantly reduces mortality and preserves left ventricular function.</p>
 <hr class="section-divider">
 <h2 id="recovery-rehabilitation">Recovery & Rehabilitation</h2>
 <div class="image-container image-right"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Cardiac rehabilitation exercise session" loading="lazy" /></div>
 <p>Recovery from a heart attack involves both physical healing and lifestyle modifications:</p>
 <h3 id="cardiac-rehabilitation-program">Cardiac Rehabilitation Program</h3>
 <p>A comprehensive program including:</p>
-<ul class="bullet-list">
-<li><strong>Medical evaluation</strong>: Regular monitoring by healthcare team</li>
-<li><strong>Physical activity counseling</strong>: Gradual increase in exercise under supervision</li>
-<li><strong>Education</strong>: Understanding heart disease and risk reduction</li>
-<li><strong>Counseling</strong>: Managing stress, anxiety, and depression</li>
+<ul class="bullet-list tight">
+<li><strong>Medical evaluation</strong> Regular monitoring by healthcare team</li>
+<li><strong>Physical activity counseling</strong> Gradual increase in exercise under supervision</li>
+<li><strong>Education</strong> Understanding heart disease and risk reduction</li>
+<li><strong>Counseling</strong> Managing stress, anxiety, and depression</li>
 </ul>
 <h3 id="lifestyle-modifications">Lifestyle Modifications</h3>
-<ul class="bullet-list">
+<ul class="bullet-list tight">
 <li>Adopt a heart-healthy diet (Mediterranean diet, DASH diet)</li>
 <li>Engage in regular physical activity (150 minutes/week moderate exercise)</li>
 <li>Quit smoking completely</li>
@@ -1538,30 +1591,32 @@
 <hr class="section-divider">
 <h2 id="medications-for-long-term-management">Medications for Long-term Management</h2>
 <p>After a heart attack, patients typically need lifelong medications:</p>
-<ul class="bullet-list">
-<li><strong>Antiplatelet agents</strong> (aspirin, clopidogrel): Prevent blood clots</li>
-<li><strong>Beta-blockers</strong>: Reduce heart workload and blood pressure</li>
-<li><strong>ACE inhibitors or ARBs</strong>: Improve heart function and lower blood pressure</li>
-<li><strong>Statins</strong>: Lower cholesterol levels</li>
-<li><strong>Nitrates</strong>: Relieve chest pain by dilating blood vessels</li>
+<ul class="bullet-list tight">
+<li><strong>Antiplatelet agents</strong> (aspirin, clopidogrel) Prevent blood clots</li>
+<li><strong>Beta-blockers</strong> Reduce heart workload and blood pressure</li>
+<li><strong>ACE inhibitors or ARBs</strong> Improve heart function and lower blood pressure</li>
+<li><strong>Statins</strong> Lower cholesterol levels</li>
+<li><strong>Nitrates</strong> Relieve chest pain by dilating blood vessels</li>
 </ul>
 <p>Medication adherence remains crucial for long-term outcomes, as discontinuing these medications significantly increases the risk of recurrent cardiac events and death.</p>
 <hr class="section-divider">
 <h2 id="prevention-strategies">Prevention Strategies</h2>
 <div class="image-container image-center"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80" alt="Healthy lifestyle choices" loading="lazy" /></div>
 <p class="image-description">Prevention through healthy lifestyle choices is the best medicine</p>
-<h3 id="primary-prevention-before-first-heart-attack">Primary Prevention (Before First Heart Attack):</h3>
-<p>1. <strong>Control risk factors</strong>: Manage blood pressure, cholesterol, and diabetes</p>
-<p>2. <strong>Healthy diet</strong>: Emphasize fruits, vegetables, whole grains, lean proteins</p>
-<p>3. <strong>Regular exercise</strong>: At least 30 minutes most days</p>
-<p>4. <strong>Maintain healthy weight</strong>: BMI 18.5-24.9 kg/m²</p>
-<p>5. <strong>Avoid tobacco</strong>: Never start or quit immediately</p>
-<p>6. <strong>Limit alcohol</strong>: No more than 1-2 drinks per day</p>
-<p>7. <strong>Manage stress</strong>: Practice relaxation techniques</p>
-<p>8. <strong>Regular check-ups</strong>: Screen for risk factors annually</p>
-<h3 id="secondary-prevention-after-heart-attack">Secondary Prevention (After Heart Attack):</h3>
+<h3 id="primary-prevention-before-first-heart-attack">Primary Prevention (Before First Heart Attack)</h3>
+<ol class="ordered-list tight">
+<li><strong>Control risk factors</strong> Manage blood pressure, cholesterol, and diabetes</li>
+<li><strong>Healthy diet</strong> Emphasize fruits, vegetables, whole grains, lean proteins</li>
+<li><strong>Regular exercise</strong> At least 30 minutes most days</li>
+<li><strong>Maintain healthy weight</strong> BMI 18.5-24.9 kg/m²</li>
+<li><strong>Avoid tobacco</strong> Never start or quit immediately</li>
+<li><strong>Limit alcohol</strong> No more than 1-2 drinks per day</li>
+<li><strong>Manage stress</strong> Practice relaxation techniques</li>
+<li><strong>Regular check-ups</strong> Screen for risk factors annually</li>
+</ol>
+<h3 id="secondary-prevention-after-heart-attack">Secondary Prevention (After Heart Attack)</h3>
 <p>All primary prevention measures <strong>plus</strong>:</p>
-<ul class="bullet-list">
+<ul class="bullet-list tight">
 <li>Strict medication adherence</li>
 <li>More intensive risk factor control</li>
 <li>Cardiac rehabilitation participation</li>
@@ -1571,13 +1626,13 @@
 <hr class="section-divider">
 <h2 id="complications">Complications</h2>
 <p>Potential complications following myocardial infarction include:</p>
-<ul class="bullet-list">
-<li><strong>Heart failure</strong>: Weakened pumping ability</li>
-<li><strong>Arrhythmias</strong>: Abnormal heart rhythms</li>
-<li><strong>Cardiogenic shock</strong>: Severe heart pump failure</li>
-<li><strong>Heart rupture</strong>: Rare but potentially fatal tearing</li>
-<li><strong>Pericarditis</strong>: Inflammation of heart's outer lining</li>
-<li><strong>Depression and anxiety</strong>: Psychological impact requiring treatment</li>
+<ul class="bullet-list tight">
+<li><strong>Heart failure</strong> Weakened pumping ability</li>
+<li><strong>Arrhythmias</strong> Abnormal heart rhythms</li>
+<li><strong>Cardiogenic shock</strong> Severe heart pump failure</li>
+<li><strong>Heart rupture</strong> Rare but potentially fatal tearing</li>
+<li><strong>Pericarditis</strong> Inflammation of heart's outer lining</li>
+<li><strong>Depression and anxiety</strong> Psychological impact requiring treatment</li>
 </ul>
 <hr class="section-divider">
 <h2 id="prognosis-statistics">Prognosis & Statistics</h2>
@@ -1588,26 +1643,26 @@
 <li>30-day mortality rate: 5-10% with prompt treatment</li>
 <li>1-year survival rate: 85-90% with proper management</li>
 </ul>
-<p><strong>Key Statistics:</strong></p>
+<p><strong>Key Statistics</strong></p>
 <ul class="bullet-list">
 <li>Every 40 seconds, someone in the US has a heart attack</li>
 <li>Heart disease is the leading cause of death globally</li>
 <li>About 805,000 Americans have a heart attack annually</li>
 <li>Early treatment within the first hour ("golden hour") significantly improves outcomes</li>
 </ul>
-<p>These statistics from the <a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link" target="_blank" rel="noopener">World Health Organization</a> emphasize the importance of prevention and rapid treatment.</p>
+<p>These statistics from the <a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link">World Health Organization</a> emphasize the importance of prevention and rapid treatment.</p>
 <hr class="section-divider">
 <h2 id="when-to-seek-help">When to Seek Help</h2>
-<h3 id="emergency-call-911">Emergency (Call 911):</h3>
-<ul class="bullet-list">
+<h3 id="emergency-call-911">Emergency (Call 911)</h3>
+<ul class="bullet-list tight">
 <li>Chest pain or discomfort lasting more than 5 minutes</li>
 <li>Severe shortness of breath</li>
 <li>Pain radiating to arm, jaw, or back</li>
 <li>Sudden cold sweat with nausea</li>
 <li>Loss of consciousness</li>
 </ul>
-<h3 id="urgent-contact-doctor-soon">Urgent (Contact Doctor Soon):</h3>
-<ul class="bullet-list">
+<h3 id="urgent-contact-doctor-soon">Urgent (Contact Doctor Soon)</h3>
+<ul class="bullet-list tight">
 <li>Unusual fatigue or weakness</li>
 <li>Persistent mild chest discomfort</li>
 <li>Palpitations or irregular heartbeat</li>
@@ -1616,23 +1671,23 @@
 <hr class="section-divider">
 <h2 id="living-after-a-heart-attack">Living After a Heart Attack</h2>
 <p>A heart attack is a life-changing event, but most patients can return to active, fulfilling lives with proper care and lifestyle adjustments. Success depends on:</p>
-<ul class="bullet-list">
-<li><strong>Commitment to change</strong>: Adopting and maintaining healthy habits</li>
-<li><strong>Medication compliance</strong>: Taking prescribed drugs consistently</li>
-<li><strong>Regular monitoring</strong>: Following up with healthcare providers</li>
-<li><strong>Support system</strong>: Engaging family, friends, and support groups</li>
-<li><strong>Positive mindset</strong>: Focusing on recovery and quality of life</li>
+<ul class="bullet-list tight">
+<li><strong>Commitment to change</strong> Adopting and maintaining healthy habits</li>
+<li><strong>Medication compliance</strong> Taking prescribed drugs consistently</li>
+<li><strong>Regular monitoring</strong> Following up with healthcare providers</li>
+<li><strong>Support system</strong> Engaging family, friends, and support groups</li>
+<li><strong>Positive mindset</strong> Focusing on recovery and quality of life</li>
 </ul>
 <p>Remember: <em>Having a heart attack doesn't mean your life is over - it means a new, healthier chapter begins.</em></p>
 <hr class="section-divider">
 <h2 id="sources" class="sources-header">Sources</h2>
 <ul class="bullet-list">
-<li><a href="https://www.heart.org/en/health-topics/heart-attack" class="external-link" target="_blank" rel="noopener">American Heart Association - Heart Attack</a></li>
-<li><a href="https://www.nhlbi.nih.gov/health/heart-attack" class="external-link" target="_blank" rel="noopener">National Heart, Lung, and Blood Institute - Heart Attack</a></li>
-<li><a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106" class="external-link" target="_blank" rel="noopener">Mayo Clinic - Myocardial Infarction</a></li>
-<li><a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link" target="_blank" rel="noopener">World Health Organization - Cardiovascular Diseases</a></li>
-<li><a href="https://www.acc.org/guidelines" class="external-link" target="_blank" rel="noopener">American College of Cardiology Clinical Guidelines</a></li>
-<li><a href="https://www.escardio.org/Guidelines" class="external-link" target="_blank" rel="noopener">European Society of Cardiology - Acute Myocardial Infarction</a></li>
+<li><a href="https://www.heart.org/en/health-topics/heart-attack" class="external-link">American Heart Association - Heart Attack</a></li>
+<li><a href="https://www.nhlbi.nih.gov/health/heart-attack" class="external-link">National Heart, Lung, and Blood Institute - Heart Attack</a></li>
+<li><a href="https://www.mayoclinic.org/diseases-conditions/heart-attack/symptoms-causes/syc-20373106" class="external-link">Mayo Clinic - Myocardial Infarction</a></li>
+<li><a href="https://www.who.int/health-topics/cardiovascular-diseases" class="external-link">World Health Organization - Cardiovascular Diseases</a></li>
+<li><a href="https://www.acc.org/guidelines" class="external-link">American College of Cardiology Clinical Guidelines</a></li>
+<li><a href="https://www.escardio.org/Guidelines" class="external-link">European Society of Cardiology - Acute Myocardial Infarction</a></li>
 </ul>
         <hr class="section-divider">
         
@@ -1685,7 +1740,7 @@
 <a href="#pathophysiology" class="toc-link">Pathophysiology</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#the-process" class="toc-link">The Process:</a>
+<a href="#the-process" class="toc-link">The Process</a>
 </li>
 <li class="toc-item toc-h2">
 <a href="#types-of-heart-attacks" class="toc-link">Types of Heart Attacks</a>
@@ -1697,10 +1752,10 @@
 <a href="#emergency-treatment" class="toc-link">Emergency Treatment</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#initial-response" class="toc-link">Initial Response:</a>
+<a href="#initial-response" class="toc-link">Initial Response</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#hospital-interventions" class="toc-link">Hospital Interventions:</a>
+<a href="#hospital-interventions" class="toc-link">Hospital Interventions</a>
 </li>
 <li class="toc-item toc-h2">
 <a href="#recovery-rehabilitation" class="toc-link">Recovery & Rehabilitation</a>
@@ -1718,10 +1773,10 @@
 <a href="#prevention-strategies" class="toc-link">Prevention Strategies</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#primary-prevention-before-first-heart-attack" class="toc-link">Primary Prevention (Before First Heart Attack):</a>
+<a href="#primary-prevention-before-first-heart-attack" class="toc-link">Primary Prevention (Before First Heart Attack)</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#secondary-prevention-after-heart-attack" class="toc-link">Secondary Prevention (After Heart Attack):</a>
+<a href="#secondary-prevention-after-heart-attack" class="toc-link">Secondary Prevention (After Heart Attack)</a>
 </li>
 <li class="toc-item toc-h2">
 <a href="#complications" class="toc-link">Complications</a>
@@ -1733,10 +1788,10 @@
 <a href="#when-to-seek-help" class="toc-link">When to Seek Help</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#emergency-call-911" class="toc-link">Emergency (Call 911):</a>
+<a href="#emergency-call-911" class="toc-link">Emergency (Call 911)</a>
 </li>
 <li class="toc-item toc-h3">
-<a href="#urgent-contact-doctor-soon" class="toc-link">Urgent (Contact Doctor Soon):</a>
+<a href="#urgent-contact-doctor-soon" class="toc-link">Urgent (Contact Doctor Soon)</a>
 </li>
 <li class="toc-item toc-h2">
 <a href="#living-after-a-heart-attack" class="toc-link">Living After a Heart Attack</a>

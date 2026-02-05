@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document specifies the custom markdown format used for **wiki/infographic pages** in BioBasics. The markdown is converted to styled HTML for rendering medical encyclopedia articles.
+This document specifies the custom markdown format used for wiki/infographic pages in BioBasics.
 
 ---
 
@@ -10,232 +10,199 @@ This document specifies the custom markdown format used for **wiki/infographic p
 
 ### Headers
 
-Standard markdown headers for content hierarchy:
-
 ```markdown
 # H1 - Page Title
 ## H2 - Major Sections
 ### H3 - Subsections
 ```
 
-| Syntax | Output | Usage |
-|--------|--------|-------|
-| `# Title` | H1 | Page title (use only once) |
-| `## Section` | H2 | Major sections |
-| `### Subsection` | H3 | Subsections within a section |
+| Syntax | Usage |
+|--------|-------|
+| `# Title` | Page title (use only once) |
+| `## Section` | Major sections |
+| `### Subsection` | Subsections |
 
 ---
 
 ### Text Formatting
 
 ```markdown
-**bold text**
-*italic text*
+*bold text*
+/italic text/
 ```
 
-| Syntax | Output | Usage |
-|--------|--------|-------|
-| `**text**` | **bold** | Emphasis, key terms, warnings |
-| `*text*` | *italic* | Medical terminology, subtle emphasis |
+| Syntax | Output |
+|--------|--------|
+| `*text*` | bold (white) |
+| `/text/` | italic (white) |
 
 ---
 
 ### Links
 
-#### Internal Wiki Links
-
-Use double brackets to link to other wiki pages:
+#### Internal Wiki Links (Yellow)
 
 ```markdown
-[[blood clot]]
-[[myocardium]]
-[[coronary arteries]]
+[display text|slug]
 ```
 
-These create internal links to other BioBasics wiki pages. The term inside the brackets becomes both the link text and the page reference.
+Examples:
+```markdown
+[blood clot|blood-clot]
+[heart muscle|myocardium]
+[coronary arteries|coronary-arteries]
+```
 
-#### External Links
-
-Standard markdown syntax for external URLs:
+#### External Links (Green)
 
 ```markdown
-[American Heart Association](https://www.heart.org/en/health-topics/heart-attack)
-[text to display](https://example.com)
+{display text|url}
+```
+
+Examples:
+```markdown
+{American Heart Association|https://www.heart.org}
+{Mayo Clinic|https://www.mayoclinic.org}
 ```
 
 ---
 
 ### Images
 
-Custom syntax with position control:
-
 ```markdown
 ![position|alt text](image_url)
 ```
 
-#### Position Options:
-
 | Position | Behavior |
 |----------|----------|
-| `left` | Image floats left, text wraps around right |
-| `right` | Image floats right, text wraps around left |
-| `center` | Image centered, full width, no text wrap |
+| `left` | Float left, text wraps right |
+| `right` | Float right, text wraps left |
+| `center` | Centered, full width |
 
-#### Examples:
-
-```markdown
-![left|Diagram of heart](https://example.com/heart.jpg)
-![right|Person clutching chest](https://example.com/symptoms.jpg)
-![center|Cross-section of artery](https://example.com/artery.jpg)
-```
-
-#### Image Descriptions
-
-Add a description immediately after an image using italic text:
+#### Image Captions
 
 ```markdown
-![center|Atherosclerosis progression](https://example.com/image.jpg)
-*Progression of atherosclerosis leading to arterial blockage*
+![center|Atherosclerosis](https://example.com/image.jpg)
+/Caption text here/
 ```
-
-The italic line directly after an image becomes a styled caption.
 
 ---
 
 ### Horizontal Rules
 
-Use `---` to create section dividers:
-
 ```markdown
-## Section One
-
-Content here...
-
 ---
-
-## Section Two
-
-More content...
 ```
 
 ---
 
 ### Bullet Lists
 
-Standard markdown unordered lists:
+For tight spacing (grouped items), wrap with `[[[` and `]]]`:
+
+```markdown
+[[[
+- First item
+- Second item
+- Third item
+]]]
+```
+
+Without wrapper, items have more spacing:
 
 ```markdown
 - First item
 - Second item
-- **Bold item**: With description
-- *Italic item*: Another description
+- Third item
 ```
 
-Supports inline formatting within list items.
+---
+
+### Numbered Lists
+
+For tight spacing (grouped items), wrap with `[[[` and `]]]`:
+
+```markdown
+[[[
+1. First step
+2. Second step
+3. Third step
+]]]
+```
+
+Without wrapper, items have more spacing:
+
+```markdown
+1. First step
+2. Second step
+3. Third step
+```
 
 ---
 
 ### Tables
 
-Standard markdown table syntax:
-
 ```markdown
-| Header 1 | Header 2 | Header 3 |
-|----------|----------|----------|
-| Cell 1   | Cell 2   | Cell 3   |
-| Cell 4   | Cell 5   | Cell 6   |
-```
-
-Tables support inline formatting:
-
-```markdown
-| Category | Risk Factors |
-|----------|-------------|
-| **Modifiable** | Smoking, high blood pressure, obesity |
-| *Lifestyle* | Excessive alcohol, chronic stress |
+| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
 ```
 
 ---
 
-### Special Sections
+## Syntax Summary
 
-#### Sources Section
-
-A `## Sources` section at the end of the document receives special styling:
-
-```markdown
-## Sources
-
-- [American Heart Association](https://www.heart.org)
-- [Mayo Clinic](https://www.mayoclinic.org)
-- [WHO - Cardiovascular Diseases](https://www.who.int)
-```
-
-Sources are displayed in a dedicated references section with appropriate styling.
-
----
-
-## Full Page Example
-
-```markdown
-# Myocardial Infarction (Heart Attack)
-
-A **myocardial infarction** (MI), commonly known as a *heart attack*, occurs when blood flow to a part of the [[cardiac muscle]] is blocked. This represents one of the most serious [[cardiovascular emergencies]].
+| Element | Syntax | Color |
+|---------|--------|-------|
+| Bold | `*text*` | White |
+| Italic | `/text/` | White |
+| Internal Link | `[text|slug]` | Yellow |
+| External Link | `{text|url}` | Green |
+| Image | `![position|alt](url)` | - |
+| Caption | `/caption/` | Gray |
+| Bullet List | `- item` | - |
+| Numbered List | `1. item` | - |
+| List Block (tight) | `[[[` ... `]]]` | - |
+| Divider | `---` | - |
 
 ---
 
-## Understanding the Condition
+## Example
 
-![left|Heart diagram](https://example.com/heart.jpg)
+```markdown
+# Heart Attack
 
-The [[myocardium]] requires constant oxygen supply. According to the [American Heart Association](https://www.heart.org), prompt treatment is critical.
+A *myocardial infarction* occurs when blood flow to the [cardiac muscle|cardiac-muscle] is blocked.
 
 ---
 
 ## Risk Factors
 
-| Category | Factors |
-|----------|---------|
-| **Modifiable** | Smoking, hypertension, obesity |
-| **Non-modifiable** | Age, family history |
+According to the {American Heart Association|https://www.heart.org}, risk factors include:
+
+[[[
+- *Smoking* damages blood vessels
+- *High blood pressure* strains the heart
+- *Obesity* increases workload
+]]]
 
 ---
 
-## Warning Signs
+## The Process
 
-Common symptoms include:
-
-- **Chest discomfort**: Pressure or pain lasting minutes
-- **Upper body pain**: Arms, back, neck, jaw
-- **Shortness of breath**: With or without chest pain
+[[[
+1. *Plaque formation* buildup in arteries
+2. *Plaque rupture* cap breaks
+3. *Clot formation* blocks blood flow
+]]]
 
 ---
 
 ## Sources
 
-- [American Heart Association](https://www.heart.org)
-- [National Heart, Lung, and Blood Institute](https://www.nhlbi.nih.gov)
+[[[
+- {American Heart Association|https://www.heart.org}
+- {Mayo Clinic|https://www.mayoclinic.org}
+]]]
 ```
-
----
-
-## Rendering Notes
-
-- The `md_to_html.py` converter transforms this markdown into styled HTML
-- Wiki links (`[[term]]`) create clickable links to internal pages
-- External links open in new tabs with appropriate security attributes
-- Images are responsive and maintain aspect ratio
-- Tables are horizontally scrollable on mobile devices
-- The Sources section is visually distinct from main content
-
----
-
-## Best Practices
-
-1. **Use one H1** for the page title
-2. **Separate sections** with horizontal rules (`---`)
-3. **Link medical terms** using wiki links (`[[term]]`)
-4. **Cite external sources** with markdown links
-5. **Position images** appropriately for content flow
-6. **Add captions** to important images
-7. **Always include** a Sources section at the end

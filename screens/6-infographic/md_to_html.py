@@ -18,7 +18,7 @@ class BioBasicsMarkdownConverter:
     - Wiki links (internal): [[term]] - creates internal page links
     - External links: [text](url) - creates external links
     - Images: ![position|alt text](url) where position is left, right, or center
-    - Image descriptions: *description text* immediately after image
+    - Image descriptions: /description text/ immediately after image
     - Horizontal rules: ---
     - Bullet lists: - item
     - Tables: | Header | Header |
@@ -31,6 +31,7 @@ class BioBasicsMarkdownConverter:
     def __init__(self):
         self.in_table = False
         self.in_list = False
+        self.in_ordered_list = False
         self.table_headers = []
         self.toc_entries: List[Dict] = []  # Stores {level, text, id} for TOC
         self.article_title = ""
@@ -88,10 +89,10 @@ class BioBasicsMarkdownConverter:
                     level = len(match.group(1))
                     text = match.group(2)
                     # Remove inline formatting for TOC text
-                    clean_text = re.sub(r'\*\*([^\*]+)\*\*', r'\1', text)
-                    clean_text = re.sub(r'\*([^\*]+)\*', r'\1', clean_text)
-                    clean_text = re.sub(r'\[\[([^\]]+)\]\]', r'\1', clean_text)
-                    clean_text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', clean_text)
+                    clean_text = re.sub(r'\*([^\*]+)\*', r'\1', text)  # bold: *text*
+                    clean_text = re.sub(r'/([^/]+)/', r'\1', clean_text)  # italic: /text/
+                    clean_text = re.sub(r'\[([^|]+)\|([^\]]+)\]', r'\1', clean_text)  # internal: [text|slug]
+                    clean_text = re.sub(r'\{([^|]+)\|([^}]+)\}', r'\1', clean_text)  # external: {text|url}
                     
                     # Generate ID from text
                     header_id = self._generate_header_id(clean_text)
@@ -188,15 +189,37 @@ class BioBasicsMarkdownConverter:
         """Convert lines of markdown to HTML body content."""
         html_parts = []
         i = 0
+        in_list_block = False  # Track if we're inside [[[ ... ]]] list block
         
         while i < len(lines):
             line = lines[i].strip()
             
-            # Skip empty lines unless closing a list
-            if not line:
+            # Check for list block start: [[[
+            if line == '[[[':
+                in_list_block = True
+                i += 1
+                continue
+            
+            # Check for list block end: ]]]
+            if line == ']]]':
+                in_list_block = False
                 if self.in_list:
                     html_parts.append('</ul>')
                     self.in_list = False
+                if self.in_ordered_list:
+                    html_parts.append('</ol>')
+                    self.in_ordered_list = False
+                i += 1
+                continue
+            
+            # Skip empty lines unless closing a list (only if not in list block)
+            if not line:
+                if self.in_list and not in_list_block:
+                    html_parts.append('</ul>')
+                    self.in_list = False
+                if self.in_ordered_list and not in_list_block:
+                    html_parts.append('</ol>')
+                    self.in_ordered_list = False
                 i += 1
                 continue
             
@@ -236,11 +259,11 @@ class BioBasicsMarkdownConverter:
                 image_html, description = self._convert_image(line)
                 html_parts.append(image_html)
                 
-                # Check next line for description (italic text)
+                # Check next line for description (italic text): /caption text/
                 if i + 1 < len(lines):
                     next_line = lines[i + 1].strip()
-                    if next_line.startswith('*') and not next_line.startswith('**'):
-                        desc_text = next_line.strip('*').strip()
+                    if next_line.startswith('/') and next_line.endswith('/'):
+                        desc_text = next_line.strip('/').strip()
                         html_parts.append(f'<p class="image-description">{desc_text}</p>')
                         i += 1  # Skip description line
                 
@@ -249,11 +272,31 @@ class BioBasicsMarkdownConverter:
             
             # Check for bullet lists
             if line.startswith('- '):
+                if self.in_ordered_list:
+                    html_parts.append('</ol>')
+                    self.in_ordered_list = False
                 if not self.in_list:
-                    html_parts.append('<ul class="bullet-list">')
+                    list_class = 'bullet-list tight' if in_list_block else 'bullet-list'
+                    html_parts.append(f'<ul class="{list_class}">')
                     self.in_list = True
                 
                 list_item = self._convert_inline(line[2:].strip())
+                html_parts.append(f'<li>{list_item}</li>')
+                i += 1
+                continue
+            
+            # Check for numbered lists (1. 2. 3. etc)
+            numbered_match = re.match(r'^(\d+)\.\s+(.+)$', line)
+            if numbered_match:
+                if self.in_list:
+                    html_parts.append('</ul>')
+                    self.in_list = False
+                if not self.in_ordered_list:
+                    list_class = 'ordered-list tight' if in_list_block else 'ordered-list'
+                    html_parts.append(f'<ol class="{list_class}">')
+                    self.in_ordered_list = True
+                
+                list_item = self._convert_inline(numbered_match.group(2).strip())
                 html_parts.append(f'<li>{list_item}</li>')
                 i += 1
                 continue
@@ -363,17 +406,30 @@ class BioBasicsMarkdownConverter:
     
     def _convert_inline(self, text: str) -> str:
         """Convert inline markdown (bold, italic, links) to HTML."""
-        # Convert internal wiki links first: [[term]]
-        text = re.sub(r'\[\[([^\]]+)\]\]', r'<a href="#\1" class="wiki-link">\1</a>', text)
+        # Step 1: Protect external link URLs by converting them first with placeholder
+        # Extract and replace external links {text|url} with placeholders
+        external_links = []
+        def save_external_link(match):
+            link_text = match.group(1)
+            url = match.group(2)
+            placeholder = f"__EXTLINK_{len(external_links)}__"
+            external_links.append(f'<a href="{url}" class="external-link">{link_text}</a>')
+            return placeholder
+        text = re.sub(r'\{([^|]+)\|([^}]+)\}', save_external_link, text)
         
-        # Convert external links: [text](url)
-        text = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', r'<a href="\2" class="external-link" target="_blank" rel="noopener">\1</a>', text)
+        # Step 2: Convert internal wiki links: [text|slug]
+        text = re.sub(r'\[([^|]+)\|([^\]]+)\]', r'<a href="#\2" class="wiki-link">\1</a>', text)
         
-        # Convert bold: **text**
-        text = re.sub(r'\*\*([^\*]+)\*\*', r'<strong>\1</strong>', text)
+        # Step 3: Convert italic: /text/ - now URLs are protected
+        # Don't match if content contains < or > (to avoid breaking HTML tags)
+        text = re.sub(r'/([^/<>\n]+)/', r'<em>\1</em>', text)
         
-        # Convert italic: *text* (but not already processed)
-        text = re.sub(r'(?<!\*)\*(?!\*)([^\*]+)\*(?!\*)', r'<em>\1</em>', text)
+        # Step 4: Convert bold: *text*
+        text = re.sub(r'\*([^\*]+)\*', r'<strong>\1</strong>', text)
+        
+        # Step 5: Restore external links from placeholders
+        for i, link_html in enumerate(external_links):
+            text = text.replace(f"__EXTLINK_{i}__", link_html)
         
         return text
     
@@ -863,7 +919,7 @@ class BioBasicsMarkdownConverter:
         }}
 
         em {{
-            color: var(--accent-tertiary);
+            color: var(--text-primary);
             font-style: italic;
         }}
 
@@ -879,8 +935,8 @@ class BioBasicsMarkdownConverter:
         }}
 
         a.wiki-link:hover {{
-            color: var(--accent-primary);
-            border-bottom-color: var(--accent-primary);
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-tertiary);
         }}
 
         a.external-link {{
@@ -889,7 +945,7 @@ class BioBasicsMarkdownConverter:
 
         a.external-link:hover {{
             border-bottom-color: var(--accent-primary);
-            color: var(--accent-secondary);
+            color: var(--text-primary);
         }}
 
         /* Images */
@@ -953,6 +1009,7 @@ class BioBasicsMarkdownConverter:
             list-style: none;
             padding-left: 0;
             margin: 25px 0;
+            overflow: hidden;
         }}
 
         ul.bullet-list li {{
@@ -971,6 +1028,56 @@ class BioBasicsMarkdownConverter:
             color: var(--accent-primary);
             font-size: 1.5rem;
             font-weight: 700;
+        }}
+
+        /* Tight list spacing (inside [[[ ]]] blocks) */
+        ul.bullet-list.tight {{
+            margin: 15px 0;
+            clear: both;
+        }}
+
+        ul.bullet-list.tight li {{
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }}
+
+        /* Ordered/Numbered Lists */
+        ol.ordered-list {{
+            list-style: none;
+            padding-left: 0;
+            overflow: hidden;
+            margin: 25px 0;
+            counter-reset: item;
+        }}
+
+        ol.ordered-list li {{
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            padding-left: 35px;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.8;
+            counter-increment: item;
+        }}
+
+        ol.ordered-list li::before {{
+            content: counter(item) '.';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+        }}
+
+        ol.ordered-list.tight {{
+            margin: 15px 0;
+            clear: both;
+        }}
+
+        ol.ordered-list.tight li {{
+            margin-bottom: 4px;
+            line-height: 1.5;
         }}
 
         /* Tables */
