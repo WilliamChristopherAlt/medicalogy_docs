@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookmarks – Medicalogy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f7;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f0f0;
+            --accent-primary: #1cb0f6;
+            --accent-primary-dark: #1899d6;
+            --accent-primary-light: #84d8ff;
+            --accent-success: #58cc02;
+            --accent-success-dark: #46a302;
+            --accent-success-bg: #d7ffb8;
+            --accent-warning: #ff9600;
+            --accent-warning-dark: #e68600;
+            --accent-error: #ff4b4b;
+            --accent-purple: #ce82ff;
+            --accent-purple-dark: #9c52d0;
+            --text-primary: #3c3c3c;
+            --text-secondary: #777777;
+            --text-muted: #afafaf;
+            --border-color: #e5e5e5;
+            --border-dark: #cecece;
+            --border-radius: 16px;
+            --border-radius-sm: 12px;
+            --transition: all 0.2s ease;
+            --sidebar-width: 280px;
+            --navbar-height: 70px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-button: 0 4px 0 var(--border-dark);
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--navbar-height);
+            background: var(--bg-primary);
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            width: 44px; height: 44px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+
+        .hamburger-icon { width: 22px; height: 22px; stroke: var(--text-secondary); fill: none; }
+
+        .navbar-logo {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-right: 40px;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-search {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px; top: 50%;
+            transform: translateY(-50%);
+            width: 18px; height: 18px;
+            stroke: var(--text-muted);
+            fill: none;
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 44px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: var(--bg-primary);
+            box-shadow: 0 0 0 4px rgba(28, 176, 246, 0.15);
+        }
+
+        .navbar-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; }
+
+        .nav-streak-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg-primary);
+            border: 2px solid var(--accent-warning);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .nav-streak-icon { width: 24px; height: 24px; fill: var(--accent-warning); }
+        .nav-streak-count { font-weight: 800; color: var(--accent-warning-dark); font-size: 1rem; }
+        .nav-streak-label { font-size: 0.85rem; color: var(--accent-warning-dark); font-weight: 600; }
+
+        .notification-btn {
+            position: relative;
+            width: 44px; height: 44px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .notification-btn:hover { background: var(--bg-hover); border-color: var(--border-dark); }
+        .notification-icon { width: 22px; height: 22px; stroke: var(--text-secondary); fill: none; }
+
+        .notification-badge {
+            position: absolute;
+            top: -6px; right: -6px;
+            width: 22px; height: 22px;
+            background: var(--accent-error);
+            border-radius: 50%;
+            border: 2px solid var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .account-menu { position: relative; }
+
+        .account-btn {
+            width: 44px; height: 44px;
+            background: var(--accent-primary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 3px 0 var(--accent-primary-dark);
+        }
+
+        .account-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--accent-primary-dark); }
+        .account-btn:active { transform: translateY(0); box-shadow: 0 1px 0 var(--accent-primary-dark); }
+
+        .account-dropdown {
+            position: absolute;
+            top: calc(100% + 10px); right: 0;
+            width: 200px;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            display: none;
+        }
+
+        .account-dropdown.active { display: block; }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .dropdown-icon { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: var(--navbar-height);
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--navbar-height));
+            background: var(--bg-primary);
+            border-right: 2px solid var(--border-color);
+            overflow-y: auto;
+            padding: 20px 0;
+            z-index: 900;
+        }
+
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+        .sidebar-section { margin-bottom: 4px; padding: 0 16px; }
+
+        .sidebar-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            margin-top: 16px;
+            padding-left: 12px;
+        }
+
+        .sidebar-nav { list-style: none; }
+        .nav-item { margin-bottom: 4px; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            font-weight: 700;
+            border: 2px solid transparent;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .nav-link:hover { background: var(--bg-secondary); color: var(--text-primary); }
+        .nav-link.active {
+            background: rgba(28, 176, 246, 0.1);
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .nav-icon { width: 24px; height: 24px; stroke: currentColor; fill: none; flex-shrink: 0; }
+        .nav-text { flex: 1; font-size: 1rem; }
+
+        .nav-link.has-submenu .nav-icon.chevron {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .nav-link.has-submenu.expanded .nav-icon.chevron { transform: rotate(180deg); }
+
+        .submenu {
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 52px;
+            margin-top: -6px;
+        }
+
+        .submenu.expanded { max-height: 500px; }
+        .submenu-item { margin-bottom: 0; }
+
+        .submenu-link {
+            display: block;
+            padding: 4px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .submenu-link:hover { background: var(--bg-secondary); color: var(--accent-primary); }
+        .submenu-link.active { color: var(--accent-primary); font-weight: 700; }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: var(--navbar-height);
+            left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 850;
+        }
+
+        .sidebar-overlay.active { display: block; }
+
+        /* ===== MAIN WRAPPER ===== */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--navbar-height);
+            min-height: calc(100vh - var(--navbar-height));
+            padding: 40px 48px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            :root { --sidebar-width: 0px; }
+            .sidebar { width: 280px; transform: translateX(-100%); transition: transform 0.3s ease; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; }
+            .mobile-menu-btn { display: flex; }
+            .navbar-search { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 24px 16px 80px; }
+            .navbar { padding: 0 16px; }
+            .navbar-logo { font-size: 1.3rem; margin-right: 16px; }
+            .nav-streak-label { display: none; }
+        }
+
+        /* ===== BOOKMARKS PAGE ===== */
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-header-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .page-title-group { display: flex; flex-direction: column; gap: 6px; }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-title-icon {
+            width: 36px; height: 36px;
+            fill: var(--accent-primary);
+            stroke: none;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .bookmark-count-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(28,176,246,0.12);
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            margin-left: 4px;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toolbar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-search {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+            max-width: 340px;
+        }
+
+        .toolbar-search-icon {
+            position: absolute;
+            left: 12px; top: 50%;
+            transform: translateY(-50%);
+            width: 16px; height: 16px;
+            stroke: var(--text-muted); fill: none;
+            pointer-events: none;
+        }
+
+        .toolbar-search-input {
+            width: 100%;
+            padding: 10px 16px 10px 38px;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .toolbar-search-input::placeholder { color: var(--text-muted); }
+        .toolbar-search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(28,176,246,0.12);
+        }
+
+        .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .filter-btn {
+            padding: 9px 18px;
+            border-radius: var(--border-radius-sm);
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+        .filter-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 3px 0 var(--accent-primary-dark);
+        }
+
+        /* custom sort dropdown */
+        .sort-dropdown { position: relative; user-select: none; }
+
+        .sort-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: var(--border-radius-sm);
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            min-width: 160px;
+            justify-content: space-between;
+        }
+
+        .sort-trigger:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+        .sort-trigger.open { border-color: var(--accent-primary); color: var(--accent-primary); box-shadow: 0 0 0 4px rgba(28,176,246,0.12); }
+
+        .sort-trigger-chevron {
+            width: 15px; height: 15px;
+            stroke: currentColor; fill: none;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .sort-trigger.open .sort-trigger-chevron { transform: rotate(180deg); }
+
+        .sort-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 100%;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+            overflow: hidden;
+            z-index: 200;
+            display: none;
+        }
+
+        .sort-menu.open { display: block; animation: dropIn 0.15s ease; }
+
+        @keyframes dropIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .sort-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 16px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1.5px solid var(--border-color);
+        }
+
+        .sort-option:last-child { border-bottom: none; }
+
+        .sort-option:hover { background: var(--bg-secondary); color: var(--text-primary); }
+
+        .sort-option.selected {
+            color: var(--accent-primary);
+            background: rgba(28,176,246,0.07);
+        }
+
+        .sort-option-icon { width: 15px; height: 15px; stroke: currentColor; fill: none; flex-shrink: 0; }
+
+        .sort-check { width: 15px; height: 15px; stroke: var(--accent-primary); fill: none; margin-left: auto; flex-shrink: 0; }
+
+
+        /* search highlight */
+        .highlight {
+            background: rgba(28,176,246,0.18);
+            color: var(--accent-primary-dark);
+            border-radius: 3px;
+            padding: 0 1px;
+            font-weight: 800;
+        }
+
+        /* ===== BOOKMARK CARDS ===== */
+        .bookmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .bookmarks-grid { grid-template-columns: 1fr; }
+        }
+
+        .bookmark-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bookmark-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-primary);
+            border-radius: 4px 0 0 4px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .bookmark-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .bookmark-card:hover::before { opacity: 1; }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .card-theme-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .theme-emergency { background: #fff0f0; color: #e53935; border: 1.5px solid #ffcdd2; }
+        .theme-mental { background: #f3e5ff; color: #7b1fa2; border: 1.5px solid #e1bee7; }
+        .theme-cardiovascular { background: #fff3e0; color: #e65100; border: 1.5px solid #ffe0b2; }
+        .theme-nutrition { background: #e8f5e9; color: #2e7d32; border: 1.5px solid #c8e6c9; }
+        .theme-neurology { background: #e3f2fd; color: #1565c0; border: 1.5px solid #bbdefb; }
+
+        .remove-bookmark-btn {
+            width: 32px; height: 32px;
+            background: none;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .remove-bookmark-btn:hover {
+            background: #fff0f0;
+            border-color: #ffcdd2;
+            color: var(--accent-error);
+        }
+
+        .remove-bookmark-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.4;
+            letter-spacing: -0.2px;
+        }
+
+        .card-excerpt {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-chip {
+            padding: 3px 10px;
+            background: var(--bg-secondary);
+            border: 1.5px solid var(--border-color);
+            border-radius: 99px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .tag-chip:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: rgba(28,176,246,0.06); }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 2px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .meta-item svg { width: 13px; height: 13px; stroke: currentColor; fill: none; flex-shrink: 0; }
+
+        
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .empty-state.visible { display: flex; }
+
+        .empty-icon {
+            width: 72px; height: 72px;
+            stroke: var(--border-dark);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .empty-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+        }
+
+        .empty-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            max-width: 360px;
+        }
+
+        .empty-cta {
+            margin-top: 8px;
+            padding: 12px 28px;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 0 var(--accent-primary-dark);
+            transition: var(--transition);
+        }
+
+        .empty-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--accent-primary-dark); }
+
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            min-width: 40px;
+            height: 40px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius-sm);
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .page-btn:hover:not(:disabled):not(.active) {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .page-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 3px 0 var(--accent-primary-dark);
+            cursor: default;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .page-btn svg {
+            width: 15px; height: 15px;
+            stroke: currentColor; fill: none;
+            flex-shrink: 0;
+        }
+
+        .page-ellipsis {
+            min-width: 40px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            user-select: none;
+        }
+
+        .per-page-select {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 16px;
+        }
+
+        .per-page-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .per-page-btns {
+            display: flex;
+            gap: 4px;
+        }
+
+        .per-page-btn {
+            min-width: 36px; height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .per-page-btn:hover:not(.active) { border-color: var(--accent-primary); color: var(--accent-primary); }
+        .per-page-btn.active {
+            background: rgba(28,176,246,0.1);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 32px; left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: var(--text-primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: var(--border-radius-sm);
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 9999;
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-lg);
+            white-space: nowrap;
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+
+        /* ===== SECTION DIVIDER ===== */
+        .results-info {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">
+            <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <a href="/" class="navbar-logo">Medicalogy</a>
+
+        <div class="navbar-actions">
+            <div class="nav-streak-indicator">
+                <svg class="nav-streak-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2c1.5 3 4 5 6 8-2-1-4 0-5 2 0 0 0-1-1-2-1-1-2-1-3 0 0-3-3-5-5-8 1 4 0 8-2 12-1 2-1 4 0 6 1 3 4 4 7 4 4 0 7-2 8-5 1-2 1-5-1-8-1-2-3-4-4-9z"/>
+                </svg>
+                <span class="nav-streak-count">7</span>
+                
+            </div>
+
+            <button class="notification-btn">
+                <svg class="notification-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <div class="account-menu">
+                <button class="account-btn" onclick="toggleAccountMenu()">JD</button>
+                <div class="account-dropdown" id="accountDropdown">
+                    <a href="/settings" class="dropdown-item">
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                    <a href="/logout" class="dropdown-item">
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDEBAR OVERLAY (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Learning</h3>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/themes" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <span class="nav-text">Themes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link has-submenu expanded" onclick="toggleSubmenu(event, 'themesSubmenu')">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                        </svg>
+                        <span class="nav-text">Enrolled Themes</span>
+                        <svg class="nav-icon chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="submenu expanded" id="themesSubmenu">
+                        <li class="submenu-item"><a href="/emergency-care" class="submenu-link">Emergency Care</a></li>
+                        <li class="submenu-item"><a href="/mental-health" class="submenu-link">Mental Health</a></li>
+                        <li class="submenu-item"><a href="/nutrition" class="submenu-link">Nutrition</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Resources</h3>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/encyclopedia" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        <span class="nav-text">Encyclopedia</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/bookmarks" class="nav-link active">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="nav-text">Bookmarks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link has-submenu expanded" onclick="toggleSubmenu(event, 'recentSubmenu')">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span class="nav-text">Recent Articles</span>
+                        <svg class="nav-icon chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="submenu expanded" id="recentSubmenu">
+                        <li class="submenu-item"><a href="/wiki/myocardial-infarction" class="submenu-link">Myocardial Infarction</a></li>
+                        <li class="submenu-item"><a href="/wiki/stroke-recognition" class="submenu-link">Stroke Recognition</a></li>
+                        <li class="submenu-item"><a href="/wiki/type-2-diabetes" class="submenu-link">Type 2 Diabetes</a></li>
+                        <li class="submenu-item"><a href="/wiki/anxiety-overview" class="submenu-link">Anxiety Disorders</a></li>
+                        <li class="submenu-item"><a href="/wiki/cpr-guide" class="submenu-link">CPR Guide</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+
+        <div class="page-header">
+            <div class="page-header-top">
+                <div class="page-title-group">
+                    <h1 class="page-title">
+                        <svg class="page-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" fill="var(--accent-primary)" stroke="none"/>
+                        </svg>
+                        My Bookmarks
+                        <span class="bookmark-count-badge" id="countBadge">0</span>
+                    </h1>
+                    <p class="page-subtitle">Articles you've saved for later reading</p>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="toolbar-row">
+                    <div class="toolbar-search">
+                        <svg class="toolbar-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" class="toolbar-search-input" placeholder="Search bookmarks..." id="bookmarkSearch" oninput="applyFilters(true)">
+                    </div>
+
+                    <div class="sort-dropdown" id="sortDropdown">
+                    <button class="sort-trigger" id="sortTrigger" onclick="toggleSortMenu()">
+                        <span id="sortLabel">Newest first</span>
+                        <svg class="sort-trigger-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="sort-menu" id="sortMenu">
+                        <div class="sort-option selected" data-value="newest" onclick="selectSort(this)">
+                            <svg class="sort-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                            Newest first
+                            <svg class="sort-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="sort-option" data-value="oldest" onclick="selectSort(this)">
+                            <svg class="sort-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                            Oldest first
+                        </div>
+                        <div class="sort-option" data-value="most-viewed" onclick="selectSort(this)">
+                            <svg class="sort-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            Most viewed
+                        </div>
+                        <div class="sort-option" data-value="az" onclick="selectSort(this)">
+                            <svg class="sort-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="14" y2="12"></line><line x1="4" y1="18" x2="9" y2="18"></line></svg>
+                            A → Z
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="per-page-select">
+                        <span class="per-page-label">Per page</span>
+                        <div class="per-page-btns" id="perPageBtns">
+                            <button class="per-page-btn active" onclick="setPerPage(6)">6</button>
+                            <button class="per-page-btn" onclick="setPerPage(12)">12</button>
+                            <button class="per-page-btn" onclick="setPerPage(24)">24</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-row">
+                    <div class="filter-group" id="themeFilters">
+                        <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">All</button>
+                        <button class="filter-btn" data-filter="Emergency" onclick="setFilter(this)">Emergency</button>
+                        <button class="filter-btn" data-filter="Mental Health" onclick="setFilter(this)">Mental Health</button>
+                        <button class="filter-btn" data-filter="Cardiovascular" onclick="setFilter(this)">Cardiovascular</button>
+                        <button class="filter-btn" data-filter="Nutrition" onclick="setFilter(this)">Nutrition</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <p class="results-info" id="resultsInfo"></p>
+
+        <div class="bookmarks-grid" id="bookmarksGrid"></div>
+
+        <nav class="pagination" id="paginationBar" aria-label="Bookmarks pagination"></nav>
+
+        <div class="empty-state" id="emptyState">
+            <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <p class="empty-title" id="emptyTitle">No bookmarks yet</p>
+            <p class="empty-subtitle" id="emptySubtitle">Articles you bookmark in the encyclopedia will appear here for easy access.</p>
+            <a href="/encyclopedia" class="empty-cta">Browse Encyclopedia</a>
+        </div>
+
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastMsg">Bookmark removed</span>
+    </div>
+
+    <script>
+        // ─── Mock data matching the DB schema ───────────────────────────────────
+        // user_bookmark → article → theme, tags, user_article_view
+        const MOCK_BOOKMARKS = [
+            {
+                id: 'bm-1',
+                created_at: new Date('2025-02-28T10:15:00'),
+                article: {
+                    id: 'art-1',
+                    name: 'Myocardial Infarction (Heart Attack)',
+                    slug: 'myocardial-infarction',
+                    content_markdown: 'A myocardial infarction occurs when blood flow to part of the heart is blocked for a long enough time that part of the heart muscle is damaged or dies. This is also called a heart attack. The blockage is usually caused by a buildup of plaque in the coronary arteries.',
+                    published_at: new Date('2025-01-12T09:00:00'),
+                    theme: { name: 'Cardiovascular', color_code: '#e65100' },
+                    tags: ['Cardiology', 'Emergency Medicine', 'Heart Disease'],
+                    view_count: 12847,
+                    last_viewed_at: new Date('2025-03-05T09:48:00')
+                }
+            },
+            {
+                id: 'bm-2',
+                created_at: new Date('2025-02-24T14:30:00'),
+                article: {
+                    id: 'art-2',
+                    name: 'Choking First Response & Heimlich Maneuver',
+                    slug: 'choking-heimlich-maneuver',
+                    content_markdown: 'Choking occurs when a foreign object becomes lodged in the throat or windpipe, blocking the flow of air. The Heimlich maneuver is an emergency procedure for removing airway obstructions in conscious victims. Recognizing choking quickly is critical — a complete obstruction can cause unconsciousness within minutes.',
+                    published_at: new Date('2025-01-20T11:00:00'),
+                    theme: { name: 'Emergency', color_code: '#e53935' },
+                    tags: ['First Aid', 'Airway', 'CPR'],
+                    view_count: 8432,
+                    last_viewed_at: new Date('2025-03-03T16:22:00')
+                }
+            },
+            {
+                id: 'bm-3',
+                created_at: new Date('2025-02-19T08:00:00'),
+                article: {
+                    id: 'art-3',
+                    name: 'Generalized Anxiety Disorder (GAD)',
+                    slug: 'generalized-anxiety-disorder',
+                    content_markdown: 'Generalized Anxiety Disorder is characterized by persistent and excessive worry about a number of different things. People with GAD may anticipate disaster and may be overly concerned about money, health, family, work, or other issues. GAD affects 6.8 million adults in the US each year.',
+                    published_at: new Date('2025-02-01T10:00:00'),
+                    theme: { name: 'Mental Health', color_code: '#7b1fa2' },
+                    tags: ['Anxiety', 'Psychiatry', 'Mental Wellness'],
+                    view_count: 5210,
+                    last_viewed_at: new Date('2025-03-01T11:55:00')
+                }
+            },
+            {
+                id: 'bm-4',
+                created_at: new Date('2025-02-14T17:45:00'),
+                article: {
+                    id: 'art-4',
+                    name: 'Cardiopulmonary Resuscitation (CPR) – Full Guide',
+                    slug: 'cpr-guide',
+                    content_markdown: 'Cardiopulmonary resuscitation (CPR) is a lifesaving technique that is useful in many emergencies, including a heart attack or near drowning, in which someone\'s breathing or heartbeat has stopped. The American Heart Association recommends starting CPR with hard and fast chest compressions.',
+                    published_at: new Date('2025-01-08T08:30:00'),
+                    theme: { name: 'Emergency', color_code: '#e53935' },
+                    tags: ['CPR', 'First Aid', 'Resuscitation'],
+                    view_count: 21034,
+                    last_viewed_at: new Date('2025-03-04T08:10:00')
+                }
+            },
+            {
+                id: 'bm-5',
+                created_at: new Date('2025-02-10T12:00:00'),
+                article: {
+                    id: 'art-5',
+                    name: 'The Mediterranean Diet & Cardiovascular Health',
+                    slug: 'mediterranean-diet-cardiovascular',
+                    content_markdown: 'The Mediterranean diet is based on the traditional foods and cooking styles of people living near the Mediterranean Sea. Research consistently shows that people who follow a Mediterranean-style diet have a lower risk of heart disease, metabolic syndrome, diabetes, certain cancers, and in older adults, decreased risk of frailty.',
+                    published_at: new Date('2025-01-30T14:00:00'),
+                    theme: { name: 'Nutrition', color_code: '#2e7d32' },
+                    tags: ['Diet', 'Heart Health', 'Lifestyle'],
+                    view_count: 3887,
+                    last_viewed_at: new Date('2025-02-28T20:40:00')
+                }
+            },
+            {
+                id: 'bm-6',
+                created_at: new Date('2025-02-05T09:20:00'),
+                article: {
+                    id: 'art-6',
+                    name: 'Stroke: Recognition, Types & Emergency Response',
+                    slug: 'stroke-recognition-response',
+                    content_markdown: 'A stroke occurs when the blood supply to part of the brain is cut off. Know the FAST warning signs: Face drooping, Arm weakness, Speech difficulty, Time to call 911. Stroke is a leading cause of death and disability. Immediate treatment is crucial — the sooner treatment begins, the less damage is likely.',
+                    published_at: new Date('2025-01-15T09:00:00'),
+                    theme: { name: 'Emergency', color_code: '#e53935' },
+                    tags: ['Neurology', 'Emergency', 'Brain'],
+                    view_count: 9601,
+                    last_viewed_at: new Date('2025-03-05T07:30:00')
+                }
+            },
+            {
+                id: 'bm-7',
+                created_at: new Date('2025-01-28T15:10:00'),
+                article: {
+                    id: 'art-7',
+                    name: 'Depression: Causes, Symptoms & Treatment Options',
+                    slug: 'depression-causes-symptoms-treatment',
+                    content_markdown: 'Depression is a common and serious medical illness that negatively affects how you feel, the way you think and how you act. It causes feelings of sadness and a loss of interest in activities once enjoyed. Depression can lead to a variety of emotional and physical problems and can decrease your ability to function.',
+                    published_at: new Date('2025-02-03T11:00:00'),
+                    theme: { name: 'Mental Health', color_code: '#7b1fa2' },
+                    tags: ['Depression', 'Mental Health', 'Psychiatry'],
+                    view_count: 7145,
+                    last_viewed_at: new Date('2025-02-25T14:22:00')
+                }
+            }
+        ];
+
+        // ─── State ───────────────────────────────────────────────────────────────
+        let bookmarks = [...MOCK_BOOKMARKS];
+        let activeFilter = 'all';
+        let currentSort = 'newest';
+        let currentPage = 1;
+        let perPage = 6;
+
+        // ─── Helpers ─────────────────────────────────────────────────────────────
+        function formatDate(date) {
+            const now = new Date();
+            const diff = Math.floor((now - date) / 1000);
+            if (diff < 60) return 'Just now';
+            if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+            if (diff < 604800) return `${Math.floor(diff / 86400)}d ago`;
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function formatViews(n) {
+            if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+            return n.toString();
+        }
+
+        function themeClass(themeName) {
+            const map = {
+                'Emergency': 'theme-emergency',
+                'Mental Health': 'theme-mental',
+                'Cardiovascular': 'theme-cardiovascular',
+                'Nutrition': 'theme-nutrition',
+                'Neurology': 'theme-neurology'
+            };
+            return map[themeName] || 'theme-cardiovascular';
+        }
+
+        function highlightText(text, query) {
+            if (!query) return text;
+            const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            return text.replace(new RegExp(`(${escaped})`, 'gi'), '<span class="highlight">$1</span>');
+        }
+
+        function getExcerpt(markdown, maxLen = 160) {
+            const plain = markdown.replace(/[#*_`[\]()]/g, '').trim();
+            return plain.length > maxLen ? plain.slice(0, maxLen).trim() + '…' : plain;
+        }
+
+        // ─── Render ──────────────────────────────────────────────────────────────
+        function renderBookmarks(items, query = '') {
+            const grid = document.getElementById('bookmarksGrid');
+            const empty = document.getElementById('emptyState');
+            const info = document.getElementById('resultsInfo');
+            const badge = document.getElementById('countBadge');
+            const paginationBar = document.getElementById('paginationBar');
+
+            badge.textContent = bookmarks.length;
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                paginationBar.innerHTML = '';
+                empty.classList.add('visible');
+                info.textContent = '';
+                const isFiltered = activeFilter !== 'all' || document.getElementById('bookmarkSearch').value.trim();
+                document.getElementById('emptyTitle').textContent = isFiltered ? 'No matching bookmarks' : 'No bookmarks yet';
+                document.getElementById('emptySubtitle').textContent = isFiltered
+                    ? 'Try adjusting your search or filters.'
+                    : 'Articles you bookmark in the encyclopedia will appear here for easy access.';
+                return;
+            }
+
+            empty.classList.remove('visible');
+
+            // Pagination slice
+            const totalPages = Math.ceil(items.length / perPage);
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * perPage;
+            const pageItems = items.slice(start, start + perPage);
+
+            const startNum = start + 1;
+            const endNum = Math.min(start + perPage, items.length);
+            info.textContent = `Showing ${startNum}–${endNum} of ${items.length} bookmark${items.length !== 1 ? 's' : ''}`;
+
+            grid.innerHTML = pageItems.map(bm => {
+                const a = bm.article;
+                return `
+                <div class="bookmark-card" id="card-${bm.id}" onclick="openArticle('${a.slug}')">
+                    <div class="card-top">
+                        <span class="card-theme-badge ${themeClass(a.theme.name)}">${a.theme.name}</span>
+                        <button class="remove-bookmark-btn" title="Remove bookmark" onclick="removeBookmark(event, '${bm.id}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                                <path d="M10 11v6M14 11v6"></path>
+                                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <h2 class="card-title">${highlightText(a.name, query)}</h2>
+                    <p class="card-excerpt">${highlightText(getExcerpt(a.content_markdown), query)}</p>
+
+                    <div class="card-tags">
+                        ${a.tags.slice(0, 3).map(t => `<span class="tag-chip">${t}</span>`).join('')}
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="card-meta">
+                            <span class="meta-item" title="Total views">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                ${formatViews(a.view_count)} views
+                            </span>
+                            <span class="meta-item" title="Bookmarked on">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Published ${formatDate(a.published_at)}
+                            </span>
+                            <span class="meta-item" title="Bookmarked at">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                Bookmarked ${formatDate(bm.created_at)}
+                            </span>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            renderPagination(totalPages, items, query);
+        }
+
+        function renderPagination(totalPages, filteredItems, query) {
+            const bar = document.getElementById('paginationBar');
+            if (totalPages <= 1) { bar.innerHTML = ''; return; }
+
+            let html = '';
+
+            // Prev
+            html += `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>`;
+
+            getPageNumbers(currentPage, totalPages).forEach(p => {
+                if (p === '...') {
+                    html += `<span class="page-ellipsis">…</span>`;
+                } else {
+                    html += `<button class="page-btn ${p === currentPage ? 'active' : ''}" onclick="goToPage(${p})">${p}</button>`;
+                }
+            });
+
+            // Next
+            html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>`;
+
+            bar.innerHTML = html;
+        }
+
+        function getPageNumbers(current, total) {
+            if (total <= 7) return Array.from({length: total}, (_, i) => i + 1);
+            const pages = [1];
+            if (current > 3) pages.push('...');
+            for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) pages.push(i);
+            if (current < total - 2) pages.push('...');
+            pages.push(total);
+            return pages;
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            applyFilters();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setPerPage(n) {
+            perPage = n;
+            currentPage = 1;
+            document.querySelectorAll('#perPageBtns .per-page-btn').forEach(b => {
+                b.classList.toggle('active', parseInt(b.textContent) === n);
+            });
+            applyFilters();
+        }
+
+        function applyFilters(resetPage = false) {
+            if (resetPage) currentPage = 1;
+            const query = document.getElementById('bookmarkSearch').value.trim().toLowerCase();
+            const sort = currentSort;
+
+            let filtered = bookmarks.filter(bm => {
+                const matchFilter = activeFilter === 'all' || bm.article.theme.name === activeFilter;
+                const matchSearch = !query
+                    || bm.article.name.toLowerCase().includes(query)
+                    || bm.article.content_markdown.toLowerCase().includes(query)
+                    || bm.article.tags.some(t => t.toLowerCase().includes(query));
+                return matchFilter && matchSearch;
+            });
+
+            filtered.sort((a, b) => {
+                switch (sort) {
+                    case 'oldest':    return a.created_at - b.created_at;
+                    case 'most-viewed': return b.article.view_count - a.article.view_count;
+                    case 'az':        return a.article.name.localeCompare(b.article.name);
+                    default:          return b.created_at - a.created_at; // newest
+                }
+            });
+
+            renderBookmarks(filtered, query);
+        }
+
+        function setFilter(btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilter = btn.dataset.filter;
+            applyFilters(true);
+        }
+
+        // ─── Actions ─────────────────────────────────────────────────────────────
+        function removeBookmark(event, id) {
+            event.stopPropagation();
+            const card = document.getElementById('card-' + id);
+            if (card) {
+                card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    bookmarks = bookmarks.filter(bm => bm.id !== id);
+                    applyFilters();
+                    showToast('Bookmark removed');
+                }, 250);
+            }
+        }
+
+        function openArticle(slug) {
+            window.location.href = '/encyclopedia/' + slug;
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+
+        // ─── Sort dropdown ────────────────────────────────────────────────────────
+        function toggleSortMenu() {
+            const trigger = document.getElementById('sortTrigger');
+            const menu = document.getElementById('sortMenu');
+            const isOpen = menu.classList.contains('open');
+            menu.classList.toggle('open', !isOpen);
+            trigger.classList.toggle('open', !isOpen);
+        }
+
+        function selectSort(el) {
+            currentSort = el.dataset.value;
+            document.getElementById('sortLabel').textContent = el.textContent.trim().replace(/\n.*/,'').trim();
+            document.querySelectorAll('.sort-option').forEach(o => {
+                o.classList.remove('selected');
+                const check = o.querySelector('.sort-check');
+                if (check) check.remove();
+            });
+            el.classList.add('selected');
+            const check = document.createElementNS('http://www.w3.org/2000/svg','svg');
+            check.setAttribute('class','sort-check');
+            check.setAttribute('xmlns','http://www.w3.org/2000/svg');
+            check.setAttribute('viewBox','0 0 24 24');
+            check.setAttribute('stroke-width','2.5');
+            check.setAttribute('stroke-linecap','round');
+            check.setAttribute('stroke-linejoin','round');
+            const poly = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+            poly.setAttribute('points','20 6 9 17 4 12');
+            check.appendChild(poly);
+            el.appendChild(check);
+            document.getElementById('sortMenu').classList.remove('open');
+            document.getElementById('sortTrigger').classList.remove('open');
+            applyFilters(true);
+        }
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('#sortDropdown')) {
+                document.getElementById('sortMenu').classList.remove('open');
+                document.getElementById('sortTrigger').classList.remove('open');
+            }
+        });
+
+        // ─── Nav helpers ──────────────────────────────────────────────────────────
+        function toggleAccountMenu() {
+            document.getElementById('accountDropdown').classList.toggle('active');
+        }
+
+        function toggleMobileSidebar() {
+            document.getElementById('sidebar').classList.toggle('mobile-open');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function toggleSubmenu(event, id) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const submenu = document.getElementById(id);
+            link.classList.toggle('expanded');
+            submenu.classList.toggle('expanded');
+        }
+
+        document.addEventListener('click', e => {
+            const menu = document.getElementById('accountDropdown');
+            if (!e.target.closest('.account-menu')) menu.classList.remove('active');
+        });
+
+        // ─── Init ─────────────────────────────────────────────────────────────────
+        applyFilters();
+    </script>
+</body>
+</html>
