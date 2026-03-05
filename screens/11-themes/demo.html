@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Themes – Medicalogy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f7;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f0f0;
+            --accent-primary: #1cb0f6;
+            --accent-primary-dark: #1899d6;
+            --accent-primary-light: #84d8ff;
+            --accent-success: #58cc02;
+            --accent-success-dark: #46a302;
+            --accent-success-bg: #d7ffb8;
+            --accent-warning: #ff9600;
+            --accent-warning-dark: #e68600;
+            --accent-error: #ff4b4b;
+            --accent-purple: #ce82ff;
+            --accent-purple-dark: #9c52d0;
+            --text-primary: #3c3c3c;
+            --text-secondary: #777777;
+            --text-muted: #afafaf;
+            --border-color: #e5e5e5;
+            --border-dark: #cecece;
+            --border-radius: 16px;
+            --border-radius-sm: 12px;
+            --transition: all 0.2s ease;
+            --sidebar-width: 280px;
+            --navbar-height: 70px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-button: 0 4px 0 var(--border-dark);
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--navbar-height);
+            background: var(--bg-primary);
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            width: 44px; height: 44px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+
+        .hamburger-icon { width: 22px; height: 22px; stroke: var(--text-secondary); fill: none; }
+
+        .navbar-logo {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            text-decoration: none;
+            margin-right: 40px;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-search { flex: 1; max-width: 500px; position: relative; }
+
+        .search-icon {
+            position: absolute; left: 14px; top: 50%;
+            transform: translateY(-50%);
+            width: 18px; height: 18px;
+            stroke: var(--text-muted); fill: none; pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 44px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem; font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-input:focus {
+            outline: none; border-color: var(--accent-primary);
+            background: var(--bg-primary);
+            box-shadow: 0 0 0 4px rgba(28, 176, 246, 0.15);
+        }
+
+        .navbar-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; }
+
+        .nav-streak-indicator {
+            display: flex; align-items: center; gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg-primary);
+            border: 2px solid var(--accent-warning);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .nav-streak-icon { width: 24px; height: 24px; fill: var(--accent-warning); }
+        .nav-streak-count { font-weight: 800; color: var(--accent-warning-dark); font-size: 1rem; }
+        .nav-streak-label { font-size: 0.85rem; color: var(--accent-warning-dark); font-weight: 600; }
+
+        .notification-btn {
+            position: relative; width: 44px; height: 44px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+
+        .notification-btn:hover { background: var(--bg-hover); border-color: var(--border-dark); }
+        .notification-icon { width: 22px; height: 22px; stroke: var(--text-secondary); fill: none; }
+
+        .notification-badge {
+            position: absolute; top: -6px; right: -6px;
+            width: 22px; height: 22px;
+            background: var(--accent-error); border-radius: 50%;
+            border: 2px solid var(--bg-primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 800; color: white;
+        }
+
+        .account-menu { position: relative; }
+
+        .account-btn {
+            width: 44px; height: 44px;
+            background: var(--accent-primary); border: none; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; color: white; font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 3px 0 var(--accent-primary-dark);
+        }
+
+        .account-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--accent-primary-dark); }
+        .account-btn:active { transform: translateY(0); box-shadow: 0 1px 0 var(--accent-primary-dark); }
+
+        .account-dropdown {
+            position: absolute; top: calc(100% + 10px); right: 0; width: 200px;
+            background: var(--bg-primary); border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-lg); border: 2px solid var(--border-color);
+            overflow: hidden; display: none;
+        }
+
+        .account-dropdown.active { display: block; }
+
+        .dropdown-item {
+            padding: 12px 16px; color: var(--text-secondary); text-decoration: none;
+            display: flex; align-items: center; gap: 10px; cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700; font-size: 0.95rem;
+        }
+
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .dropdown-icon { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed; left: 0; top: var(--navbar-height);
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--navbar-height));
+            background: var(--bg-primary);
+            border-right: 2px solid var(--border-color);
+            overflow-y: auto; padding: 20px 0; z-index: 900;
+        }
+
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+        .sidebar-section { margin-bottom: 4px; padding: 0 16px; }
+
+        .sidebar-title {
+            font-size: 0.75rem; font-weight: 800; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 4px; margin-top: 16px; padding-left: 12px;
+        }
+
+        .sidebar-nav { list-style: none; }
+        .nav-item { margin-bottom: 4px; }
+
+        .nav-link {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px; color: var(--text-secondary);
+            text-decoration: none; border-radius: var(--border-radius-sm);
+            transition: var(--transition); font-weight: 700;
+            border: 2px solid transparent; font-family: 'Nunito', sans-serif;
+            font-size: 1rem; line-height: 1.7; background: none;
+            width: 100%; text-align: left; cursor: pointer; box-sizing: border-box;
+        }
+
+        .nav-link:hover { background: var(--bg-secondary); color: var(--text-primary); }
+        .nav-link.active {
+            background: rgba(28, 176, 246, 0.1);
+            color: var(--accent-primary); border-color: var(--accent-primary);
+        }
+
+        .nav-icon { width: 24px; height: 24px; stroke: currentColor; fill: none; flex-shrink: 0; }
+        .nav-text { flex: 1; font-size: 1rem; }
+
+        .nav-link.has-submenu .nav-icon.chevron {
+            margin-left: auto; transition: transform 0.3s ease; flex-shrink: 0;
+        }
+        .nav-link.has-submenu.expanded .nav-icon.chevron { transform: rotate(180deg); }
+
+        .submenu {
+            list-style: none; max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease; padding-left: 52px; margin-top: -6px;
+        }
+        .submenu.expanded { max-height: 500px; }
+        .submenu-item { margin-bottom: 0; }
+
+        .submenu-link {
+            display: block; padding: 4px 12px; color: var(--text-secondary);
+            text-decoration: none; border-radius: var(--border-radius-sm);
+            font-size: 0.95rem; font-weight: 600; transition: var(--transition);
+        }
+        .submenu-link:hover { background: var(--bg-secondary); color: var(--accent-primary); }
+        .submenu-link.active { color: var(--accent-primary); font-weight: 700; }
+
+        .sidebar-overlay {
+            display: none; position: fixed; top: var(--navbar-height);
+            left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 850;
+        }
+        .sidebar-overlay.active { display: block; }
+
+        /* ===== MAIN WRAPPER ===== */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--navbar-height);
+            min-height: calc(100vh - var(--navbar-height));
+            padding: 40px 48px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            :root { --sidebar-width: 0px; }
+            .sidebar { width: 280px; transform: translateX(-100%); transition: transform 0.3s ease; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; }
+            .mobile-menu-btn { display: flex; }
+            .navbar-search { display: none; }
+        }
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 24px 16px 80px; }
+            .navbar { padding: 0 16px; }
+            .navbar-logo { font-size: 1.3rem; margin-right: 16px; }
+            .nav-streak-label { display: none; }
+        }
+
+        /* ===========================
+           THEMES PAGE STYLES
+        =========================== */
+
+        .page-header { margin-bottom: 32px; }
+
+        .page-title {
+            font-size: 2rem; font-weight: 800;
+            color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 6px;
+        }
+
+        .page-subtitle {
+            font-size: 1rem; color: var(--text-secondary); font-weight: 600;
+        }
+
+
+
+        /* Section heading */
+        .section-heading {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+        }
+        .section-heading + .section-heading { margin-top: 40px; }
+
+        .section-label {
+            font-size: 0.7rem; font-weight: 800; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1.2px; white-space: nowrap;
+        }
+        .section-line { flex: 1; height: 2px; background: var(--border-color); border-radius: 2px; }
+        .section-count {
+            font-size: 0.75rem; font-weight: 800; color: var(--text-muted);
+            background: var(--bg-primary); border: 2px solid var(--border-color);
+            border-radius: 99px; padding: 1px 9px;
+        }
+
+        /* ===========================
+           ENROLLED: full-width cards
+        =========================== */
+        .themes-list { display: flex; flex-direction: column; gap: 12px; }
+
+        .theme-row {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 20px 24px;
+            display: flex; flex-direction: column; gap: 12px;
+            transition: var(--transition);
+            text-decoration: none; color: inherit; cursor: pointer;
+        }
+        .theme-row:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+
+        /* Top row: icon + name + spacer + meta chips + button */
+        .theme-row-top {
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        .theme-row-icon-pill {
+            width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-row-icon-pill svg { width: 18px; height: 18px; fill: none; }
+
+        .theme-row-name {
+            font-size: 1.05rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.2px;
+        }
+
+        .theme-row-spacer { flex: 1; }
+
+        .theme-row-chips { display: flex; align-items: center; gap: 8px; }
+
+        .meta-chip {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+            background: var(--bg-secondary); border: 1.5px solid var(--border-color);
+            border-radius: 99px; padding: 4px 10px; white-space: nowrap;
+        }
+        .meta-chip svg { width: 12px; height: 12px; stroke: currentColor; fill: none; }
+
+
+
+        /* Description */
+        .theme-row-desc {
+            font-size: 0.88rem; color: var(--text-secondary); font-weight: 600; line-height: 1.5;
+        }
+
+        /* Progress row */
+        .theme-row-progress { display: flex; align-items: center; gap: 10px; }
+
+        .prog-track {
+            flex: 1; height: 7px;
+            background: var(--bg-secondary); border-radius: 99px; overflow: hidden;
+            border: 1.5px solid var(--border-color);
+        }
+        .prog-fill { height: 100%; border-radius: 99px; transition: width 0.6s ease; }
+        .prog-pct { font-size: 0.78rem; font-weight: 800; min-width: 32px; text-align: right; }
+
+        @media (max-width: 640px) {
+            .theme-row-chips { display: none; }
+            .theme-row-top { flex-wrap: wrap; }
+        }
+
+        /* ===========================
+           AVAILABLE: 3-col compact grid
+        =========================== */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 10px;
+        }
+        @media (max-width: 560px) { .themes-grid { grid-template-columns: 1fr; } }
+
+        .theme-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden; cursor: pointer;
+            transition: var(--transition);
+            display: flex; flex-direction: column;
+        }
+        .theme-card:hover { border-color: var(--border-dark); border-top-color: inherit; box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+
+        .theme-card-header {
+            display: flex; align-items: center; gap: 12px;
+            padding: 16px 16px 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .theme-card-icon {
+            width: 42px; height: 42px; flex-shrink: 0;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-card-icon svg { width: 20px; height: 20px; stroke: var(--text-secondary); fill: none; }
+
+        .theme-card-title { font-size: 0.92rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.1px; line-height: 1.3; }
+        .theme-card-sub { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-top: 2px; }
+
+        .badge-new {
+            margin-left: auto; flex-shrink: 0;
+            display: inline-flex; align-items: center;
+            padding: 2px 7px;
+            background: rgba(28,176,246,0.1);
+            color: var(--accent-primary-dark);
+            border: 1.5px solid var(--accent-primary);
+            border-radius: 99px; font-size: 0.65rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.4px;
+        }
+
+        .theme-card-desc-wrap { padding: 12px 16px; flex: 1; }
+        .theme-card-desc {
+            font-size: 0.82rem; color: var(--text-secondary); font-weight: 600; line-height: 1.5;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        .theme-card-footer {
+            padding: 10px 16px;
+            border-top: 2px solid var(--border-color);
+            display: flex; align-items: center; justify-content: space-between; gap: 8px;
+        }
+
+        .card-stat {
+            display: flex; align-items: center; gap: 4px;
+            font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+        }
+        .card-stat svg { width: 11px; height: 11px; stroke: currentColor; fill: none; }
+
+        .enroll-btn {
+            padding: 6px 13px;
+            background: var(--bg-secondary); color: var(--text-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 800;
+            cursor: pointer; transition: var(--transition); white-space: nowrap;
+        }
+        .enroll-btn:hover {
+            background: var(--enroll-color, var(--accent-primary)); color: white;
+            border-color: var(--enroll-color, var(--accent-primary));
+            box-shadow: 0 3px 0 color-mix(in srgb, var(--enroll-color, var(--accent-primary)) 70%, black);
+            transform: translateY(-1px);
+        }
+        .enroll-btn:active { transform: translateY(0); }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed; bottom: 32px; left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: var(--text-primary); color: white;
+            padding: 14px 24px; border-radius: var(--border-radius-sm);
+            font-weight: 700; font-size: 0.95rem; z-index: 9999;
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: var(--shadow-lg); white-space: nowrap;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">
+            <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <a href="/" class="navbar-logo">Medicalogy</a>
+
+        <div class="navbar-actions">
+            <div class="nav-streak-indicator">
+                <svg class="nav-streak-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2c1.5 3 4 5 6 8-2-1-4 0-5 2 0 0 0-1-1-2-1-1-2-1-3 0 0-3-3-5-5-8 1 4 0 8-2 12-1 2-1 4 0 6 1 3 4 4 7 4 4 0 7-2 8-5 1-2 1-5-1-8-1-2-3-4-4-9z"/>
+                </svg>
+                <span class="nav-streak-count">7</span>
+            </div>
+
+            <button class="notification-btn">
+                <svg class="notification-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <div class="account-menu">
+                <button class="account-btn" onclick="toggleAccountMenu()">JD</button>
+                <div class="account-dropdown" id="accountDropdown">
+                    <a href="/settings" class="dropdown-item">
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                    <a href="/logout" class="dropdown-item">
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDEBAR OVERLAY (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Learning</h3>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/themes" class="nav-link active">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <span class="nav-text">Themes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link has-submenu expanded" onclick="toggleSubmenu(event, 'themesSubmenu')">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                        </svg>
+                        <span class="nav-text">Enrolled Themes</span>
+                        <svg class="nav-icon chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="submenu expanded" id="themesSubmenu">
+                        <li class="submenu-item"><a href="/emergency-care" class="submenu-link">Emergency Care</a></li>
+                        <li class="submenu-item"><a href="/mental-health" class="submenu-link">Mental Health</a></li>
+                        <li class="submenu-item"><a href="/nutrition" class="submenu-link">Nutrition</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Resources</h3>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/encyclopedia" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        <span class="nav-text">Encyclopedia</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/bookmarks" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span class="nav-text">Bookmarks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link has-submenu expanded" onclick="toggleSubmenu(event, 'recentSubmenu')">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span class="nav-text">Recent Articles</span>
+                        <svg class="nav-icon chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="submenu expanded" id="recentSubmenu">
+                        <li class="submenu-item"><a href="/wiki/myocardial-infarction" class="submenu-link">Myocardial Infarction</a></li>
+                        <li class="submenu-item"><a href="/wiki/stroke-recognition" class="submenu-link">Stroke Recognition</a></li>
+                        <li class="submenu-item"><a href="/wiki/type-2-diabetes" class="submenu-link">Type 2 Diabetes</a></li>
+                        <li class="submenu-item"><a href="/wiki/anxiety-overview" class="submenu-link">Anxiety Disorders</a></li>
+                        <li class="submenu-item"><a href="/wiki/cpr-guide" class="submenu-link">CPR Guide</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+
+        <div class="page-header">
+            <h1 class="page-title">Knowledge Themes</h1>
+            <p class="page-subtitle">Pick a domain to start learning. Complete all sections to earn a badge.</p>
+        </div>
+
+
+
+        <!-- My Themes -->
+        <div class="section-heading">
+            <span class="section-label">Enrolled</span>
+            <div class="section-line"></div>
+            <span class="section-count" id="enrolledCount">3</span>
+        </div>
+
+        <div class="themes-list" id="enrolledList"></div>
+
+        <!-- Explore -->
+        <div class="section-heading" style="margin-top: 40px;">
+            <span class="section-label">Explore More</span>
+            <div class="section-line"></div>
+            <span class="section-count" id="availableCount">6</span>
+        </div>
+
+        <div class="themes-grid" id="availableGrid"></div>
+
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastMsg"></span>
+    </div>
+
+    <script>
+        // icon_file_name stored in DB -> resolved to inline SVG by front-end
+        const ICONS = {
+            'alert-circle':    `<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>`,
+            'brain':           `<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/>`,
+            'salad':           `<path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-3.19 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.4 2.4 0 0 1-1.07 3.2A2.4 2.4 0 0 1 18 15"/><path d="M13 12a4 4 0 0 1-4 4H7"/>`,
+            'heart-pulse':     `<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`,
+            'sun':             `<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>`,
+            'wind':            `<path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>`,
+            'syringe':         `<path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/>`,
+            'shield':          `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>`,
+            'pill':            `<path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/>`,
+        };
+
+        // Theme data — icon_file_name mirrors the new DB column; color_code is #rrggbb from DB
+        const THEMES = [
+            { id:'t-1', name:'Emergency Care',          slug:'emergency-care',         icon_file_name:'alert-circle', color_code:'#c0614a', description:'Life-saving first response: CPR, choking, bleeding control, and critical incident management.', sections:6, courses:24, enrolled:true,  enrolled_at:'2025-01-08', progress:58, completedCourses:14 },
+            { id:'t-2', name:'Mental Health',            slug:'mental-health',           icon_file_name:'brain',        color_code:'#7c6aab', description:'Anxiety, depression, stress management, and how to support yourself and those around you.',     sections:5, courses:20, enrolled:true,  enrolled_at:'2025-02-14', progress:30, completedCourses:6  },
+            { id:'t-3', name:'Nutrition',                slug:'nutrition',               icon_file_name:'salad',        color_code:'#5a9e6f', description:'Macronutrients, dietary needs across life stages, healthy eating habits, and food safety.',     sections:4, courses:16, enrolled:true,  enrolled_at:'2024-11-20', progress:75, completedCourses:12 },
+            { id:'t-4', name:'Cardiovascular Health',    slug:'cardiovascular',          icon_file_name:'heart-pulse',  color_code:'#c47a5a', description:'Heart anatomy, hypertension, arrhythmias, and evidence-based prevention strategies.',          sections:5, courses:22, enrolled:false, isNew:false },
+            { id:'t-5', name:'Neurology',                slug:'neurology',               icon_file_name:'sun',          color_code:'#5b7fb5', description:'Brain function, stroke recognition, epilepsy, migraines, and neurological conditions.',         sections:6, courses:25, enrolled:false, isNew:false },
+            { id:'t-6', name:'Respiratory Health',       slug:'respiratory',             icon_file_name:'wind',         color_code:'#4d9aa3', description:'Asthma, COPD, pneumonia, and how the respiratory system defends the body.',                   sections:4, courses:18, enrolled:false, isNew:false },
+            { id:'t-7', name:'Diabetes & Endocrinology', slug:'diabetes-endocrinology',  icon_file_name:'syringe',      color_code:'#b8924a', description:'Insulin, blood sugar management, thyroid disorders, and hormonal health fundamentals.',         sections:5, courses:21, enrolled:false, isNew:true  },
+            { id:'t-8', name:'Infectious Diseases',      slug:'infectious-diseases',     icon_file_name:'shield',       color_code:'#6b9e7a', description:'How pathogens spread — plus vaccines, hygiene practices, and outbreak containment.',            sections:5, courses:20, enrolled:false, isNew:true  },
+            { id:'t-9', name:'Pharmacology Basics',      slug:'pharmacology',            icon_file_name:'pill',         color_code:'#7a8aaa', description:'How medications work, drug interactions, dosing principles, and safe medication use.',          sections:4, courses:17, enrolled:false, isNew:false },
+        ];
+
+        function renderRow(t) {
+            return `
+            <a href="/themes/${t.slug}" class="theme-row" style="border-color: ${t.color_code}; border-width: 2px;">
+                <div class="theme-row-top">
+                    <div class="theme-row-icon-pill" style="background:${t.color_code}18;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke:${t.color_code}; width:18px; height:18px;">${ICONS[t.icon_file_name] || ICONS['pill']}</svg>
+                    </div>
+                    <span class="theme-row-name">${t.name}</span>
+                    <div class="theme-row-spacer"></div>
+                    <div class="theme-row-chips">
+                        <span class="meta-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                            ${t.completedCourses} / ${t.courses} courses
+                        </span>
+                        <span class="meta-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                            ${t.sections} sections
+                        </span>
+                        <span class="meta-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Enrolled ${new Date(t.enrolled_at).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}
+                        </span>
+                    </div>
+                </div>
+                <div class="theme-row-desc">${t.description}</div>
+                <div class="theme-row-progress">
+                    <div class="prog-track">
+                        <div class="prog-fill" style="width:${t.progress}%; background:${t.color_code};"></div>
+                    </div>
+                    <span class="prog-pct" style="color:${t.color_code};">${t.progress}%</span>
+                </div>
+            </a>`;
+        }
+
+        function renderCard(t) {
+            return `
+            <div class="theme-card" style="border-color: var(--border-color); border-width: 2px; border-top: 4px solid ${t.color_code};" onclick="enrollTheme('${t.id}','${t.name}')">
+                <div class="theme-card-header">
+                    <div class="theme-card-icon" style="background: ${t.color_code}12; border-color: ${t.color_code}30;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none" style="stroke:${t.color_code}; width:20px; height:20px;">${ICONS[t.icon_file_name] || ICONS['pill']}</svg>
+                    </div>
+                    <div>
+                        <div class="theme-card-title">${t.name}</div>
+                        <div class="theme-card-sub">${t.sections} sections &middot; ${t.courses} courses</div>
+                    </div>
+                    ${t.isNew ? `<span class="badge-new" style="color:${t.color_code}; border-color:${t.color_code}; background:${t.color_code}12;">New</span>` : ''}
+                </div>
+                <div class="theme-card-desc-wrap">
+                    <div class="theme-card-desc">${t.description}</div>
+                </div>
+                <div class="theme-card-footer">
+                    <span class="card-stat">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        ~${t.sections * 7} min
+                    </span>
+                    <button class="enroll-btn" style="--enroll-color:${t.color_code};">Enroll</button>
+                </div>
+            </div>`;
+        }
+
+        function renderAll() {
+            const enrolled  = THEMES.filter(t => t.enrolled);
+            const available = THEMES.filter(t => !t.enrolled);
+            document.getElementById('enrolledList').innerHTML  = enrolled.map(renderRow).join('');
+            document.getElementById('availableGrid').innerHTML = available.map(renderCard).join('');
+            document.getElementById('enrolledCount').textContent  = enrolled.length;
+            document.getElementById('availableCount').textContent = available.length;
+        }
+
+        function enrollTheme(id, name) {
+            const t = THEMES.find(x => x.id === id);
+            if (t) { t.enrolled = true; t.progress = 0; t.completedCourses = 0; renderAll(); showToast('Enrolled in ' + name); }
+        }
+
+        function toggleAccountMenu() { document.getElementById('accountDropdown').classList.toggle('active'); }
+        function toggleMobileSidebar() {
+            document.getElementById('sidebar').classList.toggle('mobile-open');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+        function toggleSubmenu(event, id) {
+            event.preventDefault();
+            event.currentTarget.classList.toggle('expanded');
+            document.getElementById(id).classList.toggle('expanded');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.account-menu')) document.getElementById('accountDropdown').classList.remove('active');
+        });
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2500);
+        }
+
+        renderAll();
+    </script>
+</body>
+</html>
