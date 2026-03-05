@@ -380,7 +380,6 @@
             transform: rotate(180deg);
         }
 
-        /* ===== SUBMENU — indented under parent ===== */
         .submenu {
             list-style: none;
             max-height: 0;
@@ -1028,19 +1027,14 @@
         /* Responsive */
         @media (max-width: 1100px) {
             :root { --sidebar-width: 0px; }
-
             .sidebar {
                 width: 280px;
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
             }
-
             .sidebar.mobile-open { transform: translateX(0); }
-
             .main-wrapper { margin-left: 0; }
-
             .mobile-menu-btn { display: flex; }
-
             .navbar-search { display: none; }
         }
 
@@ -1145,6 +1139,70 @@
             border-color: var(--accent-success);
             color: var(--accent-success-dark);
         }
+
+        /* ===== STALE COMPLETED — greyed out, clearly done but needs revisiting ===== */
+
+        .course-button.completed.stale {
+            background: #edeae6;
+            border-color: #bdb6ac;
+            box-shadow: 0 4px 0 #aaa39a;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        /* "last studied X ago" ribbon */
+        .course-button.completed.stale::after {
+            content: attr(data-stale-label);
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: #d4cec6;
+            color: #6a6460;
+            font-size: 0.67rem;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            padding: 3px 10px 3px 8px;
+            border-radius: 0 14px 0 10px;
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: -2px 2px 5px rgba(0,0,0,0.07);
+            z-index: 2;
+        }
+
+        .course-button.completed.stale .course-icon {
+            background: #e0dbd4 !important;
+            border-color: #bdb6ac !important;
+            color: #8c8680 !important;
+        }
+
+        .course-button.completed.stale .course-name {
+            color: #7a7470 !important;
+        }
+
+        .course-button.completed.stale .course-quiz-score {
+            color: #9a9490 !important;
+        }
+
+        .course-button.completed.stale .checkmark-icon {
+            color: #b8b2aa !important;
+        }
+
+        /* hover: snap back to full green */
+        .course-button.completed.stale:hover {
+            background: var(--bg-primary);
+            border-color: var(--accent-success);
+            box-shadow: 0 6px 0 var(--accent-success-dark);
+            transform: translateY(-2px);
+        }
+        .course-button.completed.stale:hover .course-icon {
+            background: var(--accent-success-bg) !important;
+            border-color: var(--accent-success) !important;
+            color: var(--accent-success-dark) !important;
+        }
+        .course-button.completed.stale:hover .course-name  { color: var(--text-primary) !important; }
+        .course-button.completed.stale:hover .course-quiz-score { color: var(--accent-success-dark) !important; }
+        .course-button.completed.stale:hover .checkmark-icon { color: var(--accent-success) !important; }
     </style>
 </head>
 <body>
@@ -1303,11 +1361,11 @@
                 <h1 class="theme-title">Emergency Care</h1>
                 <div class="progress-container">
                     <div class="progress-bar-wrapper">
-                        <div class="progress-bar" style="width: 35%;">
+                        <div class="progress-bar" style="width: 75%;">
                             <span class="progress-star"></span>
                         </div>
                     </div>
-                    <span class="progress-text">7 / 20 courses</span>
+                    <span class="progress-text">15 / 20 courses</span>
                 </div>
             </div>
 
@@ -1346,7 +1404,7 @@
                 <div class="course-path">
 
                     <div class="course-item">
-                        <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 1)">
+                        <button class="course-button completed stale" data-stale-label="3 weeks ago" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 1)">
                             <div class="course-content">
                                 <span class="course-icon">1</span>
                                 <div class="course-info">
@@ -1365,7 +1423,7 @@
                     <div class="course-connector active"></div>
 
                     <div class="course-item">
-                        <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 2)">
+                        <button class="course-button completed stale" data-stale-label="3 weeks ago" onclick="navigateToCourse('emergency-care', 'anaphylactic-shock', 2)">
                             <div class="course-content">
                                 <span class="course-icon">2</span>
                                 <div class="course-info">
@@ -1427,74 +1485,74 @@
                 <div class="course-path">
 
                     <div class="course-item">
-                        <button class="course-button unlocked" onclick="navigateToCourse('emergency-care', 'cpr', 1)">
+                        <button class="course-button completed stale" data-stale-label="5 weeks ago" onclick="navigateToCourse('emergency-care', 'cpr', 1)">
                             <div class="course-content">
                                 <span class="course-icon">1</span>
                                 <div class="course-info">
                                     <span class="course-name">When to Perform CPR</span>
-                                    <span class="course-quiz-score">Start now</span>
+                                    <span class="course-quiz-score">9 / 10 correct</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper arrow-icon">
+                            <span class="icon-wrapper checkmark-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                             </span>
                         </button>
                     </div>
 
-                    <div class="course-connector"></div>
+                    <div class="course-connector active"></div>
 
                     <div class="course-item">
-                        <button class="course-button locked">
+                        <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'cpr', 2)">
                             <div class="course-content">
                                 <span class="course-icon">2</span>
                                 <div class="course-info">
                                     <span class="course-name">Chest Compression Technique</span>
-                                    <span class="course-quiz-score">0 / 10</span>
+                                    <span class="course-quiz-score">8 / 10 correct</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper lock-icon">
+                            <span class="icon-wrapper checkmark-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                             </span>
                         </button>
                     </div>
 
-                    <div class="course-connector"></div>
+                    <div class="course-connector active"></div>
 
                     <div class="course-item">
-                        <button class="course-button locked">
+                        <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'cpr', 3)">
                             <div class="course-content">
                                 <span class="course-icon">3</span>
                                 <div class="course-info">
                                     <span class="course-name">Rescue Breathing</span>
-                                    <span class="course-quiz-score">0 / 8</span>
+                                    <span class="course-quiz-score">7 / 8 correct</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper lock-icon">
+                            <span class="icon-wrapper checkmark-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                             </span>
                         </button>
                     </div>
 
-                    <div class="course-connector"></div>
+                    <div class="course-connector active"></div>
 
                     <div class="course-item">
-                        <button class="course-button test locked">
+                        <button class="course-button test completed" onclick="navigateToCourse('emergency-care', 'cpr', 'test')">
                             <div class="course-content">
                                 <span class="course-icon">★</span>
                                 <div class="course-info">
                                     <span class="course-name">Section Test</span>
-                                    <span class="course-quiz-score">15 questions — need ≥ 70%</span>
+                                    <span class="course-quiz-score">11 / 15 — Passed ✓</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper lock-icon">
+                            <span class="icon-wrapper checkmark-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                             </span>
                         </button>
@@ -1508,45 +1566,45 @@
                 <div class="course-path">
 
                     <div class="course-item">
-                        <button class="course-button locked">
+                        <button class="course-button completed stale" data-stale-label="2 weeks ago" onclick="navigateToCourse('emergency-care', 'choking', 1)">
                             <div class="course-content">
                                 <span class="course-icon">1</span>
                                 <div class="course-info">
                                     <span class="course-name">Recognizing Choking</span>
-                                    <span class="course-quiz-score">0 / 10</span>
+                                    <span class="course-quiz-score">10 / 10 correct</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper lock-icon">
+                            <span class="icon-wrapper checkmark-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                             </span>
                         </button>
                     </div>
 
-                    <div class="course-connector"></div>
+                    <div class="course-connector active"></div>
 
                     <div class="course-item">
-                        <button class="course-button locked">
+                        <button class="course-button completed" onclick="navigateToCourse('emergency-care', 'choking', 2)">
                             <div class="course-content">
                                 <span class="course-icon">2</span>
                                 <div class="course-info">
                                     <span class="course-name">Heimlich Maneuver</span>
-                                    <span class="course-quiz-score">0 / 12</span>
+                                    <span class="course-quiz-score">10 / 12 correct</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper lock-icon">
+                            <span class="icon-wrapper checkmark-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                                 </svg>
                             </span>
                         </button>
                     </div>
 
-                    <div class="course-connector"></div>
+                    <div class="course-connector active"></div>
 
                     <div class="course-item">
-                        <button class="course-button test locked">
+                        <button class="course-button test unlocked" onclick="navigateToCourse('emergency-care', 'choking', 'test')">
                             <div class="course-content">
                                 <span class="course-icon">★</span>
                                 <div class="course-info">
@@ -1554,9 +1612,9 @@
                                     <span class="course-quiz-score">15 questions — need ≥ 70%</span>
                                 </div>
                             </div>
-                            <span class="icon-wrapper lock-icon">
+                            <span class="icon-wrapper arrow-icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
                                 </svg>
                             </span>
                         </button>
@@ -1574,7 +1632,7 @@
                     <div class="course-path">
 
                         <div class="course-item">
-                            <button class="course-button supplementary completed" onclick="navigateToCourse('emergency-care', 'first-aid', 1)">
+                            <button class="course-button supplementary completed stale" data-stale-label="4 weeks ago" onclick="navigateToCourse('emergency-care', 'first-aid', 1)">
                                 <div class="course-content">
                                     <span class="course-icon">1</span>
                                     <div class="course-info">
