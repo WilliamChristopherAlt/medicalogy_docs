@@ -1,0 +1,85 @@
+{
+  "version": "1.1",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "Untitled-1200-×-630-px-1024x538.webp",
+        "summaryText": "DASH Diet in Practice in Clinical Nutrition in Chronic Disease focuses on condition-specific nutrition adjustment and adherence. Primary objective: Select sodium-smart options."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "quiz",
+      "orderIndex": 2,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "In DASH Diet in Practice, which action best supports 'Select sodium-smart options'?",
+        "explanation": "Correct answers prioritize patient safety, reassessment, and timely escalation.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Align meal strategy with diagnosis, meds, and lab priorities",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Applying one diet template to all chronic disease profiles",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Delay reassessment until symptoms are severe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use treatment decisions without baseline documentation",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "infographic",
+      "orderIndex": 3,
+      "content": {
+        "imageFileName": "image-13_1.png",
+        "summaryText": "Immediate priority: align meal strategy with diagnosis, meds, and lab priorities. Practical emphasis: Increase potassium-rich foods."
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "quiz",
+      "orderIndex": 4,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when poor control despite adherence, renal risk markers, or recurrent admissions.",
+        "explanation": "Early escalation reduces preventable deterioration and delays in definitive care.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Start with <1> to establish baseline status.\nUse <2> to deliver standardized intervention.\nDocument <3> to support continuity and quality review.",
+        "correctAnswers": [
+          "assessment",
+          "protocol",
+          "outcomes"
+        ],
+        "wrongAnswers": [
+          "guesswork",
+          "delay",
+          "omission"
+        ]
+      }
+    }
+  ]
+}

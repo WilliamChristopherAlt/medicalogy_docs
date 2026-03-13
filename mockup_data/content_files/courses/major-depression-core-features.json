@@ -1,0 +1,85 @@
+{
+  "version": "1.1",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "health-care-.jpg",
+        "summaryText": "Major Depression Core Features in Mood Disorders focuses on structured mood episode assessment and risk stratification. Primary objective: Map key symptom clusters."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "quiz",
+      "orderIndex": 2,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "In Major Depression Core Features, which action best supports 'Map key symptom clusters'?",
+        "explanation": "Correct answers prioritize patient safety, reassessment, and timely escalation.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Evaluate mood symptoms, sleep, appetite, and suicide risk",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Missing bipolar features before initiating antidepressant plans",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Delay reassessment until symptoms are severe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use treatment decisions without baseline documentation",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "infographic",
+      "orderIndex": 3,
+      "content": {
+        "imageFileName": "AdobeStock_246942922.jpeg",
+        "summaryText": "Immediate priority: evaluate mood symptoms, sleep, appetite, and suicide risk. Practical emphasis: Assess episode duration."
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "quiz",
+      "orderIndex": 4,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when active suicidality, psychosis, severe functional decline, or mania.",
+        "explanation": "Early escalation reduces preventable deterioration and delays in definitive care.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Start with <1> to establish baseline status.\nUse <2> to deliver standardized intervention.\nDocument <3> to support continuity and quality review.",
+        "correctAnswers": [
+          "assessment",
+          "protocol",
+          "outcomes"
+        ],
+        "wrongAnswers": [
+          "guesswork",
+          "delay",
+          "omission"
+        ]
+      }
+    }
+  ]
+}

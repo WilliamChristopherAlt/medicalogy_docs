@@ -1,0 +1,142 @@
+{
+  "version": "2.0",
+  "meta": {
+    "contentDepth": "full-fledged",
+    "theme": "Emergency Care Fundamentals",
+    "section": "Airway Emergencies",
+    "course": "Recognizing Choking in Adults",
+    "estimatedDurationMinutes": 8
+  },
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "opentext-image-ov-healthcare-en.avif",
+        "summaryText": "Recognizing Choking in Adults introduces a complete practice flow in Airway Emergencies: rapid airway patency check and oxygenation support."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "infographic",
+      "orderIndex": 2,
+      "content": {
+        "imageFileName": "depositphotos_53088729-Concept-for-health-care-and-medical-help.jpg",
+        "summaryText": "Core principle set: open airway, call support, and monitor breathing continuously, closed-loop communication, and explicit reassessment after each intervention."
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "quiz",
+      "orderIndex": 3,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "Which action best demonstrates objective: Identify universal choking signs?",
+        "explanation": "Choose the option that creates immediate safety and measurable clinical value.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Open airway, call support, and monitor breathing continuously",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Begin treatment before any assessment",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Wait for specialist input before basic checks",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use only subjective impressions",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "infographic",
+      "orderIndex": 4,
+      "content": {
+        "imageFileName": "image-13_1.png",
+        "summaryText": "Objective focus: Differentiate mild and severe obstruction. Avoid common pitfall: delaying escalation while obstruction signs are worsening."
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when stridor, cyanosis, decreasing consciousness, or no airflow.",
+        "explanation": "Timely escalation prevents avoidable deterioration and delays in definitive treatment.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-006",
+      "type": "quiz",
+      "orderIndex": 6,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Step 1: <1> the patient and context.\nStep 2: <2> protocol-based interventions.\nStep 3: <3> outcomes and escalation criteria.",
+        "correctAnswers": [
+          "Assess",
+          "Implement",
+          "Document"
+        ],
+        "wrongAnswers": [
+          "Guess",
+          "Delay",
+          "Ignore"
+        ]
+      }
+    },
+    {
+      "id": "screen-007",
+      "type": "infographic",
+      "orderIndex": 7,
+      "content": {
+        "imageFileName": "istockphoto-1468499951-612x612.jpg",
+        "summaryText": "Final objective: Decide when to intervene. Escalation trigger: stridor, cyanosis, decreasing consciousness, or no airflow."
+      }
+    },
+    {
+      "id": "screen-008",
+      "type": "quiz",
+      "orderIndex": 8,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "What is the best escalation trigger?",
+        "explanation": "Escalation should be based on persistent or worsening high-risk findings.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Stridor, cyanosis, decreasing consciousness, or no airflow",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Escalate only when all signs are normal",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Never escalate if resources are limited",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Escalate only at patient request",
+            "isCorrect": false
+          }
+        ]
+      }
+    }
+  ]
+}

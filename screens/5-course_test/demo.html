@@ -418,7 +418,73 @@
         .check-matching-btn:active { transform: translateY(1px);  box-shadow: none; }
         .matching-explanation { border-color: rgba(255,150,0,0.3); background: rgba(255,150,0,0.05); }
 
-        /* ===== NAVIGATION ===== */
+        /* ===== SHORT ANSWER ===== */
+        .short-answer-screen .screen-header { background: rgba(206,130,255,0.06); border-bottom-color: rgba(206,130,255,0.2); }
+        .label-sa { background: rgba(206,130,255,0.12); color: #9333ea; border: 1.5px solid rgba(206,130,255,0.35); }
+        .label-sa svg { width: 13px; height: 13px; stroke: currentColor; fill: none; flex-shrink: 0; }
+
+        .sa-input-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 0; }
+
+        .sa-textarea {
+            width: 100%; min-height: 130px;
+            padding: 14px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem; font-weight: 600;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            resize: vertical; line-height: 1.65;
+            transition: var(--transition);
+            outline: none;
+        }
+        .sa-textarea:focus { border-color: #ce82ff; background: white; box-shadow: 0 0 0 3px rgba(206,130,255,0.15); }
+        .sa-textarea:disabled { opacity: 0.7; cursor: not-allowed; resize: none; }
+
+        .sa-meta { display: flex; align-items: center; justify-content: space-between; }
+
+        .sa-char-count {
+            font-size: 0.78rem; font-weight: 800;
+            color: var(--text-muted); letter-spacing: 0.3px;
+        }
+        .sa-char-count.near-limit { color: var(--accent-warning-dark); }
+        .sa-char-count.at-limit   { color: var(--accent-error); }
+
+        .sa-submit-btn {
+            background: #9333ea;
+            border: none; border-radius: var(--border-radius-sm);
+            padding: 10px 22px;
+            color: white; font-family: 'Nunito', sans-serif;
+            font-size: 0.88rem; font-weight: 800; cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 3px 0 #7e22ce;
+        }
+        .sa-submit-btn:hover:not(:disabled)  { transform: translateY(-1px); box-shadow: 0 4px 0 #7e22ce; }
+        .sa-submit-btn:active:not(:disabled) { transform: translateY(1px);  box-shadow: none; }
+        .sa-submit-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+        .sa-explanation {
+            background: rgba(206,130,255,0.05);
+            border: 2px solid rgba(206,130,255,0.25);
+            border-radius: var(--border-radius-sm);
+            padding: 16px 18px; margin-top: 16px;
+            animation: fadeIn 0.3s ease;
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .sa-explanation .explanation-icon { color: #9333ea; }
+        .sa-sample-label {
+            font-size: 0.72rem; font-weight: 800; color: #9333ea;
+            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+        }
+        .sa-sample-answer {
+            font-size: 0.95rem; font-weight: 700; color: var(--text-primary);
+            line-height: 1.65; margin-bottom: 8px;
+        }
+        .sa-explanation-text {
+            font-size: 0.88rem; font-weight: 600; color: var(--text-secondary);
+            line-height: 1.6; margin: 0;
+        }
         .navigation { display: flex; gap: 12px; margin-top: 16px; }
         .nav-btn {
             flex: 1; background: white;
@@ -646,7 +712,7 @@
             <div class="progress-container">
                 <div class="progress-meta">
                     <span class="progress-label">Progress</span>
-                    <span class="progress-count" id="progressCount">1 / 12</span>
+                    <span class="progress-count" id="progressCount">1 / 13</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressBar" style="width: 8%"></div>
@@ -886,7 +952,34 @@
                 </div>
             </div>
 
-                <div class="screen infographic-screen" id="screen-012" data-type="infographic">
+                <div class="screen quiz-screen short-answer-screen" id="screen-012" data-type="quiz-sa">
+                <div class="screen-header">
+                    <span class="screen-type-label label-sa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Short Answer</span>
+                </div>
+                <div class="screen-body">
+                    <div class="question-text">In your own words, describe the first thing you should do when you encounter a conscious adult who appears to be choking.</div>
+                    <div class="sa-input-area">
+                        <textarea class="sa-textarea" maxlength="300"
+                            placeholder="Write your answer here…"
+                            oninput="updateCharCount(this, 300)"></textarea>
+                        <div class="sa-meta">
+                            <span class="sa-char-count">0 / 300</span>
+                            <button class="sa-submit-btn" onclick="submitShortAnswer(this)">Submit Answer</button>
+                        </div>
+                    </div>
+                    
+                    <div class="sa-explanation hidden">
+                        <div class="explanation-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg></div>
+                        <div>
+                            <p class="sa-sample-label">Sample correct answer:</p>
+                            <p class="sa-sample-answer">Ask if they are choking, then call 911 and perform the Heimlich maneuver if they cannot speak or breathe.</p>
+                            <p class="sa-explanation-text">The correct first step is to ask the person 'Are you choking?' to confirm the situation before acting. If they cannot speak, cough, or breathe, you should immediately call 911 (or have someone call) and begin abdominal thrusts (Heimlich maneuver).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="screen infographic-screen" id="screen-013" data-type="infographic">
                 <div class="screen-header">
                     <span class="screen-type-label label-learn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg> Learn</span>
                 </div>
@@ -914,11 +1007,11 @@
                 </p>
                 <div class="badge-stats">
                     <div class="badge-stat">
-                        <span class="stat-value">12</span>
+                        <span class="stat-value">13</span>
                         <span class="stat-label">Lessons</span>
                     </div>
                     <div class="badge-stat">
-                        <span class="stat-value">5</span>
+                        <span class="stat-value">6</span>
                         <span class="stat-label">Quizzes</span>
                     </div>
                 </div>
@@ -1102,6 +1195,31 @@
                 this.style.opacity = '0.4';
             });
         });
+
+        // Short answer
+        function updateCharCount(textarea, maxChars) {
+            const count = textarea.value.length;
+            const counter = textarea.closest('.sa-input-area').querySelector('.sa-char-count');
+            counter.textContent = count + ' / ' + maxChars;
+            counter.classList.remove('near-limit', 'at-limit');
+            if (count >= maxChars) counter.classList.add('at-limit');
+            else if (count >= maxChars * 0.85) counter.classList.add('near-limit');
+
+            const submitBtn = textarea.closest('.sa-input-area').querySelector('.sa-submit-btn');
+            submitBtn.disabled = count === 0;
+        }
+
+        function submitShortAnswer(btn) {
+            const screen = btn.closest('.screen');
+            const textarea = screen.querySelector('.sa-textarea');
+            if (!textarea.value.trim()) return;
+            textarea.disabled = true;
+            btn.disabled = true;
+            screen.querySelector('.sa-explanation').classList.remove('hidden');
+        }
+
+        // Disable submit buttons on short-answer screens until user types
+        document.querySelectorAll('.sa-submit-btn').forEach(btn => { btn.disabled = true; });
 
         document.addEventListener('keydown', e => {
             if (e.key === 'ArrowRight') nextScreen();

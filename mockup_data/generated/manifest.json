@@ -1,0 +1,23 @@
+{
+  "themeCount": 5,
+  "sectionCount": 17,
+  "courseCount": 57,
+  "articleCount": 17,
+  "fullFledgedArticleCount": 2,
+  "fullFledgedCourseCount": 2,
+  "fullFledgedArticleSlugs": [
+    "airway-emergencies-recognition",
+    "mood-disorders-recognition-and-care"
+  ],
+  "fullFledgedCourseSlugs": [
+    "recognizing-choking-in-adults",
+    "suicide-risk-rapid-screen"
+  ],
+  "contentFolders": {
+    "articles": "content_files/articles",
+    "courses": "content_files/courses",
+    "media": "medicalogy medias"
+  },
+  "finalDataFile": "generated/mockup_data.json",
+  "sqlFile": "pipeline.sql"
+}

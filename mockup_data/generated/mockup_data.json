@@ -1,0 +1,951 @@
+{
+  "version": "1.0",
+  "language": "en",
+  "contentStorageMode": "file_name_reference",
+  "themes": [
+    {
+      "id": "5B7E35FF-572D-55BF-BB0D-3F7980368B7A",
+      "name": "Emergency Care Fundamentals",
+      "slug": "emergency-care-fundamentals",
+      "description": "Core emergency response skills for high-risk situations.",
+      "orderIndex": 1,
+      "sections": [
+        {
+          "id": "48189D58-BFAD-5845-A461-21A7055AC581",
+          "name": "Airway Emergencies",
+          "slug": "airway-emergencies",
+          "orderIndex": 1,
+          "estimatedDurationMinutes": 45,
+          "infographic": {
+            "id": "FCB8E1A5-48FD-5767-83C7-E4D6E89C94F0",
+            "title": "Airway Emergencies: Recognition and First Actions",
+            "slug": "airway-emergencies-recognition",
+            "contentFile": "airway-emergencies-recognition.md",
+            "contentDepth": "full-fledged"
+          },
+          "courses": [
+            {
+              "id": "249FF179-0178-5B27-8BD5-8A4386A5E224",
+              "name": "Recognizing Choking in Adults",
+              "slug": "recognizing-choking-in-adults",
+              "description": "Identify warning signs of mild and severe choking.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "recognizing-choking-in-adults.json",
+              "contentDepth": "full-fledged"
+            },
+            {
+              "id": "8BFC0C2D-A6C2-5B51-84B7-58DAE8ABCB1D",
+              "name": "Heimlich Maneuver Basics",
+              "slug": "heimlich-maneuver-basics",
+              "description": "Perform abdominal thrusts safely and effectively.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "heimlich-maneuver-basics.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "97BDA129-743C-581D-9E9F-AA909B909B1C",
+              "name": "Infant Airway Rescue",
+              "slug": "infant-airway-rescue",
+              "description": "Use age-appropriate airway rescue for infants under one year.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 10,
+              "contentFile": "infant-airway-rescue.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "7E7A7674-0826-51D8-9992-5C72F54D175D",
+              "name": "Unconscious Airway Management",
+              "slug": "unconscious-airway-management",
+              "description": "Respond when airway obstruction progresses to unconsciousness.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 4,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "unconscious-airway-management.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "976DDEC8-5E7A-53C4-BEEF-FB9E081CB291",
+          "name": "Cardiac Emergencies",
+          "slug": "cardiac-emergencies",
+          "orderIndex": 2,
+          "estimatedDurationMinutes": 50,
+          "infographic": {
+            "id": "E8C813F4-1FA7-59DE-852C-2A2C606D8AA9",
+            "title": "Cardiac Emergencies: Time-Critical Response",
+            "slug": "cardiac-emergencies-time-critical-response",
+            "contentFile": "cardiac-emergencies-time-critical-response.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "73F7A26E-D751-51D5-BF08-6F74604CC86B",
+              "name": "Heart Attack Red Flags",
+              "slug": "heart-attack-red-flags",
+              "description": "Recognize classic and atypical myocardial infarction symptoms.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "heart-attack-red-flags.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "D9DEE909-1235-5CC0-883B-45921F5C8A76",
+              "name": "High-Quality CPR Essentials",
+              "slug": "high-quality-cpr-essentials",
+              "description": "Deliver effective chest compressions and rescue breaths.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 10,
+              "contentFile": "high-quality-cpr-essentials.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "59348BC4-213F-59EB-BE51-B84CC00C8354",
+              "name": "Automated External Defibrillator Use",
+              "slug": "automated-external-defibrillator-use",
+              "description": "Operate an AED safely during cardiac arrest.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "automated-external-defibrillator-use.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "22DD9098-9F46-5FB6-8F3A-0541D1A50FDD",
+              "name": "Post-Resuscitation Stabilization",
+              "slug": "post-resuscitation-stabilization",
+              "description": "Stabilize the patient after return of spontaneous circulation.",
+              "difficultyLevel": "advanced",
+              "orderIndex": 4,
+              "estimatedDurationMinutes": 10,
+              "contentFile": "post-resuscitation-stabilization.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "77D05DE7-E13E-57AB-A53F-B21F497C0BDB",
+          "name": "Trauma First Response",
+          "slug": "trauma-first-response",
+          "orderIndex": 3,
+          "estimatedDurationMinutes": 40,
+          "infographic": {
+            "id": "467402F7-7291-576F-936D-497810EA99E4",
+            "title": "Trauma First Response: Priorities on Scene",
+            "slug": "trauma-first-response-priorities",
+            "contentFile": "trauma-first-response-priorities.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "D8D2FDE5-A30A-5712-A2BE-DC5F52DFA8A9",
+              "name": "Primary Survey ABCDE",
+              "slug": "primary-survey-abcde",
+              "description": "Apply the ABCDE framework in trauma response.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "primary-survey-abcde.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "891EC708-53E4-55F4-A7D6-6B41AA9F15AA",
+              "name": "Bleeding Control and Tourniquet Use",
+              "slug": "bleeding-control-and-tourniquet-use",
+              "description": "Control external hemorrhage using direct pressure and tourniquets.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "bleeding-control-and-tourniquet-use.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "A942712F-E30C-5CF5-ADD5-530D9B32A13F",
+              "name": "Suspected Fracture Immobilization",
+              "slug": "suspected-fracture-immobilization",
+              "description": "Immobilize fractures to prevent further harm.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "suspected-fracture-immobilization.json",
+              "contentDepth": "standard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8655B47E-76C4-5DF7-B630-60B1F01259E0",
+      "name": "Mental Health Clinical Foundations",
+      "slug": "mental-health-clinical-foundations",
+      "description": "Practical clinical knowledge for common mental health conditions.",
+      "orderIndex": 2,
+      "sections": [
+        {
+          "id": "3D900B49-C0B2-5B8D-855D-E7F1F7E9B1FA",
+          "name": "Anxiety Spectrum Disorders",
+          "slug": "anxiety-spectrum-disorders",
+          "orderIndex": 1,
+          "estimatedDurationMinutes": 38,
+          "infographic": {
+            "id": "9D8816C7-75B1-5433-ACFD-0B1CD01C0E75",
+            "title": "Anxiety Disorders: Early Detection and Support",
+            "slug": "anxiety-disorders-early-detection",
+            "contentFile": "anxiety-disorders-early-detection.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "C45E93C1-725B-5EC5-A954-83AB021DC293",
+              "name": "Generalized Anxiety Basics",
+              "slug": "generalized-anxiety-basics",
+              "description": "Understand diagnostic features of generalized anxiety disorder.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "generalized-anxiety-basics.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "977B80F3-482C-54AB-9D61-9E60B6CC8AC1",
+              "name": "Panic Attack Triage",
+              "slug": "panic-attack-triage",
+              "description": "Perform rapid triage and reassurance for panic presentations.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "panic-attack-triage.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "FBF2AE55-A5D3-58F4-BED7-363FB3FB3783",
+              "name": "Social Anxiety in Practice",
+              "slug": "social-anxiety-in-practice",
+              "description": "Assess social anxiety impact in school and work settings.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "social-anxiety-in-practice.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "91A80008-C3A5-5C14-9EB7-45A90D7598FF",
+          "name": "Mood Disorders",
+          "slug": "mood-disorders",
+          "orderIndex": 2,
+          "estimatedDurationMinutes": 42,
+          "infographic": {
+            "id": "00AA7DEC-04F3-50FD-8DA5-1B5B1AE0BFDE",
+            "title": "Mood Disorders: Recognition and Initial Care",
+            "slug": "mood-disorders-recognition-and-care",
+            "contentFile": "mood-disorders-recognition-and-care.md",
+            "contentDepth": "full-fledged"
+          },
+          "courses": [
+            {
+              "id": "00816BD4-E074-5C15-906B-F6B2CAB0D805",
+              "name": "Major Depression Core Features",
+              "slug": "major-depression-core-features",
+              "description": "Identify clinical indicators of major depressive episodes.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "major-depression-core-features.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "89D6F65B-D3FC-5C43-BB48-2BBD6B77A3C9",
+              "name": "Bipolar Spectrum Overview",
+              "slug": "bipolar-spectrum-overview",
+              "description": "Differentiate bipolar patterns from unipolar depression.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "bipolar-spectrum-overview.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "0116FD42-6915-5CA2-96EB-B2B440622E47",
+              "name": "Behavioral Activation Basics",
+              "slug": "behavioral-activation-basics",
+              "description": "Use simple activation strategies for low mood.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "behavioral-activation-basics.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "EE588991-4507-5922-BFE6-66A7EEF10ACE",
+          "name": "Crisis Intervention",
+          "slug": "crisis-intervention",
+          "orderIndex": 3,
+          "estimatedDurationMinutes": 50,
+          "infographic": {
+            "id": "445C1DD0-AC29-5D3E-8F68-3B27147F855D",
+            "title": "Crisis Intervention: Immediate Safety Protocols",
+            "slug": "crisis-intervention-safety-protocols",
+            "contentFile": "crisis-intervention-safety-protocols.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "ED971A4C-765A-5070-A154-B6C23D8B4389",
+              "name": "Verbal De-escalation Skills",
+              "slug": "verbal-de-escalation-skills",
+              "description": "Use language and posture to reduce escalating distress.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "verbal-de-escalation-skills.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "AF06E2A9-41C0-5275-9E6C-3BAC8DA0E176",
+              "name": "Suicide Risk Rapid Screen",
+              "slug": "suicide-risk-rapid-screen",
+              "description": "Apply a structured approach to immediate suicide risk assessment.",
+              "difficultyLevel": "advanced",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 10,
+              "contentFile": "suicide-risk-rapid-screen.json",
+              "contentDepth": "full-fledged"
+            },
+            {
+              "id": "2B24D8C4-5CBA-578F-9B9A-C536A77ACB27",
+              "name": "Safety Planning in Outpatient Care",
+              "slug": "safety-planning-in-outpatient-care",
+              "description": "Create actionable safety plans with patients and families.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "safety-planning-in-outpatient-care.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "F16D2078-B74B-5D7E-8586-1856505AD5A5",
+              "name": "Coordinating Urgent Referral",
+              "slug": "coordinating-urgent-referral",
+              "description": "Transfer care effectively to emergency or specialist services.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 4,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "coordinating-urgent-referral.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "CD38B9CE-CBBF-58E5-B325-A7174494FA5E",
+          "name": "Sleep and Stress Medicine",
+          "slug": "sleep-and-stress-medicine",
+          "orderIndex": 4,
+          "estimatedDurationMinutes": 36,
+          "infographic": {
+            "id": "C816A38D-8C60-5F4D-9C88-2ED482BDA676",
+            "title": "Sleep and Stress: Restoring Daily Function",
+            "slug": "sleep-and-stress-restoring-function",
+            "contentFile": "sleep-and-stress-restoring-function.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "07ACBBFF-218E-5252-9F7D-46449B75B64D",
+              "name": "Sleep Hygiene Essentials",
+              "slug": "sleep-hygiene-essentials",
+              "description": "Establish practical sleep routines for better recovery.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 7,
+              "contentFile": "sleep-hygiene-essentials.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "5838038B-13E0-5260-82FA-33EE7148DF7A",
+              "name": "Stress Response and Cortisol",
+              "slug": "stress-response-and-cortisol",
+              "description": "Understand stress hormone dynamics and symptom patterns.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "stress-response-and-cortisol.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "E2ED48B0-CF0E-55A0-92BA-382EA25098CC",
+              "name": "Mindfulness for Clinical Settings",
+              "slug": "mindfulness-for-clinical-settings",
+              "description": "Apply brief mindfulness tools in high-pressure environments.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "mindfulness-for-clinical-settings.json",
+              "contentDepth": "standard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "99099D54-D8CA-5388-A985-1DFE481E6A37",
+      "name": "Nutrition and Metabolic Health",
+      "slug": "nutrition-and-metabolic-health",
+      "description": "Evidence-based nutrition and metabolism principles for clinical care.",
+      "orderIndex": 3,
+      "sections": [
+        {
+          "id": "BE96C81D-8A33-512C-B792-341B644AD433",
+          "name": "Balanced Nutrition Principles",
+          "slug": "balanced-nutrition-principles",
+          "orderIndex": 1,
+          "estimatedDurationMinutes": 34,
+          "infographic": {
+            "id": "0FEDC67A-3CD2-5577-A847-A5D8930DD46B",
+            "title": "Balanced Nutrition: Building Better Daily Intake",
+            "slug": "balanced-nutrition-building-better-intake",
+            "contentFile": "balanced-nutrition-building-better-intake.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "89835020-7780-55A5-8EA9-EE51704AF533",
+              "name": "Macronutrients 101",
+              "slug": "macronutrients-101",
+              "description": "Understand protein, carbohydrate, and fat functions.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 7,
+              "contentFile": "macronutrients-101.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "A76250EF-3947-520F-9CB5-8608A8FD44C3",
+              "name": "Micronutrient Deficiency Clues",
+              "slug": "micronutrient-deficiency-clues",
+              "description": "Recognize clinical signs of common deficiencies.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "micronutrient-deficiency-clues.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "DD75FFA4-0B0E-502B-BFCA-873FBB9CBFCD",
+              "name": "Healthy Plate Counseling",
+              "slug": "healthy-plate-counseling",
+              "description": "Deliver practical dietary counseling using plate models.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "healthy-plate-counseling.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "7B982497-FDEC-598E-BB55-8E5A5A4C1FC2",
+          "name": "Clinical Nutrition in Chronic Disease",
+          "slug": "clinical-nutrition-in-chronic-disease",
+          "orderIndex": 2,
+          "estimatedDurationMinutes": 46,
+          "infographic": {
+            "id": "B628B13F-8EDE-56DA-B479-50C3888432B2",
+            "title": "Clinical Nutrition: Tailoring Diet for Disease",
+            "slug": "clinical-nutrition-tailoring-diet",
+            "contentFile": "clinical-nutrition-tailoring-diet.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "8E5FCDE0-5CB3-5731-83C1-3519512EE7E4",
+              "name": "Nutrition for Type 2 Diabetes",
+              "slug": "nutrition-for-type-2-diabetes",
+              "description": "Plan carbohydrate and fiber strategies for glycemic control.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "nutrition-for-type-2-diabetes.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "C37DFE19-4BA1-5153-B292-371643B46255",
+              "name": "DASH Diet in Practice",
+              "slug": "dash-diet-in-practice",
+              "description": "Implement DASH principles for blood pressure reduction.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "dash-diet-in-practice.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "B0E00D8B-A0D0-5778-A0E0-5775A9A01266",
+              "name": "Nutrition in Chronic Kidney Disease",
+              "slug": "nutrition-in-chronic-kidney-disease",
+              "description": "Adjust protein, sodium, and potassium intake in CKD.",
+              "difficultyLevel": "advanced",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 10,
+              "contentFile": "nutrition-in-chronic-kidney-disease.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "3585AC2B-DFD8-5F4E-ADC1-3CCF1378F0DC",
+              "name": "Counseling for Long-Term Adherence",
+              "slug": "counseling-for-long-term-adherence",
+              "description": "Use behavior change methods to improve nutrition adherence.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 4,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "counseling-for-long-term-adherence.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "16DF3BF9-1C97-543A-814A-086AC5165EE8",
+          "name": "Metabolic Syndrome and Obesity",
+          "slug": "metabolic-syndrome-and-obesity",
+          "orderIndex": 3,
+          "estimatedDurationMinutes": 38,
+          "infographic": {
+            "id": "2D624867-0C31-5FCB-BACF-FBD23E5BED9B",
+            "title": "Metabolic Syndrome: Integrated Risk Management",
+            "slug": "metabolic-syndrome-integrated-risk-management",
+            "contentFile": "metabolic-syndrome-integrated-risk-management.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "568ABDC0-2DF8-5B10-912B-6F5895BD3572",
+              "name": "Metabolic Syndrome Criteria",
+              "slug": "metabolic-syndrome-criteria",
+              "description": "Use standardized criteria to identify metabolic syndrome.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "metabolic-syndrome-criteria.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "2E0F3A85-4F28-5C50-89B8-2AAA6CBC1141",
+              "name": "Obesity Assessment and Staging",
+              "slug": "obesity-assessment-and-staging",
+              "description": "Assess obesity severity using BMI and clinical staging.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "obesity-assessment-and-staging.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "A5D280F7-4C7A-50B3-8EE5-911A50AD6556",
+              "name": "Lifestyle Intervention Planning",
+              "slug": "lifestyle-intervention-planning",
+              "description": "Build realistic diet and physical activity plans for weight reduction.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "lifestyle-intervention-planning.json",
+              "contentDepth": "standard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "77D325CC-5CDB-5323-97AF-03847F47A7BB",
+      "name": "Infectious Disease Essentials",
+      "slug": "infectious-disease-essentials",
+      "description": "Clinical essentials for prevention, diagnosis, and response to infectious diseases.",
+      "orderIndex": 4,
+      "sections": [
+        {
+          "id": "06FFBA0F-E7D6-54FB-92AF-E0DFEE0D0688",
+          "name": "Prevention and Infection Control",
+          "slug": "prevention-and-infection-control",
+          "orderIndex": 1,
+          "estimatedDurationMinutes": 33,
+          "infographic": {
+            "id": "D8412AD6-6700-5DCC-86AB-754C99345652",
+            "title": "Infection Control: Core Prevention Protocols",
+            "slug": "infection-control-core-prevention-protocols",
+            "contentFile": "infection-control-core-prevention-protocols.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "9CF805C8-7130-514D-89EA-A48B06AAF9A3",
+              "name": "Hand Hygiene Compliance",
+              "slug": "hand-hygiene-compliance",
+              "description": "Apply hand hygiene standards in patient care workflows.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 7,
+              "contentFile": "hand-hygiene-compliance.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "2C5DED51-1F8B-55A6-AF4B-FD3572A29EC2",
+              "name": "PPE Selection and Donning",
+              "slug": "ppe-selection-and-donning",
+              "description": "Select and wear PPE based on transmission risk.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "ppe-selection-and-donning.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "C42D4E6B-7354-500F-860B-C77F188CCF00",
+              "name": "Isolation Precaution Types",
+              "slug": "isolation-precaution-types",
+              "description": "Differentiate contact, droplet, and airborne precautions.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "isolation-precaution-types.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "723A6431-0E95-5600-91C2-E3E03847ABE4",
+          "name": "Respiratory Infections",
+          "slug": "respiratory-infections",
+          "orderIndex": 2,
+          "estimatedDurationMinutes": 44,
+          "infographic": {
+            "id": "F9B07620-02B5-52FE-B583-6E1843028DC3",
+            "title": "Respiratory Infections: Clinical Triage and Care",
+            "slug": "respiratory-infections-clinical-triage",
+            "contentFile": "respiratory-infections-clinical-triage.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "EB6FE3E4-0401-5B51-A1FD-E5E9C57EBCB5",
+              "name": "Viral vs Bacterial Patterns",
+              "slug": "viral-vs-bacterial-patterns",
+              "description": "Use history and exam clues to distinguish likely etiologies.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "viral-vs-bacterial-patterns.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "DFFB9D29-863C-5A2D-AD46-0E883A185EB5",
+              "name": "Community-Acquired Pneumonia Basics",
+              "slug": "community-acquired-pneumonia-basics",
+              "description": "Assess and manage uncomplicated community-acquired pneumonia.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "community-acquired-pneumonia-basics.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "EA501A5F-6BB6-5314-ABB3-EA67DC031FBD",
+              "name": "Influenza Risk Stratification",
+              "slug": "influenza-risk-stratification",
+              "description": "Stratify flu risk and prioritize treatment timing.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "influenza-risk-stratification.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "025B177B-6919-5245-A13A-0867C8173BE3",
+              "name": "Oxygen Therapy Fundamentals",
+              "slug": "oxygen-therapy-fundamentals",
+              "description": "Provide safe oxygen support in respiratory distress.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 4,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "oxygen-therapy-fundamentals.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "BF413914-D7C6-5530-80B4-EF8A668593E2",
+          "name": "Gastrointestinal Infections",
+          "slug": "gastrointestinal-infections",
+          "orderIndex": 3,
+          "estimatedDurationMinutes": 36,
+          "infographic": {
+            "id": "CA4CA7DC-AAEA-56D3-9D77-F5F4D82DBB00",
+            "title": "Gastrointestinal Infections: Hydration and Risk Control",
+            "slug": "gastrointestinal-infections-hydration-and-risk",
+            "contentFile": "gastrointestinal-infections-hydration-and-risk.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "DA279085-4922-58A8-960D-BC28FB8ED685",
+              "name": "Acute Gastroenteritis Assessment",
+              "slug": "acute-gastroenteritis-assessment",
+              "description": "Assess dehydration risk in acute gastroenteritis.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "acute-gastroenteritis-assessment.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "D8AA8B0A-FE8A-5576-9477-69CC81BB8E06",
+              "name": "Oral Rehydration Therapy",
+              "slug": "oral-rehydration-therapy",
+              "description": "Use oral rehydration correctly across age groups.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 7,
+              "contentFile": "oral-rehydration-therapy.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "14D398CE-8BC3-56C3-9D27-9FCB51941911",
+              "name": "Foodborne Illness Investigation",
+              "slug": "foodborne-illness-investigation",
+              "description": "Trace likely sources and provide preventive guidance.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "foodborne-illness-investigation.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "794CDC75-4B9A-5DE5-9178-1B95DC51705C",
+          "name": "Vector-Borne Diseases",
+          "slug": "vector-borne-diseases",
+          "orderIndex": 4,
+          "estimatedDurationMinutes": 35,
+          "infographic": {
+            "id": "663377C7-8D10-5709-B5DB-7BB4BBA05B01",
+            "title": "Vector-Borne Diseases: Prevention and Early Detection",
+            "slug": "vector-borne-diseases-prevention-and-detection",
+            "contentFile": "vector-borne-diseases-prevention-and-detection.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "92B737E1-E04A-5736-86A4-D7862EA7B979",
+              "name": "Dengue Warning Signs",
+              "slug": "dengue-warning-signs",
+              "description": "Recognize warning signs and progression risk in dengue infection.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "dengue-warning-signs.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "FFAB13FF-C687-5D36-97F3-FCD0071B8A35",
+              "name": "Malaria Rapid Recognition",
+              "slug": "malaria-rapid-recognition",
+              "description": "Identify malaria patterns in febrile patients.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "malaria-rapid-recognition.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "83E2D8EE-AF2F-5169-9DBA-09188DA423E6",
+              "name": "Community Vector Control",
+              "slug": "community-vector-control",
+              "description": "Design practical community-level vector reduction plans.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 7,
+              "contentFile": "community-vector-control.json",
+              "contentDepth": "standard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5CC4C039-5E34-54DC-8D9A-C5C606C55B1A",
+      "name": "Maternal and Child Health",
+      "slug": "maternal-and-child-health",
+      "description": "Foundational care pathways for pregnancy, newborn, and pediatric health.",
+      "orderIndex": 5,
+      "sections": [
+        {
+          "id": "FF91D008-4FED-52AA-B1B0-587C339B78C5",
+          "name": "Prenatal Care Pathways",
+          "slug": "prenatal-care-pathways",
+          "orderIndex": 1,
+          "estimatedDurationMinutes": 37,
+          "infographic": {
+            "id": "49937705-94B5-5EFB-8379-6BEB36654C83",
+            "title": "Prenatal Care: Structured Monitoring from First Visit",
+            "slug": "prenatal-care-structured-monitoring",
+            "contentFile": "prenatal-care-structured-monitoring.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "A9EB15B5-BF5B-5CF7-AC14-4F9786203F04",
+              "name": "First Antenatal Visit Essentials",
+              "slug": "first-antenatal-visit-essentials",
+              "description": "Perform structured assessments during the first prenatal visit.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "first-antenatal-visit-essentials.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "8267B45C-9508-51A5-B21B-6C1C36EC6D8B",
+              "name": "Hypertensive Disorders in Pregnancy",
+              "slug": "hypertensive-disorders-in-pregnancy",
+              "description": "Identify and triage hypertensive complications in pregnancy.",
+              "difficultyLevel": "advanced",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 10,
+              "contentFile": "hypertensive-disorders-in-pregnancy.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "C79EB38D-0DAB-5C39-BC19-FB649907B7B7",
+              "name": "Gestational Diabetes Monitoring",
+              "slug": "gestational-diabetes-monitoring",
+              "description": "Apply screening and monitoring workflows for gestational diabetes.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "gestational-diabetes-monitoring.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "F131981F-E4A7-5868-B990-AE70C3896305",
+          "name": "Newborn Care Essentials",
+          "slug": "newborn-care-essentials",
+          "orderIndex": 2,
+          "estimatedDurationMinutes": 44,
+          "infographic": {
+            "id": "B481FC61-F649-5EA8-9563-F0A7C3D1657A",
+            "title": "Newborn Care: The First 28 Days",
+            "slug": "newborn-care-first-28-days",
+            "contentFile": "newborn-care-first-28-days.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "CB31EEE0-8A0B-5156-B92F-ECBBAF30CA71",
+              "name": "Immediate Newborn Assessment",
+              "slug": "immediate-newborn-assessment",
+              "description": "Perform immediate post-delivery neonatal checks.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "immediate-newborn-assessment.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "059C8C49-94A4-567E-90FE-10A2B57553D8",
+              "name": "Breastfeeding Support Basics",
+              "slug": "breastfeeding-support-basics",
+              "description": "Support early breastfeeding initiation and latch quality.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "breastfeeding-support-basics.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "104F7887-DC23-54E0-9A8C-C91D6565A254",
+              "name": "Neonatal Jaundice Monitoring",
+              "slug": "neonatal-jaundice-monitoring",
+              "description": "Monitor and triage jaundice severity in newborns.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "neonatal-jaundice-monitoring.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "1742D7BF-CD02-5BEA-A3C8-611B841E8361",
+              "name": "Neonatal Danger Signs",
+              "slug": "neonatal-danger-signs",
+              "description": "Detect life-threatening neonatal warning signs early.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 4,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "neonatal-danger-signs.json",
+              "contentDepth": "standard"
+            }
+          ]
+        },
+        {
+          "id": "BBBBB0B4-4C54-5827-B51B-F67F2BD3CB3C",
+          "name": "Common Pediatric Illnesses",
+          "slug": "common-pediatric-illnesses",
+          "orderIndex": 3,
+          "estimatedDurationMinutes": 39,
+          "infographic": {
+            "id": "680FDCD8-ED12-5389-8273-ECC6C7ED7B97",
+            "title": "Pediatric Illnesses: Practical Frontline Management",
+            "slug": "pediatric-illnesses-frontline-management",
+            "contentFile": "pediatric-illnesses-frontline-management.md",
+            "contentDepth": "standard"
+          },
+          "courses": [
+            {
+              "id": "DF845977-68A7-571D-A9AC-BE54FDE31C22",
+              "name": "Pediatric Fever Triage",
+              "slug": "pediatric-fever-triage",
+              "description": "Assess fever severity and red flags in children.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 1,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "pediatric-fever-triage.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "CDB1FAFE-499A-55D7-8B5D-097C58FC34DF",
+              "name": "Acute Pediatric Respiratory Symptoms",
+              "slug": "acute-pediatric-respiratory-symptoms",
+              "description": "Differentiate common respiratory presentations in children.",
+              "difficultyLevel": "intermediate",
+              "orderIndex": 2,
+              "estimatedDurationMinutes": 9,
+              "contentFile": "acute-pediatric-respiratory-symptoms.json",
+              "contentDepth": "standard"
+            },
+            {
+              "id": "246A1FF5-74CE-5A65-9AC0-11D443178B03",
+              "name": "Pediatric Dehydration Management",
+              "slug": "pediatric-dehydration-management",
+              "description": "Treat mild to moderate dehydration in children.",
+              "difficultyLevel": "beginner",
+              "orderIndex": 3,
+              "estimatedDurationMinutes": 8,
+              "contentFile": "pediatric-dehydration-management.json",
+              "contentDepth": "standard"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "version": "1.1",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "photo-illus-healthcare-banner-1x1.jpeg",
+        "summaryText": "Heimlich Maneuver Basics in Airway Emergencies focuses on rapid airway patency check and oxygenation support. Primary objective: Position correctly behind patient."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "quiz",
+      "orderIndex": 2,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "In Heimlich Maneuver Basics, which action best supports 'Position correctly behind patient'?",
+        "explanation": "Correct answers prioritize patient safety, reassessment, and timely escalation.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Open airway, call support, and monitor breathing continuously",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Delaying escalation while obstruction signs are worsening",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Delay reassessment until symptoms are severe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use treatment decisions without baseline documentation",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "infographic",
+      "orderIndex": 3,
+      "content": {
+        "imageFileName": "health-care-.jpg",
+        "summaryText": "Immediate priority: open airway, call support, and monitor breathing continuously. Practical emphasis: Deliver effective upward thrusts."
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "quiz",
+      "orderIndex": 4,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when stridor, cyanosis, decreasing consciousness, or no airflow.",
+        "explanation": "Early escalation reduces preventable deterioration and delays in definitive care.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Start with <1> to establish baseline status.\nUse <2> to deliver standardized intervention.\nDocument <3> to support continuity and quality review.",
+        "correctAnswers": [
+          "assessment",
+          "protocol",
+          "outcomes"
+        ],
+        "wrongAnswers": [
+          "guesswork",
+          "delay",
+          "omission"
+        ]
+      }
+    }
+  ]
+}

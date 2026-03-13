@@ -1,0 +1,85 @@
+{
+  "version": "1.1",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "depositphotos_53088729-Concept-for-health-care-and-medical-help.jpg",
+        "summaryText": "Hand Hygiene Compliance in Prevention and Infection Control focuses on transmission prevention through hygiene and PPE. Primary objective: Identify critical hygiene moments."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "quiz",
+      "orderIndex": 2,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "In Hand Hygiene Compliance, which action best supports 'Identify critical hygiene moments'?",
+        "explanation": "Correct answers prioritize patient safety, reassessment, and timely escalation.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Perform hand hygiene and select PPE by transmission route",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Incorrect donning/doffing sequence causing self-contamination",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Delay reassessment until symptoms are severe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use treatment decisions without baseline documentation",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "infographic",
+      "orderIndex": 3,
+      "content": {
+        "imageFileName": "AdobeStock_246942922.jpeg",
+        "summaryText": "Immediate priority: perform hand hygiene and select PPE by transmission route. Practical emphasis: Use proper hand rub technique."
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "quiz",
+      "orderIndex": 4,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when clustered cases, high-risk exposure, or protocol breach.",
+        "explanation": "Early escalation reduces preventable deterioration and delays in definitive care.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Start with <1> to establish baseline status.\nUse <2> to deliver standardized intervention.\nDocument <3> to support continuity and quality review.",
+        "correctAnswers": [
+          "assessment",
+          "protocol",
+          "outcomes"
+        ],
+        "wrongAnswers": [
+          "guesswork",
+          "delay",
+          "omission"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "version": "1.1",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "AdobeStock_246942922.jpeg",
+        "summaryText": "Obesity Assessment and Staging in Metabolic Syndrome and Obesity focuses on cardiometabolic risk clustering and staged intervention. Primary objective: Use BMI and waist measures."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "quiz",
+      "orderIndex": 2,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "In Obesity Assessment and Staging, which action best supports 'Use BMI and waist measures'?",
+        "explanation": "Correct answers prioritize patient safety, reassessment, and timely escalation.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Screen waist, blood pressure, glucose, and lipid indicators",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Focusing on weight alone without metabolic risk tracking",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Delay reassessment until symptoms are severe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use treatment decisions without baseline documentation",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "infographic",
+      "orderIndex": 3,
+      "content": {
+        "imageFileName": "depositphotos_53088729-Concept-for-health-care-and-medical-help.jpg",
+        "summaryText": "Immediate priority: screen waist, blood pressure, glucose, and lipid indicators. Practical emphasis: Detect obesity complications."
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "quiz",
+      "orderIndex": 4,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when rapid progression, organ complications, or failure of first-line plans.",
+        "explanation": "Early escalation reduces preventable deterioration and delays in definitive care.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Start with <1> to establish baseline status.\nUse <2> to deliver standardized intervention.\nDocument <3> to support continuity and quality review.",
+        "correctAnswers": [
+          "assessment",
+          "protocol",
+          "outcomes"
+        ],
+        "wrongAnswers": [
+          "guesswork",
+          "delay",
+          "omission"
+        ]
+      }
+    }
+  ]
+}

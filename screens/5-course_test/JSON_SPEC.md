@@ -4,6 +4,18 @@
 
 This document specifies the JSON structure for **course content** and **section test content** stored in their respective `content` columns.
 
+## Content Reference Modes
+
+To support evolving pipelines, the system supports two storage modes for `course.content`:
+
+1. **Inline JSON mode** (current legacy mode):
+  - `course.content` stores the full JSON payload.
+2. **File reference mode** (new mockup mode):
+  - `course.content` stores a short filename such as `recognizing-choking-in-adults.json`.
+  - The actual JSON payload is loaded from `mockup_data/content_files/courses/`.
+
+When using file reference mode, image values inside JSON should use media file names from the common media dataset (for example: `opentext-image-ov-healthcare-en.avif`), not full URLs.
+
 ---
 
 # Part 1: Course Content
@@ -64,7 +76,7 @@ A course consists of an ordered array of **screens**. Each screen is either an *
 
 | Field           | Type   | Required | Max Length | Description                           |
 |-----------------|--------|----------|------------|---------------------------------------|
-| `imageFileName` | string | No       | 255        | Filename of infographic image         |
+| `imageFileName` | string | No       | 255        | Filename in common media dataset (or URL in legacy mode) |
 | `summaryText`   | string | Yes      | 2000       | Educational text                      |
 
 ---

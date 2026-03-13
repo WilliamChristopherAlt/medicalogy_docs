@@ -1,0 +1,142 @@
+{
+  "version": "2.0",
+  "meta": {
+    "contentDepth": "full-fledged",
+    "theme": "Mental Health Clinical Foundations",
+    "section": "Crisis Intervention",
+    "course": "Suicide Risk Rapid Screen",
+    "estimatedDurationMinutes": 10
+  },
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "health-care-.jpg",
+        "summaryText": "Suicide Risk Rapid Screen introduces a complete practice flow in Crisis Intervention: immediate safety planning and de-escalation."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "infographic",
+      "orderIndex": 2,
+      "content": {
+        "imageFileName": "AdobeStock_246942922.jpeg",
+        "summaryText": "Core principle set: reduce stimulation, use simple language, and define immediate safety steps, closed-loop communication, and explicit reassessment after each intervention."
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "quiz",
+      "orderIndex": 3,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "Which action best demonstrates objective: Ask direct safety questions?",
+        "explanation": "Choose the option that creates immediate safety and measurable clinical value.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Reduce stimulation, use simple language, and define immediate safety steps",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Begin treatment before any assessment",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Wait for specialist input before basic checks",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Use only subjective impressions",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "infographic",
+      "orderIndex": 4,
+      "content": {
+        "imageFileName": "close-up-doctor-with-stethoscope.jpg",
+        "summaryText": "Objective focus: Identify imminent risk. Avoid common pitfall: arguing with a distressed patient instead of stabilizing first."
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "Escalation is required when imminent self-harm risk, violence risk, or inability to maintain safety.",
+        "explanation": "Timely escalation prevents avoidable deterioration and delays in definitive treatment.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-006",
+      "type": "quiz",
+      "orderIndex": 6,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Step 1: <1> the patient and context.\nStep 2: <2> protocol-based interventions.\nStep 3: <3> outcomes and escalation criteria.",
+        "correctAnswers": [
+          "Assess",
+          "Implement",
+          "Document"
+        ],
+        "wrongAnswers": [
+          "Guess",
+          "Delay",
+          "Ignore"
+        ]
+      }
+    },
+    {
+      "id": "screen-007",
+      "type": "infographic",
+      "orderIndex": 7,
+      "content": {
+        "imageFileName": "health-care-.jpg",
+        "summaryText": "Final objective: Activate emergency protocol. Escalation trigger: imminent self-harm risk, violence risk, or inability to maintain safety."
+      }
+    },
+    {
+      "id": "screen-008",
+      "type": "quiz",
+      "orderIndex": 8,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "What is the best escalation trigger?",
+        "explanation": "Escalation should be based on persistent or worsening high-risk findings.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Imminent self-harm risk, violence risk, or inability to maintain safety",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Escalate only when all signs are normal",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Never escalate if resources are limited",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Escalate only at patient request",
+            "isCorrect": false
+          }
+        ]
+      }
+    }
+  ]
+}

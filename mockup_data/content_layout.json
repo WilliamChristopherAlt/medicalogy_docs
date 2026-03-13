@@ -1,0 +1,881 @@
+{
+  "version": "1.0",
+  "language": "en",
+  "themes": [
+    {
+      "name": "Emergency Care Fundamentals",
+      "slug": "emergency-care-fundamentals",
+      "description": "Core emergency response skills for high-risk situations.",
+      "icon_file_name": "emergency.svg",
+      "color_code": "#EF4444",
+      "sections": [
+        {
+          "name": "Airway Emergencies",
+          "slug": "airway-emergencies",
+          "estimated_duration_minutes": 45,
+          "infographic": {
+            "title": "Airway Emergencies: Recognition and First Actions",
+            "slug": "airway-emergencies-recognition",
+            "intro": "Airway compromise can become fatal within minutes. Rapid recognition and immediate intervention are essential.",
+            "focus_points": [
+              "Early signs of airway obstruction",
+              "Complete vs partial obstruction",
+              "Stepwise rescue actions",
+              "Escalation criteria"
+            ],
+            "sources": [
+              "https://www.who.int",
+              "https://www.redcross.org"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Recognizing Choking in Adults",
+              "slug": "recognizing-choking-in-adults",
+              "description": "Identify warning signs of mild and severe choking.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify universal choking signs", "Differentiate mild and severe obstruction", "Decide when to intervene"]
+            },
+            {
+              "name": "Heimlich Maneuver Basics",
+              "slug": "heimlich-maneuver-basics",
+              "description": "Perform abdominal thrusts safely and effectively.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Position correctly behind patient", "Deliver effective upward thrusts", "Avoid common mistakes"]
+            },
+            {
+              "name": "Infant Airway Rescue",
+              "slug": "infant-airway-rescue",
+              "description": "Use age-appropriate airway rescue for infants under one year.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 10,
+              "objectives": ["Apply back blows and chest thrusts", "Protect infant head and neck", "Trigger emergency escalation"]
+            },
+            {
+              "name": "Unconscious Airway Management",
+              "slug": "unconscious-airway-management",
+              "description": "Respond when airway obstruction progresses to unconsciousness.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Initiate emergency call protocol", "Start CPR sequence", "Check airway safely between cycles"]
+            }
+          ]
+        },
+        {
+          "name": "Cardiac Emergencies",
+          "slug": "cardiac-emergencies",
+          "estimated_duration_minutes": 50,
+          "infographic": {
+            "title": "Cardiac Emergencies: Time-Critical Response",
+            "slug": "cardiac-emergencies-time-critical-response",
+            "intro": "Cardiac events require immediate action. Every minute of delay increases tissue damage and mortality.",
+            "focus_points": [
+              "Heart attack warning signs",
+              "Early CPR initiation",
+              "AED workflow",
+              "Post-event handover"
+            ],
+            "sources": [
+              "https://www.heart.org",
+              "https://www.cdc.gov"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Heart Attack Red Flags",
+              "slug": "heart-attack-red-flags",
+              "description": "Recognize classic and atypical myocardial infarction symptoms.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify chest pain patterns", "Recognize atypical presentations", "Escalate care quickly"]
+            },
+            {
+              "name": "High-Quality CPR Essentials",
+              "slug": "high-quality-cpr-essentials",
+              "description": "Deliver effective chest compressions and rescue breaths.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 10,
+              "objectives": ["Maintain proper compression depth", "Minimize interruptions", "Coordinate team roles"]
+            },
+            {
+              "name": "Automated External Defibrillator Use",
+              "slug": "automated-external-defibrillator-use",
+              "description": "Operate an AED safely during cardiac arrest.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Attach pads correctly", "Follow voice prompts", "Ensure scene safety during shock"]
+            },
+            {
+              "name": "Post-Resuscitation Stabilization",
+              "slug": "post-resuscitation-stabilization",
+              "description": "Stabilize the patient after return of spontaneous circulation.",
+              "difficulty_level": "advanced",
+              "estimated_duration_minutes": 10,
+              "objectives": ["Monitor airway and breathing", "Prevent secondary injury", "Document event timeline"]
+            }
+          ]
+        },
+        {
+          "name": "Trauma First Response",
+          "slug": "trauma-first-response",
+          "estimated_duration_minutes": 40,
+          "infographic": {
+            "title": "Trauma First Response: Priorities on Scene",
+            "slug": "trauma-first-response-priorities",
+            "intro": "Trauma survival depends on rapid scene safety checks and clear intervention priorities.",
+            "focus_points": [
+              "Primary survey sequence",
+              "Bleeding control",
+              "Fracture stabilization",
+              "Safe transport preparation"
+            ],
+            "sources": [
+              "https://www.facs.org",
+              "https://www.who.int/news-room/fact-sheets"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Primary Survey ABCDE",
+              "slug": "primary-survey-abcde",
+              "description": "Apply the ABCDE framework in trauma response.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Run a fast ABCDE assessment", "Identify life-threatening findings", "Set intervention priorities"]
+            },
+            {
+              "name": "Bleeding Control and Tourniquet Use",
+              "slug": "bleeding-control-and-tourniquet-use",
+              "description": "Control external hemorrhage using direct pressure and tourniquets.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Apply direct pressure effectively", "Place tourniquet correctly", "Monitor distal perfusion"]
+            },
+            {
+              "name": "Suspected Fracture Immobilization",
+              "slug": "suspected-fracture-immobilization",
+              "description": "Immobilize fractures to prevent further harm.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Recognize unstable fractures", "Apply temporary splints", "Prepare for transfer"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mental Health Clinical Foundations",
+      "slug": "mental-health-clinical-foundations",
+      "description": "Practical clinical knowledge for common mental health conditions.",
+      "icon_file_name": "mental-health.svg",
+      "color_code": "#8B5CF6",
+      "sections": [
+        {
+          "name": "Anxiety Spectrum Disorders",
+          "slug": "anxiety-spectrum-disorders",
+          "estimated_duration_minutes": 38,
+          "infographic": {
+            "title": "Anxiety Disorders: Early Detection and Support",
+            "slug": "anxiety-disorders-early-detection",
+            "intro": "Anxiety disorders are common and treatable. Early detection improves quality of life and outcomes.",
+            "focus_points": [
+              "Clinical patterns of anxiety",
+              "Functional impact assessment",
+              "Screening tools",
+              "First-line support"
+            ],
+            "sources": [
+              "https://www.nimh.nih.gov",
+              "https://www.who.int/teams/mental-health-and-substance-use"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Generalized Anxiety Basics",
+              "slug": "generalized-anxiety-basics",
+              "description": "Understand diagnostic features of generalized anxiety disorder.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Recognize persistent worry patterns", "Differentiate normal stress", "Identify functional impairment"]
+            },
+            {
+              "name": "Panic Attack Triage",
+              "slug": "panic-attack-triage",
+              "description": "Perform rapid triage and reassurance for panic presentations.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Identify panic symptoms", "Rule out immediate medical danger", "Guide breathing and grounding"]
+            },
+            {
+              "name": "Social Anxiety in Practice",
+              "slug": "social-anxiety-in-practice",
+              "description": "Assess social anxiety impact in school and work settings.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify avoidance patterns", "Assess occupational impact", "Plan referral pathways"]
+            }
+          ]
+        },
+        {
+          "name": "Mood Disorders",
+          "slug": "mood-disorders",
+          "estimated_duration_minutes": 42,
+          "infographic": {
+            "title": "Mood Disorders: Recognition and Initial Care",
+            "slug": "mood-disorders-recognition-and-care",
+            "intro": "Mood disorders often present with overlapping emotional and physical symptoms that require structured assessment.",
+            "focus_points": [
+              "Depressive episode criteria",
+              "Bipolar warning signs",
+              "Risk and safety planning",
+              "Continuity of care"
+            ],
+            "sources": [
+              "https://www.psychiatry.org",
+              "https://www.nice.org.uk"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Major Depression Core Features",
+              "slug": "major-depression-core-features",
+              "description": "Identify clinical indicators of major depressive episodes.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Map key symptom clusters", "Assess episode duration", "Screen for suicide risk"]
+            },
+            {
+              "name": "Bipolar Spectrum Overview",
+              "slug": "bipolar-spectrum-overview",
+              "description": "Differentiate bipolar patterns from unipolar depression.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Identify mania and hypomania", "Review mood cycling clues", "Support specialist referral"]
+            },
+            {
+              "name": "Behavioral Activation Basics",
+              "slug": "behavioral-activation-basics",
+              "description": "Use simple activation strategies for low mood.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Set micro-goals", "Track activity-mood links", "Build patient adherence"]
+            }
+          ]
+        },
+        {
+          "name": "Crisis Intervention",
+          "slug": "crisis-intervention",
+          "estimated_duration_minutes": 50,
+          "infographic": {
+            "title": "Crisis Intervention: Immediate Safety Protocols",
+            "slug": "crisis-intervention-safety-protocols",
+            "intro": "Mental health crises require calm communication, risk control, and rapid coordination.",
+            "focus_points": [
+              "De-escalation communication",
+              "Suicide risk stratification",
+              "Emergency referral pathways",
+              "Post-crisis follow-up"
+            ],
+            "sources": [
+              "https://988lifeline.org",
+              "https://www.samhsa.gov"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Verbal De-escalation Skills",
+              "slug": "verbal-de-escalation-skills",
+              "description": "Use language and posture to reduce escalating distress.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Use non-threatening phrasing", "Set clear boundaries", "Lower emotional intensity"]
+            },
+            {
+              "name": "Suicide Risk Rapid Screen",
+              "slug": "suicide-risk-rapid-screen",
+              "description": "Apply a structured approach to immediate suicide risk assessment.",
+              "difficulty_level": "advanced",
+              "estimated_duration_minutes": 10,
+              "objectives": ["Ask direct safety questions", "Identify imminent risk", "Activate emergency protocol"]
+            },
+            {
+              "name": "Safety Planning in Outpatient Care",
+              "slug": "safety-planning-in-outpatient-care",
+              "description": "Create actionable safety plans with patients and families.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Define warning signs", "Build coping steps", "Assign support contacts"]
+            },
+            {
+              "name": "Coordinating Urgent Referral",
+              "slug": "coordinating-urgent-referral",
+              "description": "Transfer care effectively to emergency or specialist services.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Prepare referral summary", "Hand over critical risk details", "Confirm follow-up responsibilities"]
+            }
+          ]
+        },
+        {
+          "name": "Sleep and Stress Medicine",
+          "slug": "sleep-and-stress-medicine",
+          "estimated_duration_minutes": 36,
+          "infographic": {
+            "title": "Sleep and Stress: Restoring Daily Function",
+            "slug": "sleep-and-stress-restoring-function",
+            "intro": "Poor sleep and chronic stress are major multipliers of mental and physical health burden.",
+            "focus_points": [
+              "Sleep architecture basics",
+              "Stress physiology",
+              "Behavioral interventions",
+              "Self-monitoring habits"
+            ],
+            "sources": [
+              "https://www.sleepfoundation.org",
+              "https://www.cdc.gov/sleep"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Sleep Hygiene Essentials",
+              "slug": "sleep-hygiene-essentials",
+              "description": "Establish practical sleep routines for better recovery.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 7,
+              "objectives": ["Optimize bedtime routines", "Reduce stimulant interference", "Track sleep quality"]
+            },
+            {
+              "name": "Stress Response and Cortisol",
+              "slug": "stress-response-and-cortisol",
+              "description": "Understand stress hormone dynamics and symptom patterns.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Explain acute vs chronic stress", "Recognize cortisol-related symptoms", "Plan stress reduction"]
+            },
+            {
+              "name": "Mindfulness for Clinical Settings",
+              "slug": "mindfulness-for-clinical-settings",
+              "description": "Apply brief mindfulness tools in high-pressure environments.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Guide 2-minute grounding", "Reduce cognitive overload", "Improve emotional regulation"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nutrition and Metabolic Health",
+      "slug": "nutrition-and-metabolic-health",
+      "description": "Evidence-based nutrition and metabolism principles for clinical care.",
+      "icon_file_name": "nutrition.svg",
+      "color_code": "#10B981",
+      "sections": [
+        {
+          "name": "Balanced Nutrition Principles",
+          "slug": "balanced-nutrition-principles",
+          "estimated_duration_minutes": 34,
+          "infographic": {
+            "title": "Balanced Nutrition: Building Better Daily Intake",
+            "slug": "balanced-nutrition-building-better-intake",
+            "intro": "Balanced nutrition supports immunity, cognition, and long-term disease prevention.",
+            "focus_points": [
+              "Macronutrient balance",
+              "Micronutrient adequacy",
+              "Portion guidance",
+              "Meal planning"
+            ],
+            "sources": [
+              "https://www.who.int/health-topics/nutrition",
+              "https://www.hsph.harvard.edu/nutritionsource"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Macronutrients 101",
+              "slug": "macronutrients-101",
+              "description": "Understand protein, carbohydrate, and fat functions.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 7,
+              "objectives": ["Identify macro roles", "Balance plate composition", "Avoid common misconceptions"]
+            },
+            {
+              "name": "Micronutrient Deficiency Clues",
+              "slug": "micronutrient-deficiency-clues",
+              "description": "Recognize clinical signs of common deficiencies.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Spot deficiency indicators", "Prioritize lab confirmation", "Plan dietary correction"]
+            },
+            {
+              "name": "Healthy Plate Counseling",
+              "slug": "healthy-plate-counseling",
+              "description": "Deliver practical dietary counseling using plate models.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Use visual education tools", "Set realistic intake goals", "Support long-term adherence"]
+            }
+          ]
+        },
+        {
+          "name": "Clinical Nutrition in Chronic Disease",
+          "slug": "clinical-nutrition-in-chronic-disease",
+          "estimated_duration_minutes": 46,
+          "infographic": {
+            "title": "Clinical Nutrition: Tailoring Diet for Disease",
+            "slug": "clinical-nutrition-tailoring-diet",
+            "intro": "Nutrition therapy is a core component of chronic disease management.",
+            "focus_points": [
+              "Diabetes meal planning",
+              "Hypertension dietary control",
+              "Renal nutrition restrictions",
+              "Patient adherence barriers"
+            ],
+            "sources": [
+              "https://diabetes.org",
+              "https://www.kidney.org"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Nutrition for Type 2 Diabetes",
+              "slug": "nutrition-for-type-2-diabetes",
+              "description": "Plan carbohydrate and fiber strategies for glycemic control.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Apply carb quality rules", "Use glycemic load concepts", "Prevent glucose spikes"]
+            },
+            {
+              "name": "DASH Diet in Practice",
+              "slug": "dash-diet-in-practice",
+              "description": "Implement DASH principles for blood pressure reduction.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Select sodium-smart options", "Increase potassium-rich foods", "Build weekly menus"]
+            },
+            {
+              "name": "Nutrition in Chronic Kidney Disease",
+              "slug": "nutrition-in-chronic-kidney-disease",
+              "description": "Adjust protein, sodium, and potassium intake in CKD.",
+              "difficulty_level": "advanced",
+              "estimated_duration_minutes": 10,
+              "objectives": ["Stage CKD dietary priorities", "Prevent electrolyte imbalance", "Coordinate with nephrology"]
+            },
+            {
+              "name": "Counseling for Long-Term Adherence",
+              "slug": "counseling-for-long-term-adherence",
+              "description": "Use behavior change methods to improve nutrition adherence.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify adherence barriers", "Use motivational interviewing basics", "Create follow-up plans"]
+            }
+          ]
+        },
+        {
+          "name": "Metabolic Syndrome and Obesity",
+          "slug": "metabolic-syndrome-and-obesity",
+          "estimated_duration_minutes": 38,
+          "infographic": {
+            "title": "Metabolic Syndrome: Integrated Risk Management",
+            "slug": "metabolic-syndrome-integrated-risk-management",
+            "intro": "Metabolic syndrome combines cardiometabolic risks that require coordinated lifestyle and medical action.",
+            "focus_points": [
+              "Diagnostic criteria",
+              "Visceral fat and inflammation",
+              "Lifestyle intervention bundles",
+              "Follow-up metrics"
+            ],
+            "sources": [
+              "https://www.idf.org",
+              "https://www.nhlbi.nih.gov"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Metabolic Syndrome Criteria",
+              "slug": "metabolic-syndrome-criteria",
+              "description": "Use standardized criteria to identify metabolic syndrome.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Apply waist and lab thresholds", "Classify risk profiles", "Explain syndrome burden"]
+            },
+            {
+              "name": "Obesity Assessment and Staging",
+              "slug": "obesity-assessment-and-staging",
+              "description": "Assess obesity severity using BMI and clinical staging.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Use BMI and waist measures", "Detect obesity complications", "Prioritize intervention intensity"]
+            },
+            {
+              "name": "Lifestyle Intervention Planning",
+              "slug": "lifestyle-intervention-planning",
+              "description": "Build realistic diet and physical activity plans for weight reduction.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Set measurable goals", "Track weekly progress", "Prevent relapse patterns"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Infectious Disease Essentials",
+      "slug": "infectious-disease-essentials",
+      "description": "Clinical essentials for prevention, diagnosis, and response to infectious diseases.",
+      "icon_file_name": "infectious.svg",
+      "color_code": "#3B82F6",
+      "sections": [
+        {
+          "name": "Prevention and Infection Control",
+          "slug": "prevention-and-infection-control",
+          "estimated_duration_minutes": 33,
+          "infographic": {
+            "title": "Infection Control: Core Prevention Protocols",
+            "slug": "infection-control-core-prevention-protocols",
+            "intro": "Consistent infection prevention practices reduce transmission across healthcare and community settings.",
+            "focus_points": [
+              "Hand hygiene moments",
+              "PPE selection",
+              "Isolation principles",
+              "Environmental cleaning"
+            ],
+            "sources": [
+              "https://www.cdc.gov/infectioncontrol",
+              "https://www.who.int/health-topics/infectious-diseases"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Hand Hygiene Compliance",
+              "slug": "hand-hygiene-compliance",
+              "description": "Apply hand hygiene standards in patient care workflows.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 7,
+              "objectives": ["Identify critical hygiene moments", "Use proper hand rub technique", "Reduce contamination risk"]
+            },
+            {
+              "name": "PPE Selection and Donning",
+              "slug": "ppe-selection-and-donning",
+              "description": "Select and wear PPE based on transmission risk.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Match PPE to exposure level", "Don and doff safely", "Prevent self-contamination"]
+            },
+            {
+              "name": "Isolation Precaution Types",
+              "slug": "isolation-precaution-types",
+              "description": "Differentiate contact, droplet, and airborne precautions.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Classify transmission mode", "Apply room precautions", "Communicate isolation status"]
+            }
+          ]
+        },
+        {
+          "name": "Respiratory Infections",
+          "slug": "respiratory-infections",
+          "estimated_duration_minutes": 44,
+          "infographic": {
+            "title": "Respiratory Infections: Clinical Triage and Care",
+            "slug": "respiratory-infections-clinical-triage",
+            "intro": "Respiratory infections range from mild viral illness to severe pneumonia requiring urgent care.",
+            "focus_points": [
+              "Upper vs lower tract clues",
+              "Severity scoring",
+              "Testing strategy",
+              "Escalation decisions"
+            ],
+            "sources": [
+              "https://www.cdc.gov/flu",
+              "https://www.who.int/emergencies/diseases"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Viral vs Bacterial Patterns",
+              "slug": "viral-vs-bacterial-patterns",
+              "description": "Use history and exam clues to distinguish likely etiologies.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Recognize symptom patterns", "Interpret basic inflammatory clues", "Avoid unnecessary antibiotics"]
+            },
+            {
+              "name": "Community-Acquired Pneumonia Basics",
+              "slug": "community-acquired-pneumonia-basics",
+              "description": "Assess and manage uncomplicated community-acquired pneumonia.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Identify red flags", "Use severity tools", "Plan initial treatment"]
+            },
+            {
+              "name": "Influenza Risk Stratification",
+              "slug": "influenza-risk-stratification",
+              "description": "Stratify flu risk and prioritize treatment timing.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify high-risk groups", "Time antiviral initiation", "Educate on warning signs"]
+            },
+            {
+              "name": "Oxygen Therapy Fundamentals",
+              "slug": "oxygen-therapy-fundamentals",
+              "description": "Provide safe oxygen support in respiratory distress.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Select oxygen device", "Set target saturation ranges", "Monitor response and safety"]
+            }
+          ]
+        },
+        {
+          "name": "Gastrointestinal Infections",
+          "slug": "gastrointestinal-infections",
+          "estimated_duration_minutes": 36,
+          "infographic": {
+            "title": "Gastrointestinal Infections: Hydration and Risk Control",
+            "slug": "gastrointestinal-infections-hydration-and-risk",
+            "intro": "GI infections are common and can become severe through dehydration and electrolyte imbalance.",
+            "focus_points": [
+              "Clinical dehydration grading",
+              "Oral rehydration protocols",
+              "Stool testing indications",
+              "Outbreak prevention"
+            ],
+            "sources": [
+              "https://www.who.int/health-topics/diarrhoea",
+              "https://www.cdc.gov/foodborneburden"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Acute Gastroenteritis Assessment",
+              "slug": "acute-gastroenteritis-assessment",
+              "description": "Assess dehydration risk in acute gastroenteritis.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Grade dehydration severity", "Identify red flag symptoms", "Prioritize fluid therapy"]
+            },
+            {
+              "name": "Oral Rehydration Therapy",
+              "slug": "oral-rehydration-therapy",
+              "description": "Use oral rehydration correctly across age groups.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 7,
+              "objectives": ["Prepare ORS correctly", "Dose by weight and severity", "Prevent recurrence"]
+            },
+            {
+              "name": "Foodborne Illness Investigation",
+              "slug": "foodborne-illness-investigation",
+              "description": "Trace likely sources and provide preventive guidance.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Build exposure timeline", "Identify outbreak clusters", "Report to public health channels"]
+            }
+          ]
+        },
+        {
+          "name": "Vector-Borne Diseases",
+          "slug": "vector-borne-diseases",
+          "estimated_duration_minutes": 35,
+          "infographic": {
+            "title": "Vector-Borne Diseases: Prevention and Early Detection",
+            "slug": "vector-borne-diseases-prevention-and-detection",
+            "intro": "Vector-borne diseases demand prevention-focused public health and early clinical recognition.",
+            "focus_points": [
+              "Mosquito-borne disease profiles",
+              "Seasonal risk mapping",
+              "Early warning symptoms",
+              "Community prevention"
+            ],
+            "sources": [
+              "https://www.who.int/news-room/fact-sheets/detail/vector-borne-diseases",
+              "https://www.cdc.gov/vector-borne-diseases"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Dengue Warning Signs",
+              "slug": "dengue-warning-signs",
+              "description": "Recognize warning signs and progression risk in dengue infection.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify severe dengue markers", "Monitor fluid status", "Trigger urgent escalation"]
+            },
+            {
+              "name": "Malaria Rapid Recognition",
+              "slug": "malaria-rapid-recognition",
+              "description": "Identify malaria patterns in febrile patients.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Assess travel exposure", "Recognize cyclic fever clues", "Arrange confirmatory testing"]
+            },
+            {
+              "name": "Community Vector Control",
+              "slug": "community-vector-control",
+              "description": "Design practical community-level vector reduction plans.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 7,
+              "objectives": ["Identify breeding hotspots", "Promote household prevention", "Coordinate local response"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Maternal and Child Health",
+      "slug": "maternal-and-child-health",
+      "description": "Foundational care pathways for pregnancy, newborn, and pediatric health.",
+      "icon_file_name": "maternal-child.svg",
+      "color_code": "#F59E0B",
+      "sections": [
+        {
+          "name": "Prenatal Care Pathways",
+          "slug": "prenatal-care-pathways",
+          "estimated_duration_minutes": 37,
+          "infographic": {
+            "title": "Prenatal Care: Structured Monitoring from First Visit",
+            "slug": "prenatal-care-structured-monitoring",
+            "intro": "High-quality prenatal care reduces complications for both mother and fetus through proactive monitoring.",
+            "focus_points": [
+              "Visit schedule by trimester",
+              "Maternal risk screening",
+              "Fetal growth monitoring",
+              "Danger sign counseling"
+            ],
+            "sources": [
+              "https://www.acog.org",
+              "https://www.who.int/health-topics/maternal-health"
+            ]
+          },
+          "courses": [
+            {
+              "name": "First Antenatal Visit Essentials",
+              "slug": "first-antenatal-visit-essentials",
+              "description": "Perform structured assessments during the first prenatal visit.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Collect baseline maternal history", "Order initial prenatal tests", "Start preventive counseling"]
+            },
+            {
+              "name": "Hypertensive Disorders in Pregnancy",
+              "slug": "hypertensive-disorders-in-pregnancy",
+              "description": "Identify and triage hypertensive complications in pregnancy.",
+              "difficulty_level": "advanced",
+              "estimated_duration_minutes": 10,
+              "objectives": ["Recognize preeclampsia warning signs", "Monitor blood pressure trends", "Escalate high-risk cases"]
+            },
+            {
+              "name": "Gestational Diabetes Monitoring",
+              "slug": "gestational-diabetes-monitoring",
+              "description": "Apply screening and monitoring workflows for gestational diabetes.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Interpret OGTT results", "Set glucose targets", "Coordinate diet and follow-up"]
+            }
+          ]
+        },
+        {
+          "name": "Newborn Care Essentials",
+          "slug": "newborn-care-essentials",
+          "estimated_duration_minutes": 44,
+          "infographic": {
+            "title": "Newborn Care: The First 28 Days",
+            "slug": "newborn-care-first-28-days",
+            "intro": "The neonatal period is highly sensitive and requires timely screening, feeding support, and danger sign detection.",
+            "focus_points": [
+              "Immediate postnatal assessment",
+              "Thermal and feeding support",
+              "Neonatal jaundice monitoring",
+              "Parent education"
+            ],
+            "sources": [
+              "https://www.unicef.org/health/newborn-health",
+              "https://www.who.int/health-topics/newborn-health"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Immediate Newborn Assessment",
+              "slug": "immediate-newborn-assessment",
+              "description": "Perform immediate post-delivery neonatal checks.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Evaluate transition to extrauterine life", "Record key baseline metrics", "Identify urgent concerns"]
+            },
+            {
+              "name": "Breastfeeding Support Basics",
+              "slug": "breastfeeding-support-basics",
+              "description": "Support early breastfeeding initiation and latch quality.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Assess latch mechanics", "Address common feeding challenges", "Promote exclusive breastfeeding"]
+            },
+            {
+              "name": "Neonatal Jaundice Monitoring",
+              "slug": "neonatal-jaundice-monitoring",
+              "description": "Monitor and triage jaundice severity in newborns.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Recognize risk factors", "Use bilirubin thresholds", "Plan follow-up and referral"]
+            },
+            {
+              "name": "Neonatal Danger Signs",
+              "slug": "neonatal-danger-signs",
+              "description": "Detect life-threatening neonatal warning signs early.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Identify respiratory distress", "Assess feeding intolerance", "Escalate urgent transport"]
+            }
+          ]
+        },
+        {
+          "name": "Common Pediatric Illnesses",
+          "slug": "common-pediatric-illnesses",
+          "estimated_duration_minutes": 39,
+          "infographic": {
+            "title": "Pediatric Illnesses: Practical Frontline Management",
+            "slug": "pediatric-illnesses-frontline-management",
+            "intro": "Common pediatric conditions require age-specific assessment and communication with caregivers.",
+            "focus_points": [
+              "Fever triage by age",
+              "Respiratory symptom assessment",
+              "Hydration and nutrition support",
+              "Parent return precautions"
+            ],
+            "sources": [
+              "https://www.aap.org",
+              "https://www.cdc.gov/children"
+            ]
+          },
+          "courses": [
+            {
+              "name": "Pediatric Fever Triage",
+              "slug": "pediatric-fever-triage",
+              "description": "Assess fever severity and red flags in children.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Use age-specific fever thresholds", "Identify serious bacterial risk", "Guide caregiver actions"]
+            },
+            {
+              "name": "Acute Pediatric Respiratory Symptoms",
+              "slug": "acute-pediatric-respiratory-symptoms",
+              "description": "Differentiate common respiratory presentations in children.",
+              "difficulty_level": "intermediate",
+              "estimated_duration_minutes": 9,
+              "objectives": ["Recognize work-of-breathing signs", "Prioritize oxygen support", "Determine referral urgency"]
+            },
+            {
+              "name": "Pediatric Dehydration Management",
+              "slug": "pediatric-dehydration-management",
+              "description": "Treat mild to moderate dehydration in children.",
+              "difficulty_level": "beginner",
+              "estimated_duration_minutes": 8,
+              "objectives": ["Assess dehydration severity", "Use oral rehydration plans", "Provide follow-up guidance"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

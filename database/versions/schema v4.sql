@@ -147,8 +147,8 @@ CREATE TABLE section (
 );
 
 -- Level 3: called "lesson" in the SDD — course is the authoritative name here
--- All screen content (infographics + inline quizzes) stored as structured JSON
--- See CONTENT_STRUCTURE.md for the full JSON schema specification
+-- Content strategy: database stores filename references only (not raw JSON payload)
+-- Actual course files are loaded from mockup content storage
 CREATE TABLE course (
     id                         UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     section_id                 UNIQUEIDENTIFIER NOT NULL,
@@ -159,12 +159,12 @@ CREATE TABLE course (
     estimated_duration_minutes INT DEFAULT 7,
     difficulty_level           NVARCHAR(20) DEFAULT 'beginner',
     is_active                  BIT DEFAULT 1,
-    content                    NVARCHAR(MAX) NOT NULL,
+    content_file_name          NVARCHAR(255) NOT NULL,
     created_at                 DATETIME2 DEFAULT GETDATE(),
     updated_at                 DATETIME2 DEFAULT GETDATE(),
     FOREIGN KEY (section_id) REFERENCES section(id),
     CONSTRAINT chk_difficulty_level CHECK (difficulty_level IN ('beginner', 'intermediate', 'advanced')),
-    CONSTRAINT chk_content_is_json CHECK (ISJSON(content) = 1)
+    CONSTRAINT chk_course_content_file_name CHECK (RIGHT(content_file_name, 5) = '.json')
 );
 
 -- No row = not enrolled. status 'enrolled' = active. status 'finished' = all sections done.
@@ -283,12 +283,13 @@ CREATE TABLE article (
     theme_id         UNIQUEIDENTIFIER NOT NULL,
     name             NVARCHAR(300) NOT NULL,
     slug             NVARCHAR(300) NOT NULL UNIQUE,
-    content_markdown NVARCHAR(MAX) NOT NULL,
+    content_markdown NVARCHAR(255) NOT NULL,
     author_admin_id  UNIQUEIDENTIFIER,           -- cross-service ref to [user].id
     is_published     BIT DEFAULT 0,
     published_at     DATETIME2,
     created_at       DATETIME2 DEFAULT GETDATE(),
-    updated_at       DATETIME2 DEFAULT GETDATE()
+    updated_at       DATETIME2 DEFAULT GETDATE(),
+    CONSTRAINT chk_article_content_file_name CHECK (RIGHT(content_markdown, 3) = '.md')
     -- No FK on theme_id: cross-service reference to Learning Service (theme table)
     -- No FK on author_admin_id: cross-service reference to Auth Service ([user] table)
 );
@@ -447,7 +448,7 @@ CREATE TABLE user_notification_preference (
 -- ============================================================================
 
 PRINT 'BioBasics database schema v5 created successfully!';
-PRINT 'Total tables created: 27';
+PRINT 'Total tables created: 25';
 PRINT 'Note: JSON content structures documented in:';
 PRINT '  - CONTENT_STRUCTURE.md';
 PRINT '  - INITIAL_ASSESSMENT_STRUCTURE.md';

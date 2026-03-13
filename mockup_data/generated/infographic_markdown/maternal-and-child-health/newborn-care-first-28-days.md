@@ -1,0 +1,34 @@
+# Newborn Care: The First 28 Days
+
+The neonatal period is highly sensitive and requires timely screening, feeding support, and danger sign detection.
+
+---
+
+## Why This Matters
+
+This infographic belongs to the theme *Maternal and Child Health* and section *Newborn Care Essentials*. It provides a concise, practical overview for rapid learning.
+
+## Key Focus Points
+
+[[[
+- *Immediate postnatal assessment*
+- *Thermal and feeding support*
+- *Neonatal jaundice monitoring*
+- *Parent education*
+]]]
+
+## Section Learning Units
+
+| Course | Focus |
+|--------|-------|
+| Immediate Newborn Assessment | Perform immediate post-delivery neonatal checks. |
+| Breastfeeding Support Basics | Support early breastfeeding initiation and latch quality. |
+| Neonatal Jaundice Monitoring | Monitor and triage jaundice severity in newborns. |
+| Neonatal Danger Signs | Detect life-threatening neonatal warning signs early. |
+
+## Sources
+
+[[[
+- {Reference|https://www.unicef.org/health/newborn-health}
+- {Reference|https://www.who.int/health-topics/newborn-health}
+]]]

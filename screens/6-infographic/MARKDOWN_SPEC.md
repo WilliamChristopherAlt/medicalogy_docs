@@ -4,6 +4,15 @@
 
 This document specifies the custom markdown format used for wiki/infographic pages in BioBasics.
 
+## Content Source Modes
+
+To support generation pipelines, article content may be loaded in two modes:
+
+1. **Inline mode** (legacy): `article.content_markdown` stores full markdown text.
+2. **File reference mode** (new mockup mode): `article.content_markdown` stores a short filename such as `airway-emergencies-recognition.md`.
+
+In file reference mode, markdown files are resolved from `mockup_data/content_files/articles/`.
+
 ---
 
 ## Supported Syntax
@@ -72,6 +81,8 @@ Examples:
 ```markdown
 ![position|alt text](image_url)
 ```
+
+In mockup file-reference mode, `image_url` can be an image file name from the common media dataset (for example: `photo-illus-healthcare-banner-1x1.jpeg`) instead of a remote URL.
 
 | Position | Behavior |
 |----------|----------|

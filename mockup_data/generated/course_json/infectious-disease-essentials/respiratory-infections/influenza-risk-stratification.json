@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "screens": [
+    {
+      "id": "screen-001",
+      "type": "infographic",
+      "orderIndex": 1,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80",
+        "summaryText": "Influenza Risk Stratification is part of Respiratory Infections in the theme Infectious Disease Essentials. This module focuses on: Identify high-risk groups."
+      }
+    },
+    {
+      "id": "screen-002",
+      "type": "quiz",
+      "orderIndex": 2,
+      "content": {
+        "questionType": "multiple_choice",
+        "questionText": "Which action best supports this course objective: Identify high-risk groups?",
+        "explanation": "The best answer is the action that directly helps learners apply 'Identify high-risk groups' while studying Influenza Risk Stratification.",
+        "options": [
+          {
+            "id": "a",
+            "text": "Use a structured checklist and verify outcomes",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "text": "Skip baseline assessment to save time",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "text": "Rely only on memory without documentation",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "text": "Delay escalation despite red flags",
+            "isCorrect": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen-003",
+      "type": "infographic",
+      "orderIndex": 3,
+      "content": {
+        "imageFileName": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
+        "summaryText": "Practical emphasis: Time antiviral initiation. Learners should practice concise decision-making and escalation when necessary."
+      }
+    },
+    {
+      "id": "screen-004",
+      "type": "quiz",
+      "orderIndex": 4,
+      "content": {
+        "questionType": "true_false",
+        "questionText": "A clear plan for 'Time antiviral initiation' improves consistency in Influenza Risk Stratification.",
+        "explanation": "Structured plans reduce omissions and improve safe, repeatable care.",
+        "correctAnswer": true
+      }
+    },
+    {
+      "id": "screen-005",
+      "type": "quiz",
+      "orderIndex": 5,
+      "content": {
+        "questionType": "matching",
+        "sentence": "Start with <1> to establish baseline status.\nUse <2> to deliver standardized intervention.\nDocument <3> to support continuity and quality review.",
+        "correctAnswers": [
+          "assessment",
+          "protocol",
+          "outcomes"
+        ],
+        "wrongAnswers": [
+          "guesswork",
+          "delay",
+          "omission"
+        ]
+      }
+    }
+  ]
+}
