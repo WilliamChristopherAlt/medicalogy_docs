@@ -3,11 +3,11 @@
 **Route:** `/onboarding`
 
 **Tài nguyên:**
-- [doc.md](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-initial-assesment/doc.md) (tài liệu này)
-- [demo.html](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-initial-assesment/demo.html) (demo tương tác)
-- [initial_assessment.json](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-initial-assesment/initial_assessment.json) (nội dung bài đánh giá)
-- [md_to_html.py](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-initial-assesment/md_to_html.py) (script chuyển đổi JSON sang HTML)
-- [INITIAL_ASSESSMENT_STRUCTURE.md](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-initial-assesment/INITIAL_ASSESSMENT_STRUCTURE.md) (đặc tả cấu trúc JSON)
+- [doc.md](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-onboarding/doc.md) (tài liệu này)
+- [demo.html](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-onboarding/demo.html) (demo tương tác)
+- [initial_assessment.json](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-onboarding/initial_assessment.json) (nội dung bài đánh giá)
+- [md_to_html.py](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-onboarding/md_to_html.py) (script chuyển đổi JSON sang HTML)
+- [INITIAL_ASSESSMENT_STRUCTURE.md](https://williamchristopheralt.github.io/medicalogy_docs/screens/5-onboarding/INITIAL_ASSESSMENT_STRUCTURE.md) (đặc tả cấu trúc JSON)
 
 ---
 
@@ -19,11 +19,11 @@ Thu thập nhóm tuổi và kiến thức y tế cơ bản của người dùng 
 >
 > | Bảng DB | Ý nghĩa | Cột được ghi |
 > |---------|---------|--------------|
-> | `user` | Tài khoản người dùng | `user_demographic_id` |
+> | `user` | Tài khoản người dùng | `demographic` |
 > | `user_initial_assessment` | Ghi nhận đã làm bài đánh giá | `user_id`, `initial_assessment_id`, `completed_at` |
-> | `initial_user_section_proficiency` | Trình độ kiến thức theo từng section | `user_id`, `initial_assessment_id`, `section_id`, `questions_seen`, `questions_correct`, `knowledge_level` |
+> | `initial_user_section_proficiency` | Điểm đánh giá theo từng section | `user_id`, `initial_assessment_id`, `section_id`, `questions_seen`, `questions_correct` |
 
-> **Onboarding gate:** `user.user_demographic_id IS NULL` nghĩa là onboarding chưa hoàn thành. Mọi màn hình yêu cầu onboarding sẽ redirect về `/onboarding` nếu giá trị này là NULL.
+> **Onboarding gate:** `user.demographic IS NULL` nghĩa là onboarding chưa hoàn thành. Mọi màn hình yêu cầu onboarding sẽ redirect về `/onboarding` nếu giá trị này là NULL.
 
 ---
 
@@ -45,17 +45,13 @@ Onboarding là một trang dạng step-by-step. Tiến độ hiển thị dướ
 
 ### Bước 1 — Chọn nhóm tuổi
 
-Người dùng chọn nhóm tuổi từ 5 lựa chọn. Bắt buộc phải chọn trước khi tiếp tục.
+Người dùng chọn nhóm tuổi từ 3 lựa chọn. Bắt buộc phải chọn trước khi tiếp tục. Giá trị được ghi trực tiếp vào `user.demographic`.
 
-| ID nhóm tuổi | Nhãn | Mô tả |
-|---|---|---|
-| `teen` | 13 – 17 | Học sinh |
-| `youngAdult` | 18 – 25 | Sinh viên / Người mới đi làm |
-| `adult` | 26 – 45 | Người đi làm |
-| `middleAged` | 46 – 60 | Trung niên |
-| `senior` | 61+ | Cao tuổi |
-
-Khi hoàn thành, nhóm tuổi được dùng để tra cứu record `user_demographic` phù hợp (theo khoảng tuổi) và ghi vào `user.user_demographic_id`.
+| Giá trị | Mô tả |
+|---|---|
+| `child` | Trẻ em (dưới 13 tuổi) |
+| `teen` | Thiếu niên (13–17 tuổi) |
+| `adult` | Người lớn (18 tuổi trở lên) |
 
 ### Bước 2 — Giải thích cách chấm điểm & phân loại
 
@@ -93,7 +89,7 @@ Hiển thị bảng điểm theo từng section, tự động điền từ kết
 |-----------|-------|
 | Tên section | Nhãn hiển thị của section |
 | Phân số điểm | `questions_correct / questions_seen` cho section đó |
-| Badge trình độ | `Mới bắt đầu`, `Trung cấp`, hoặc `Nâng cao` — phân loại theo bảng ngưỡng ở trên |
+| Badge kết quả | "Already known" nếu `questions_correct / questions_seen >= 0.80`, "To learn" nếu dưới ngưỡng |
 
 ### Bước 5 — Gợi ý lộ trình học ban đầu
 
@@ -112,10 +108,10 @@ Nút "Bắt đầu học" kích hoạt ghi dữ liệu cuối cùng và redirect
 | **Mã UC** | UC-ONBOARD-01 |
 | **Tên** | Hoàn thành bài đánh giá đầu vào |
 | **Mô tả** | Người dùng mới đi qua toàn bộ các bước onboarding. Khi hoàn thành, hệ thống ghi nhân khẩu học, kết quả đánh giá, và trình độ theo từng section trong một transaction duy nhất |
-| **Điều kiện tiên quyết** | Tài khoản đã tồn tại; `user.user_demographic_id IS NULL` |
+| **Điều kiện tiên quyết** | Tài khoản đã tồn tại; `user.demographic IS NULL` |
 | **Luồng chính** | 1. Chọn nhóm tuổi → 2. Đọc giải thích phân loại → 3. Trả lời toàn bộ câu hỏi quiz → 4. Xem kết quả theo section → 5. Xem gợi ý lộ trình → 6. Bấm "Bắt đầu học" → 7. Hệ thống commit transaction → 8. Redirect đến `/themes` |
-| **Hậu điều kiện** | `user.user_demographic_id` được ghi. Record `user_initial_assessment` được tạo. Một record `initial_user_section_proficiency` cho mỗi section được kiểm tra |
-| **Luồng thay thế** | Người dùng thoát trước khi hoàn thành → không ghi dữ liệu, `user_demographic_id` vẫn NULL, onboarding gate redirect lại khi truy cập lần sau |
+| **Hậu điều kiện** | `user.demographic` được ghi. Record `user_initial_assessment` được tạo. Một record `initial_user_section_proficiency` cho mỗi section được kiểm tra |
+| **Luồng thay thế** | Người dùng thoát trước khi hoàn thành → không ghi dữ liệu, `user.demographic` vẫn NULL, onboarding gate redirect lại khi truy cập lần sau |
 
 ### UC-ONBOARD-02: Bỏ qua onboarding đã hoàn thành
 
@@ -124,7 +120,7 @@ Nút "Bắt đầu học" kích hoạt ghi dữ liệu cuối cùng và redirect
 | **Mã UC** | UC-ONBOARD-02 |
 | **Tên** | Bỏ qua onboarding cho người dùng đã hoàn thành |
 | **Mô tả** | Người dùng đã hoàn thành onboarding cố tình truy cập lại `/onboarding` |
-| **Điều kiện tiên quyết** | `user.user_demographic_id IS NOT NULL` |
+| **Điều kiện tiên quyết** | `user.demographic IS NOT NULL` |
 | **Luồng chính** | 1. Truy cập `/onboarding` → 2. Hệ thống phát hiện onboarding đã hoàn thành → 3. Redirect đến `/themes` |
 | **Hậu điều kiện** | Không có dữ liệu thay đổi. Người dùng được chuyển đến trang themes |
 
@@ -139,7 +135,7 @@ BEGIN TRANSACTION
 
     -- 1. Ghi nhân khẩu học
     UPDATE [user]
-    SET user_demographic_id = @demographic_id, updated_at = GETDATE()
+    SET demographic = @demographic, updated_at = GETDATE()
     WHERE id = @user_id
 
     -- 2. Ghi nhận đã làm bài
@@ -148,7 +144,7 @@ BEGIN TRANSACTION
 
     -- 3. Ghi trình độ theo từng section (một row cho mỗi section xuất hiện trong bài)
     INSERT INTO initial_user_section_proficiency
-        (user_id, initial_assessment_id, section_id, questions_seen, questions_correct, knowledge_level)
+        (user_id, initial_assessment_id, section_id, questions_seen, questions_correct)
     VALUES ...
 
 COMMIT
@@ -162,4 +158,4 @@ COMMIT
 |---|-----|--------|-------------|
 | 1 | `/api/onboarding/assessment` | GET | Lấy nội dung `initial_assessment` đang active (câu hỏi, nhóm tuổi) |
 | 2 | `/api/onboarding/complete` | POST | Gửi kết quả và kích hoạt transaction (body: `{ ageGroupId, assessmentId, sectionScores[] }`) |
-| 3 | `/api/demographics` | GET | Lấy danh sách `user_demographic` để tra cứu nhóm tuổi |
+| 3 | `/api/demographics` | GET | Lấy danh sách các giá trị demographic hợp lệ (`child`, `teen`, `adult`) cho onboarding picker |

@@ -1,5 +1,5 @@
 -- ============================================================================
--- BioBasics Database Schema - v5
+-- Medicalogy Database Schema - v5
 -- Database: medicalogy
 -- SQL Server Implementation
 -- ============================================================================
@@ -15,27 +15,37 @@
 -- CHANGES FROM v4:
 --   [user]
 --     - password_hash: NOT NULL → NULL (OAuth users have no password)
---     - user_demographic_id: NOT NULL → NULL (OAuth JIT provisioning)
+--     - demographic: NOT NULL → NULL (OAuth JIT provisioning, set during onboarding)
 --     - ADD oauth_provider NVARCHAR(50)       ('google', 'facebook', NULL = local)
 --     - ADD oauth_provider_id NVARCHAR(255)   (provider's own user ID)
 --     - ADD role NVARCHAR(10) DEFAULT 'USER'  (USER | ADMIN — stamped into JWT)
 --     - ADD UNIQUE constraint on (oauth_provider, oauth_provider_id)
+--   REMOVED: user_demographic table — replaced by user.demographic inline enum
+--   [user]
+--     - REMOVED user_demographic_id FK column
+--     - ADD demographic NVARCHAR(20) NULL (child | teen | adult) — NULL until onboarding
 --   NEW: refresh_token table
 --   NEW: user_theme_enrollment table
 --   user_setting: removed coarse notification bits → user_notification_preference
 --
 -- CHANGES FROM v5 (this version):
+--   [section]
+--     - ADD content_rating NVARCHAR(20) DEFAULT 'general'   (general | teen | adult)
+--     - ADD intended_demographic NVARCHAR(20) DEFAULT 'all' (all | child | teen | adult)
+--     - ADD UNIQUE constraint on slug (scoped per theme via app; see note below)
+--     - API filters sections by intended_demographic vs user.demographic (wrong demographic = section hidden)
+--     - content_rating stored for future use / admin tooling; not used in current UI
+--   [course]
+--     - ADD UNIQUE constraint on (section_id, slug)
 --   [user_initial_assessment]
---     - REMOVED quizzes_correct  (aggregate score replaced by per-theme table)
---     - REMOVED total_questions  (aggregate score replaced by per-theme table)
---   [user_profile]
---     - REMOVED medical_background  (redundant — initial_user_section_proficiency captures this)
+--     - REMOVED quizzes_correct  (aggregate score — breakdown is per-section)
+--     - REMOVED total_questions  (aggregate score — breakdown is per-section)
 --   NEW: initial_user_section_proficiency
---     - Per-theme breakdown of placement test results
---     - FK to initial_assessment; cross-service refs to user + theme
---     - Stores questions_seen, questions_correct, knowledge_level per theme
---     - knowledge_level derived by app at scoring time (beginner/intermediate/advanced)
---     - Requires each question in initial_assessment.content to carry a themeId
+--     - Per-section score from placement test
+--     - Stores questions_seen, questions_correct per section (no knowledge_level)
+--     - If questions_correct / questions_seen >= 0.80 → roadmap shows "Already known" UI
+--     - Pure UI signal — no user_course rows written
+--     - Each question in initial_assessment.content must carry a sectionSlug
 -- ============================================================================
 
 USE master;
@@ -52,41 +62,32 @@ GO
 
 -- ============================================================================
 -- SERVICE 1: AUTH SERVICE
--- Tables: user_demographic, [user], refresh_token, user_setting, user_profile
+-- Tables: [user], refresh_token, user_setting, user_profile
 -- ============================================================================
 
-CREATE TABLE user_demographic (
-    id          UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-    name        NVARCHAR(100) NOT NULL,
-    description NVARCHAR(500),
-    min_age     INT,
-    max_age     INT,
-    created_at  DATETIME2 DEFAULT GETDATE(),
-    updated_at  DATETIME2 DEFAULT GETDATE()
-);
-
 -- password_hash is NULL for OAuth-only accounts
--- user_demographic_id is NULL until user completes onboarding
+-- demographic is NULL until user completes onboarding
+-- demographic values match section.intended_demographic and section.content_rating
 -- role is stamped into the JWT by Auth Service
 CREATE TABLE [user] (
-    id                  UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-    email               NVARCHAR(255) NOT NULL UNIQUE,
-    username            NVARCHAR(100) NOT NULL UNIQUE,
-    password_hash       NVARCHAR(255) NULL,                     -- NULL for OAuth users
-    user_demographic_id UNIQUEIDENTIFIER NULL,                  -- NULL until onboarding complete
-    date_of_birth       DATE,
-    location            NVARCHAR(200),
-    phone_number        NVARCHAR(30),
-    oauth_provider      NVARCHAR(50) NULL,                      -- 'google', 'facebook', NULL = local
-    oauth_provider_id   NVARCHAR(255) NULL,                     -- provider's own user ID
-    role                NVARCHAR(10) NOT NULL DEFAULT 'USER',    -- USER | ADMIN
-    is_active           BIT DEFAULT 1,
-    is_verified         BIT DEFAULT 0,
-    last_login_at       DATETIME2,
-    created_at          DATETIME2 DEFAULT GETDATE(),
-    updated_at          DATETIME2 DEFAULT GETDATE(),
-    FOREIGN KEY (user_demographic_id) REFERENCES user_demographic(id),
+    id                UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    email             NVARCHAR(255) NOT NULL UNIQUE,
+    username          NVARCHAR(100) NOT NULL UNIQUE,
+    password_hash     NVARCHAR(255) NULL,                     -- NULL for OAuth users
+    demographic       NVARCHAR(20)  NULL,                     -- NULL until onboarding complete
+    date_of_birth     DATE,
+    location          NVARCHAR(200),
+    phone_number      NVARCHAR(30),
+    oauth_provider    NVARCHAR(50)  NULL,                     -- 'google', 'facebook', NULL = local
+    oauth_provider_id NVARCHAR(255) NULL,                     -- provider's own user ID
+    role              NVARCHAR(10)  NOT NULL DEFAULT 'USER',   -- USER | ADMIN
+    is_active         BIT DEFAULT 1,
+    is_verified       BIT DEFAULT 0,
+    last_login_at     DATETIME2,
+    created_at        DATETIME2 DEFAULT GETDATE(),
+    updated_at        DATETIME2 DEFAULT GETDATE(),
     CONSTRAINT chk_role CHECK (role IN ('USER', 'ADMIN')),
+    CONSTRAINT chk_demographic CHECK (demographic IN ('child', 'teen', 'adult')),
     CONSTRAINT uq_oauth_provider UNIQUE (oauth_provider, oauth_provider_id)
 );
 
@@ -115,7 +116,7 @@ CREATE TABLE user_setting (
     CONSTRAINT chk_theme_preference CHECK (theme_preference IN ('light', 'dark', 'auto'))
 );
 
--- medical_background removed: captured with more granularity by initial_user_section_proficiency
+-- medical_background column not included — occupation + bio in user_profile are sufficient
 CREATE TABLE user_profile (
     user_id      UNIQUEIDENTIFIER PRIMARY KEY,
     display_name NVARCHAR(200),
@@ -147,6 +148,17 @@ CREATE TABLE theme (
 );
 
 -- Level 2
+-- content_rating: minimum age group required to access this section.
+--   'general'  = suitable for all ages (default)
+--   'teen'     = suitable for teens (13+) and above
+--   'adult'    = adults only (18+), e.g. clinical detail, graphic medical content
+-- intended_demographic: the primary audience this section is written for.
+--   'all'      = no specific audience (default)
+--   'child'    = written for children (under 13), simplified language
+--   'teen'     = written for teenagers (13-17)
+--   'adult'    = written for adults (18+)
+-- API filters sections by intended_demographic: only sections matching user.demographic (or 'all') are returned.
+-- content_rating stored for reference; no UI treatment currently applied.
 CREATE TABLE section (
     id                         UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     theme_id                   UNIQUEIDENTIFIER NOT NULL,
@@ -154,9 +166,18 @@ CREATE TABLE section (
     slug                       NVARCHAR(300) NOT NULL,
     order_index                INT NOT NULL,
     estimated_duration_minutes INT,
+    content_rating             NVARCHAR(20)  NOT NULL DEFAULT 'general',
+    intended_demographic       NVARCHAR(20)  NOT NULL DEFAULT 'all',
     created_at                 DATETIME2 DEFAULT GETDATE(),
     updated_at                 DATETIME2 DEFAULT GETDATE(),
-    FOREIGN KEY (theme_id) REFERENCES theme(id)
+    FOREIGN KEY (theme_id) REFERENCES theme(id),
+    CONSTRAINT uq_section_slug_per_theme UNIQUE (theme_id, slug),
+    CONSTRAINT chk_section_content_rating CHECK (
+        content_rating IN ('general', 'teen', 'adult')
+    ),
+    CONSTRAINT chk_section_intended_demographic CHECK (
+        intended_demographic IN ('all', 'child', 'teen', 'adult')
+    )
 );
 
 -- Level 3: called "lesson" in the SDD — course is the authoritative name here
@@ -176,6 +197,7 @@ CREATE TABLE course (
     created_at                 DATETIME2 DEFAULT GETDATE(),
     updated_at                 DATETIME2 DEFAULT GETDATE(),
     FOREIGN KEY (section_id) REFERENCES section(id),
+    CONSTRAINT uq_course_slug_per_section UNIQUE (section_id, slug),
     CONSTRAINT chk_difficulty_level CHECK (difficulty_level IN ('beginner', 'intermediate', 'advanced')),
     CONSTRAINT chk_course_content_file_name CHECK (RIGHT(content_file_name, 5) = '.json')
 );
@@ -200,8 +222,9 @@ CREATE TABLE user_course (
     quizzes_correct INT DEFAULT 0,
     completed_at    DATETIME2 DEFAULT GETDATE(),
     PRIMARY KEY (user_id, course_id),
-    FOREIGN KEY (course_id) REFERENCES course(id)
+    FOREIGN KEY (course_id) REFERENCES course(id),
     -- No FK on user_id: cross-service reference
+    CONSTRAINT chk_user_course_quizzes_correct CHECK (quizzes_correct >= 0)
 );
 
 -- Valid activity that increments streak: completing a course or a section test
@@ -268,6 +291,7 @@ CREATE TABLE user_section_test (
 -- Existence of a row = placement test has been taken.
 -- No aggregate score stored here — per-section breakdown lives in
 -- initial_user_section_proficiency. completed_at is the onboarding timestamp.
+-- user.demographic IS NULL = onboarding not complete.
 CREATE TABLE user_initial_assessment (
     user_id               UNIQUEIDENTIFIER NOT NULL,
     initial_assessment_id UNIQUEIDENTIFIER NOT NULL,
@@ -485,8 +509,8 @@ CREATE TABLE user_notification_preference (
 -- END OF SCHEMA
 -- ============================================================================
 
-PRINT 'BioBasics database schema v5 created successfully!';
-PRINT 'Total tables created: 26';
+PRINT 'Medicalogy database schema v5 created successfully!';
+PRINT 'Total tables created: 25';
 PRINT 'Note: JSON content structures documented in:';
 PRINT '  - CONTENT_STRUCTURE.md';
 PRINT '  - INITIAL_ASSESSMENT_STRUCTURE.md';

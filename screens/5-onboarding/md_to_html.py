@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BioBasics Initial Assessment JSON to HTML Converter
+Medicalogy Initial Assessment JSON to HTML Converter
 Converts the onboarding/placement test JSON into an interactive HTML demo.
 
 Flow:
@@ -303,11 +303,23 @@ def generate_html(data):
     ], ensure_ascii=False, indent=2)
 
     section_labels_js = json.dumps({
-        'emergency-care-fundamentals':      'Emergency Care Fundamentals',
-        'nutrition-basics':                 'Nutrition Basics',
-        'cardiovascular-anatomy':           'Cardiovascular Anatomy',
-        'mental-health-awareness':          'Mental Health Awareness',
-        'diabetes-endocrinology-basics':    'Diabetes & Endocrinology',
+        'airway-emergencies':                    'Airway Emergencies',
+        'cardiac-emergencies':                   'Cardiac Emergencies',
+        'trauma-first-response':                 'Trauma First Response',
+        'anxiety-spectrum-disorders':            'Anxiety Spectrum Disorders',
+        'mood-disorders':                        'Mood Disorders',
+        'crisis-intervention':                   'Crisis Intervention',
+        'sleep-and-stress-medicine':             'Sleep & Stress Medicine',
+        'balanced-nutrition-principles':         'Balanced Nutrition Principles',
+        'clinical-nutrition-in-chronic-disease': 'Clinical Nutrition in Chronic Disease',
+        'metabolic-syndrome-and-obesity':        'Metabolic Syndrome & Obesity',
+        'prevention-and-infection-control':      'Prevention & Infection Control',
+        'respiratory-infections':                'Respiratory Infections',
+        'gastrointestinal-infections':           'Gastrointestinal Infections',
+        'vector-borne-diseases':                 'Vector-Borne Diseases',
+        'prenatal-care-pathways':                'Prenatal Care Pathways',
+        'newborn-care-essentials':               'Newborn Care Essentials',
+        'common-pediatric-illnesses':            'Common Pediatric Illnesses',
     }, ensure_ascii=False)
 
     return f"""<!DOCTYPE html>
@@ -596,21 +608,53 @@ CSS = """
         .step-hint { font-size: 0.92rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 24px; line-height: 1.6; }
 
         /* ===== AGE GRID ===== */
-        .age-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+        .age-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .age-card {
-            background: var(--bg-secondary); border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-sm); padding: 20px 16px;
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            background: var(--card-bg, var(--bg-secondary));
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 28px 16px 24px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
             cursor: pointer; transition: var(--transition); text-align: center;
             font-family: 'Nunito', sans-serif;
+            position: relative; overflow: hidden;
         }
-        .age-card:hover { border-color: var(--accent-primary); background: rgba(28,176,246,0.06); transform: translateY(-2px); }
+        .age-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: var(--card-bg, rgba(28,176,246,0.08));
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .age-card:hover {
+            border-color: var(--card-border, var(--accent-primary));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .age-card:hover::after { opacity: 1; }
         .age-card.selected {
-            border-color: var(--accent-primary); background: rgba(28,176,246,0.1);
-            box-shadow: 0 3px 0 var(--accent-primary-dark);
+            border-color: var(--card-border, var(--accent-primary));
+            background: var(--card-bg, rgba(28,176,246,0.1));
+            box-shadow: 0 4px 0 var(--card-color, var(--accent-primary-dark));
+            transform: translateY(-2px);
         }
-        .age-range { font-size: 1.2rem; font-weight: 900; color: var(--text-primary); }
-        .age-desc  { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+        .age-card-icon {
+            width: 52px; height: 52px;
+            background: var(--card-bg, rgba(28,176,246,0.12));
+            border: 2px solid var(--card-border, rgba(28,176,246,0.25));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--card-color, var(--accent-primary-dark));
+            transition: var(--transition);
+        }
+        .age-card-icon svg { width: 24px; height: 24px; }
+        .age-card.selected .age-card-icon {
+            background: var(--card-color, var(--accent-primary));
+            border-color: var(--card-color, var(--accent-primary));
+            color: white;
+        }
+        .age-card.selected .age-card-icon svg { stroke: white; }
+        .age-range { font-size: 1.15rem; font-weight: 900; color: var(--text-primary); line-height: 1.2; }
+        .age-card.selected .age-range { color: var(--card-color, var(--accent-primary-dark)); }
+        .age-desc  { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* ===== QUIZ OPTIONS ===== */
         .quiz-options  { display: flex; flex-direction: column; gap: 12px; }
@@ -684,14 +728,12 @@ CSS = """
             border: 2px solid transparent;
         }
         .tier-beginner    { background: rgba(28,176,246,0.06);  border-color: rgba(28,176,246,0.2); }
-        .tier-intermediate{ background: rgba(255,150,0,0.06);   border-color: rgba(255,150,0,0.2); }
         .tier-advanced    { background: rgba(88,204,2,0.06);    border-color: rgba(88,204,2,0.2); }
         .tier-badge {
             font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
             padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
         }
         .tier-beginner     .tier-badge { background: rgba(28,176,246,0.15);  color: var(--accent-primary-dark); }
-        .tier-intermediate .tier-badge { background: rgba(255,150,0,0.15);   color: var(--accent-warning-dark); }
         .tier-advanced     .tier-badge { background: rgba(88,204,2,0.15);    color: var(--accent-success-dark); }
         .tier-desc { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); line-height: 1.5; }
 
@@ -708,7 +750,6 @@ CSS = """
             padding: 3px 10px; border-radius: 20px;
         }
         .level-beginner     { background: rgba(28,176,246,0.12);  color: var(--accent-primary-dark); border: 1.5px solid rgba(28,176,246,0.3); }
-        .level-intermediate { background: rgba(255,150,0,0.12);   color: var(--accent-warning-dark); border: 1.5px solid rgba(255,150,0,0.3); }
         .level-advanced     { background: rgba(88,204,2,0.12);    color: var(--accent-success-dark); border: 1.5px solid rgba(88,204,2,0.3); }
 
         /* ===== PATH STEP ===== */
@@ -783,7 +824,7 @@ CSS = """
             .navbar-logo { font-size: 1.3rem; margin-right: 16px; }
             .container { padding: 24px 16px 80px; }
             .step-body { padding: 20px; }
-            .age-grid { grid-template-columns: repeat(2, 1fr); }
+            .age-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
             .tf-options { flex-direction: column; }
             .navigation { flex-direction: column; }
         }
@@ -1117,8 +1158,8 @@ SIDEBAR_HTML = """
 # ---------------------------------------------------------------------------
 
 def main():
-    input_path  = r"medicalogy_docs\screens\5-initial-assesment\initial_assessment.json"
-    output_path = r"medicalogy_docs\screens\5-initial-assesment\demo.html"
+    input_path  = r"medicalogy_docs\screens\5-onboarding\initial_assessment.json"
+    output_path = r"medicalogy_docs\screens\5-onboarding\demo.html"
 
     print(f"Loading assessment from: {input_path}")
     data = load_assessment_json(input_path)

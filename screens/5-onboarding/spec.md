@@ -2,7 +2,7 @@
 
 ## Overview
 
-The initial assessment in BioBasics is a placement test presented to new users to gauge their existing medical knowledge and personalise their learning path. Questions and options are stored as structured JSON in the `initial_assessment.content` column.
+The initial assessment in Medicalogy is a placement test presented to new users to gauge their existing medical knowledge and personalise their learning path. Questions and options are stored as structured JSON in the `initial_assessment.content` column.
 
 Each question is tagged with a `sectionSlug` that maps to `section.slug` in the Learning Service. This is the field the Assessment Service uses to bucket results into `initial_user_section_proficiency` rows after scoring — one row per `(user, assessment, section)`.
 
@@ -94,11 +94,10 @@ questions_correct = count of questions where user picked the option with isCorre
 questions_seen    = count of questions shown to the user for that sectionSlug
 ```
 
-| `knowledge_level` | Threshold                                        |
-|-------------------|--------------------------------------------------|
-| `beginner`        | questions_correct / questions_seen < 0.40        |
-| `intermediate`    | 0.40 ≤ questions_correct / questions_seen < 0.70 |
-| `advanced`        | questions_correct / questions_seen ≥ 0.70        |
+| Threshold | Effect |
+|-----------|--------|
+| questions_correct / questions_seen ≥ 0.80 | Roadmap shows section as "Already known" — courses skippable, no order dependency |
+| questions_correct / questions_seen < 0.80  | Normal locked flow — courses unlock in order |
 
 ---
 

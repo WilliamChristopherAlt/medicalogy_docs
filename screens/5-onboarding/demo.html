@@ -226,21 +226,53 @@
         .step-hint { font-size: 0.92rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 24px; line-height: 1.6; }
 
         /* ===== AGE GRID ===== */
-        .age-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+        .age-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .age-card {
-            background: var(--bg-secondary); border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-sm); padding: 20px 16px;
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            background: var(--card-bg, var(--bg-secondary));
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 28px 16px 24px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
             cursor: pointer; transition: var(--transition); text-align: center;
             font-family: 'Nunito', sans-serif;
+            position: relative; overflow: hidden;
         }
-        .age-card:hover { border-color: var(--accent-primary); background: rgba(28,176,246,0.06); transform: translateY(-2px); }
+        .age-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: var(--card-bg, rgba(28,176,246,0.08));
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .age-card:hover {
+            border-color: var(--card-border, var(--accent-primary));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .age-card:hover::after { opacity: 1; }
         .age-card.selected {
-            border-color: var(--accent-primary); background: rgba(28,176,246,0.1);
-            box-shadow: 0 3px 0 var(--accent-primary-dark);
+            border-color: var(--card-border, var(--accent-primary));
+            background: var(--card-bg, rgba(28,176,246,0.1));
+            box-shadow: 0 4px 0 var(--card-color, var(--accent-primary-dark));
+            transform: translateY(-2px);
         }
-        .age-range { font-size: 1.2rem; font-weight: 900; color: var(--text-primary); }
-        .age-desc  { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+        .age-card-icon {
+            width: 52px; height: 52px;
+            background: var(--card-bg, rgba(28,176,246,0.12));
+            border: 2px solid var(--card-border, rgba(28,176,246,0.25));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--card-color, var(--accent-primary-dark));
+            transition: var(--transition);
+        }
+        .age-card-icon svg { width: 24px; height: 24px; }
+        .age-card.selected .age-card-icon {
+            background: var(--card-color, var(--accent-primary));
+            border-color: var(--card-color, var(--accent-primary));
+            color: white;
+        }
+        .age-card.selected .age-card-icon svg { stroke: white; }
+        .age-range { font-size: 1.15rem; font-weight: 900; color: var(--text-primary); line-height: 1.2; }
+        .age-card.selected .age-range { color: var(--card-color, var(--accent-primary-dark)); }
+        .age-desc  { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* ===== QUIZ OPTIONS ===== */
         .quiz-options  { display: flex; flex-direction: column; gap: 12px; }
@@ -314,14 +346,12 @@
             border: 2px solid transparent;
         }
         .tier-beginner    { background: rgba(28,176,246,0.06);  border-color: rgba(28,176,246,0.2); }
-        .tier-intermediate{ background: rgba(255,150,0,0.06);   border-color: rgba(255,150,0,0.2); }
         .tier-advanced    { background: rgba(88,204,2,0.06);    border-color: rgba(88,204,2,0.2); }
         .tier-badge {
             font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
             padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
         }
         .tier-beginner     .tier-badge { background: rgba(28,176,246,0.15);  color: var(--accent-primary-dark); }
-        .tier-intermediate .tier-badge { background: rgba(255,150,0,0.15);   color: var(--accent-warning-dark); }
         .tier-advanced     .tier-badge { background: rgba(88,204,2,0.15);    color: var(--accent-success-dark); }
         .tier-desc { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); line-height: 1.5; }
 
@@ -338,7 +368,6 @@
             padding: 3px 10px; border-radius: 20px;
         }
         .level-beginner     { background: rgba(28,176,246,0.12);  color: var(--accent-primary-dark); border: 1.5px solid rgba(28,176,246,0.3); }
-        .level-intermediate { background: rgba(255,150,0,0.12);   color: var(--accent-warning-dark); border: 1.5px solid rgba(255,150,0,0.3); }
         .level-advanced     { background: rgba(88,204,2,0.12);    color: var(--accent-success-dark); border: 1.5px solid rgba(88,204,2,0.3); }
 
         /* ===== PATH STEP ===== */
@@ -413,7 +442,7 @@
             .navbar-logo { font-size: 1.3rem; margin-right: 16px; }
             .container { padding: 24px 16px 80px; }
             .step-body { padding: 20px; }
-            .age-grid { grid-template-columns: repeat(2, 1fr); }
+            .age-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
             .tf-options { flex-direction: column; }
             .navigation { flex-direction: column; }
         }
@@ -553,25 +582,17 @@
                 <p class="step-hint">This helps us tailor content to suit you.</p>
                 <div class="age-grid">
                     
+            <button class="age-card" data-age-id="child" onclick="selectAge(this)">
+                <span class="age-range">Under 13</span>
+                <span class="age-desc">Child</span>
+            </button>
             <button class="age-card" data-age-id="teen" onclick="selectAge(this)">
                 <span class="age-range">13 – 17</span>
-                <span class="age-desc">Student</span>
-            </button>
-            <button class="age-card" data-age-id="youngAdult" onclick="selectAge(this)">
-                <span class="age-range">18 – 25</span>
-                <span class="age-desc">Student / Early career</span>
+                <span class="age-desc">Teen</span>
             </button>
             <button class="age-card" data-age-id="adult" onclick="selectAge(this)">
-                <span class="age-range">26 – 45</span>
-                <span class="age-desc">Working adult</span>
-            </button>
-            <button class="age-card" data-age-id="middleAged" onclick="selectAge(this)">
-                <span class="age-range">46 – 60</span>
-                <span class="age-desc">Middle-aged</span>
-            </button>
-            <button class="age-card" data-age-id="senior" onclick="selectAge(this)">
-                <span class="age-range">61+</span>
-                <span class="age-desc">Senior</span>
+                <span class="age-range">18 and above</span>
+                <span class="age-desc">Adult</span>
             </button>
                 </div>
             </div>
@@ -631,17 +652,13 @@
                 <div class="structure-divider"><span>What your quiz result means</span></div>
 
                 <div class="scoring-tiers">
-                    <div class="tier-row tier-beginner">
-                        <div class="tier-badge">Beginner</div>
-                        <div class="tier-desc">All courses locked and unlocked in order. Normal flow from the first lesson.</div>
-                    </div>
-                    <div class="tier-row tier-intermediate">
-                        <div class="tier-badge">Intermediate</div>
-                        <div class="tier-desc">Early courses unlocked with a hint that you may already know the material. You can skip ahead.</div>
-                    </div>
                     <div class="tier-row tier-advanced">
-                        <div class="tier-badge">Advanced</div>
-                        <div class="tier-desc">All courses shown as visually complete — only recorded as done when you actually complete them.</div>
+                        <div class="tier-badge">≥ 80% correct</div>
+                        <div class="tier-desc">Your roadmap will show that you already know this section — no need to complete it.</div>
+                    </div>
+                    <div class="tier-row tier-beginner">
+                        <div class="tier-badge">&lt; 80% correct</div>
+                        <div class="tier-desc">Normal flow — courses unlock one by one as you progress.</div>
                     </div>
                 </div>
             </div>
@@ -2442,7 +2459,7 @@
     "questionType": "true_false"
   }
 ];
-        const SECTION_LABELS = {"emergency-care-fundamentals": "Emergency Care Fundamentals", "nutrition-basics": "Nutrition Basics", "cardiovascular-anatomy": "Cardiovascular Anatomy", "mental-health-awareness": "Mental Health Awareness", "diabetes-endocrinology-basics": "Diabetes & Endocrinology"};
+        const SECTION_LABELS = {"airway-emergencies": "Airway Emergencies", "cardiac-emergencies": "Cardiac Emergencies", "trauma-first-response": "Trauma First Response", "anxiety-spectrum-disorders": "Anxiety Spectrum Disorders", "mood-disorders": "Mood Disorders", "crisis-intervention": "Crisis Intervention", "sleep-and-stress-medicine": "Sleep & Stress Medicine", "balanced-nutrition-principles": "Balanced Nutrition Principles", "clinical-nutrition-in-chronic-disease": "Clinical Nutrition in Chronic Disease", "metabolic-syndrome-and-obesity": "Metabolic Syndrome & Obesity", "prevention-and-infection-control": "Prevention & Infection Control", "respiratory-infections": "Respiratory Infections", "gastrointestinal-infections": "Gastrointestinal Infections", "vector-borne-diseases": "Vector-Borne Diseases", "prenatal-care-pathways": "Prenatal Care Pathways", "newborn-care-essentials": "Newborn Care Essentials", "common-pediatric-illnesses": "Common Pediatric Illnesses"};
         const TOTAL_STEPS = 55;
         
         // ===== SIDEBAR & NAVBAR =====
@@ -2597,15 +2614,12 @@
 
         // ===== SCORING BREAKDOWN =====
         function getLevel(seen, correct) {
-            if (seen === 0) return 'beginner';
-            const pct = correct / seen;
-            if (pct >= 0.70) return 'advanced';
-            if (pct >= 0.40) return 'intermediate';
-            return 'beginner';
+            if (seen === 0) return 'fail';
+            return (correct / seen) >= 0.80 ? 'pass' : 'fail';
         }
 
         function levelLabel(level) {
-            return { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' }[level] || level;
+            return level === 'pass' ? 'Already known' : 'To learn';
         }
 
         function buildScoreBreakdown() {
@@ -2615,11 +2629,12 @@
             for (const [slug, score] of Object.entries(sectionScores)) {
                 const level = getLevel(score.seen, score.correct);
                 const label = SECTION_LABELS[slug] || slug;
+                const badgeClass = level === 'pass' ? 'level-advanced' : 'level-beginner';
                 html += `
                 <div class="score-row">
                     <span class="score-section-name">${label}</span>
                     <span class="score-fraction">${score.correct}/${score.seen}</span>
-                    <span class="score-level-badge level-${level}">${levelLabel(level)}</span>
+                    <span class="score-level-badge ${badgeClass}">${levelLabel(level)}</span>
                 </div>`;
             }
             container.innerHTML = html || '<p style="color:var(--text-muted);font-weight:600;">No data available.</p>';
@@ -2633,19 +2648,17 @@
             for (const [slug, score] of Object.entries(sectionScores)) {
                 const level = getLevel(score.seen, score.correct);
                 const label = SECTION_LABELS[slug] || slug;
-                const colors = {
-                    beginner:     { bg: 'rgba(28,176,246,0.1)',  color: '#1899d6' },
-                    intermediate: { bg: 'rgba(255,150,0,0.1)',   color: '#e68600' },
-                    advanced:     { bg: 'rgba(88,204,2,0.1)',    color: '#46a302' },
-                };
-                const c = colors[level];
+                const c = level === 'pass'
+                    ? { bg: 'rgba(88,204,2,0.1)',   color: '#46a302' }
+                    : { bg: 'rgba(28,176,246,0.1)', color: '#1899d6' };
+                const badgeClass = level === 'pass' ? 'level-advanced' : 'level-beginner';
                 html += `
                 <div class="path-item">
                     <div class="path-item-icon" style="background:${c.bg}; color:${c.color}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
                     </div>
                     <span class="path-item-name">${label}</span>
-                    <span class="path-item-level level-${level}">${levelLabel(level)}</span>
+                    <span class="path-item-level ${badgeClass}">${levelLabel(level)}</span>
                 </div>`;
             }
             container.innerHTML = html || '<p style="color:var(--text-muted);font-weight:600;">No path available.</p>';

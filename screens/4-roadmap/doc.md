@@ -17,10 +17,11 @@ Hiển thị lộ trình học tập của một chủ đề, bao gồm các sec
 > | Bảng DB | Ý nghĩa | Cột chính sử dụng trong trang này |
 > |---------|---------|-----------------------------------|
 > | `theme` | Chủ đề học tập | `name`, `description`, `color_code`, `slug` |
-> | `section` | Phân mục trong theme | `name`, `order_index` |
+> | `section` | Phân mục trong theme | `name`, `order_index`, `content_rating`, `intended_demographic` |
 > | `course` | Khóa học trong section | `name`, `order_index`, `is_active`, `content_file_name` (file JSON) |
 > | `section_test` | Bài test cuối section | `content_file_name` (file JSON), `passing_score_percentage` |
 > | `user_course` | Tiến độ khóa học của user | `quizzes_correct`, `completed_at` |
+> | `user` | Nhân khẩu học người dùng | `demographic` |
 > | `user_section_test` | Kết quả test section của user | `score`, `completed_at` |
 > | `user_daily_streak` | Streak học tập hàng ngày | `current_streak` |
 > | `initial_user_section_proficiency` | Điểm đánh giá đầu vào theo section | `section_id`, `questions_seen`, `questions_correct` |
@@ -44,6 +45,7 @@ Các section sắp xếp theo `section.order_index` ASC. Mỗi section gồm:
 | Thành phần | Mô tả |
 |-----------|-------|
 | Tiêu đề section | `section.name`, font lớn, in đậm |
+| Lọc theo đối tượng | `section.intended_demographic` quyết định ai thấy section này. `child` → chỉ hiển thị cho user có `demographic = 'child'`. `teen` → chỉ `teen`. `adult` → chỉ `adult`. `all` → hiển thị cho cả 3. Section không đúng demographic bị ẩn hoàn toàn — không có badge, không có cảnh báo |
 | Danh sách course | Layout đường đi dọc (vertical path), sắp xếp theo `course.order_index`. Có đường nối (connector line) giữa các course |
 | Course button | Hiển thị: icon số thứ tự, tên course, điểm quiz "X/Y questions correct" |
 | Section test button | Cuối mỗi section. Icon "T", text "Section Test: [tên section]", số câu hỏi, màu tím. Chỉ mở khóa khi tất cả course trong section đã hoàn thành |
