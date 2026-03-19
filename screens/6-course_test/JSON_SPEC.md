@@ -6,12 +6,12 @@ This document specifies the JSON structure for **course content** and **section 
 
 ## Content Reference Modes
 
-To support evolving pipelines, the system supports two storage modes for `course.content`:
+To support evolving pipelines, the system supports two storage modes for `course.content_file_name`:
 
 1. **Inline JSON mode** (current legacy mode):
-  - `course.content` stores the full JSON payload.
+  - `course.content_file_name` stores the full JSON payload.
 2. **File reference mode** (new mockup mode):
-  - `course.content` stores a short filename such as `recognizing-choking-in-adults.json`.
+  - `course.content_file_name` stores a short filename such as `recognizing-choking-in-adults.json`.
   - The actual JSON payload is loaded from `mockup_data/content_files/courses/`.
 
 When using file reference mode, image values inside JSON should use media file names from the common media dataset (for example: `opentext-image-ov-healthcare-en.avif`), not full URLs.
@@ -329,3 +329,4 @@ App displays all answers (correct + wrong) shuffled for user to drag/select into
 | Version | Date       | Changes             |
 |---------|------------|---------------------|
 | 1.0     | 2026-02-03 | Initial specification |
+| 1.1     | 2026-03-19 | Updated `course.content` references to `course.content_file_name` to match schema. |

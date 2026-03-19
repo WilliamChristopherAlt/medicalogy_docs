@@ -1,0 +1,682 @@
+{
+  "version": "1.0",
+  "meta": {
+    "title": "Placement Assessment",
+    "subtitle": "Help us personalise your learning path",
+    "estimatedMinutes": 5
+  },
+  "ageGroups": [
+    {
+      "id": "teen",
+      "label": "13 – 17",
+      "description": "Student"
+    },
+    {
+      "id": "youngAdult",
+      "label": "18 – 25",
+      "description": "Student / Early career"
+    },
+    {
+      "id": "adult",
+      "label": "26 – 45",
+      "description": "Working adult"
+    },
+    {
+      "id": "middleAged",
+      "label": "46 – 60",
+      "description": "Middle-aged"
+    },
+    {
+      "id": "senior",
+      "label": "61+",
+      "description": "Senior"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-001",
+      "questionText": "Which sign most strongly suggests severe choking in a conscious adult?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "airway-emergencies",
+      "orderIndex": 1,
+      "options": [
+        { "id": "a", "text": "Able to speak full sentences", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Silent cough with inability to speak", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Mild sore throat", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Sneezing repeatedly", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-002",
+      "questionText": "What is the immediate action for a conscious adult with severe airway obstruction?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "airway-emergencies",
+      "orderIndex": 2,
+      "options": [
+        { "id": "a", "text": "Give water to drink", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Start abdominal thrusts", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Lay the person flat and wait", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Ask them to take deep breaths only", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-003",
+      "questionText": "For partial airway obstruction with an effective cough, encourage continued coughing.",
+      "questionType": "true_false",
+      "sectionSlug": "airway-emergencies",
+      "orderIndex": 3,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-004",
+      "questionText": "What is the recommended adult CPR compression rate?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "cardiac-emergencies",
+      "orderIndex": 4,
+      "options": [
+        { "id": "a", "text": "60–80 compressions per minute", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "100–120 compressions per minute", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "130–150 compressions per minute", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "160–180 compressions per minute", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-005",
+      "questionText": "Before delivering an AED shock, what should you do?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "cardiac-emergencies",
+      "orderIndex": 5,
+      "options": [
+        { "id": "a", "text": "Continue chest compressions during shock", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Ensure no one is touching the patient", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Remove AED pads first", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Wait for symptoms to improve", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-006",
+      "questionText": "Sudden chest pressure with arm or jaw pain can indicate a heart attack.",
+      "questionType": "true_false",
+      "sectionSlug": "cardiac-emergencies",
+      "orderIndex": 6,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-007",
+      "questionText": "What is the first priority when arriving at a trauma scene?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "trauma-first-response",
+      "orderIndex": 7,
+      "options": [
+        { "id": "a", "text": "Scene safety assessment", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Transport immediately", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Take a full medical history", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Apply splints first", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-008",
+      "questionText": "For life-threatening external bleeding, what is the best initial action?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "trauma-first-response",
+      "orderIndex": 8,
+      "options": [
+        { "id": "a", "text": "Apply direct pressure", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Give oral fluids", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Delay care until imaging", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Massage the area", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-009",
+      "questionText": "In trauma, the ABCDE approach starts with Airway.",
+      "questionType": "true_false",
+      "sectionSlug": "trauma-first-response",
+      "orderIndex": 9,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-010",
+      "questionText": "Which feature is most consistent with generalized anxiety disorder?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "anxiety-spectrum-disorders",
+      "orderIndex": 10,
+      "options": [
+        { "id": "a", "text": "Short-lived worry before exams only", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Persistent excessive worry that is hard to control", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "No daytime impairment", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Symptoms only during sleep", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-011",
+      "questionText": "A panic episode commonly presents with:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "anxiety-spectrum-disorders",
+      "orderIndex": 11,
+      "options": [
+        { "id": "a", "text": "Gradual symptom onset over months", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Sudden intense fear with palpitations", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Persistent euphoria", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Complete absence of physical symptoms", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-012",
+      "questionText": "Anxiety disorders can significantly affect daily functioning.",
+      "questionType": "true_false",
+      "sectionSlug": "anxiety-spectrum-disorders",
+      "orderIndex": 12,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-013",
+      "questionText": "Which symptom best fits major depressive disorder?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "mood-disorders",
+      "orderIndex": 13,
+      "options": [
+        { "id": "a", "text": "Persistent low mood or loss of interest", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Sudden high confidence and no sleep need", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Improved concentration and energy", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "No change in appetite or sleep", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-014",
+      "questionText": "Bipolar spectrum disorders are characterized by:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "mood-disorders",
+      "orderIndex": 14,
+      "options": [
+        { "id": "a", "text": "Only anxiety symptoms", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Mood episodes including mania or hypomania", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Psychosis in every case", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Symptoms only in childhood", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-015",
+      "questionText": "Reduced need for sleep with elevated mood may suggest mania.",
+      "questionType": "true_false",
+      "sectionSlug": "mood-disorders",
+      "orderIndex": 15,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-016",
+      "questionText": "In crisis intervention, the first priority is:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "crisis-intervention",
+      "orderIndex": 16,
+      "options": [
+        { "id": "a", "text": "Safety and immediate risk assessment", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Long-term psychotherapy planning", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Discussing unrelated history", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Ignoring emotional distress", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-017",
+      "questionText": "Which communication approach is best for verbal de-escalation?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "crisis-intervention",
+      "orderIndex": 17,
+      "options": [
+        { "id": "a", "text": "Rapid confrontation", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Calm voice and validation", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Threatening language", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Speaking over the patient", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-018",
+      "questionText": "Asking directly about suicidal thoughts increases suicide risk.",
+      "questionType": "true_false",
+      "sectionSlug": "crisis-intervention",
+      "orderIndex": 18,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": true, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-019",
+      "questionText": "Poor sleep quality is commonly associated with:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "sleep-and-stress-medicine",
+      "orderIndex": 19,
+      "options": [
+        { "id": "a", "text": "Improved reaction time", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Reduced concentration and daytime fatigue", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "No effect on mood", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Guaranteed lower stress", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-020",
+      "questionText": "A recommended first-line sleep hygiene strategy is:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "sleep-and-stress-medicine",
+      "orderIndex": 20,
+      "options": [
+        { "id": "a", "text": "Irregular sleep schedule", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Consistent bedtime and wake time", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Heavy meals before sleep", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "High caffeine in the evening", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-021",
+      "questionText": "Chronic stress can contribute to elevated blood pressure.",
+      "questionType": "true_false",
+      "sectionSlug": "sleep-and-stress-medicine",
+      "orderIndex": 21,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-022",
+      "questionText": "In a balanced plate model, what should typically occupy the largest portion?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "balanced-nutrition-principles",
+      "orderIndex": 22,
+      "options": [
+        { "id": "a", "text": "Non-starchy vegetables", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Refined sugar", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Processed meat only", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Salted snacks", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-023",
+      "questionText": "Which macronutrient is most directly linked to tissue repair?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "balanced-nutrition-principles",
+      "orderIndex": 23,
+      "options": [
+        { "id": "a", "text": "Protein", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Simple sugars", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Alcohol", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Sodium", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-024",
+      "questionText": "Adequate hydration supports temperature regulation and cognitive function.",
+      "questionType": "true_false",
+      "sectionSlug": "balanced-nutrition-principles",
+      "orderIndex": 24,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-025",
+      "questionText": "For type 2 diabetes nutrition care, which principle is most important?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "clinical-nutrition-in-chronic-disease",
+      "orderIndex": 25,
+      "options": [
+        { "id": "a", "text": "Ignore carbohydrate intake", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Manage carbohydrate quality and portions", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Eliminate all fats permanently", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Eat only once daily", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-026",
+      "questionText": "In hypertension nutrition management, reducing which intake is especially important?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "clinical-nutrition-in-chronic-disease",
+      "orderIndex": 26,
+      "options": [
+        { "id": "a", "text": "Fiber", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Sodium", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Water", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Micronutrients", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-027",
+      "questionText": "Nutrition plans in chronic disease should be individualized to patient context.",
+      "questionType": "true_false",
+      "sectionSlug": "clinical-nutrition-in-chronic-disease",
+      "orderIndex": 27,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-028",
+      "questionText": "Which finding is one criterion in metabolic syndrome?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "metabolic-syndrome-and-obesity",
+      "orderIndex": 28,
+      "options": [
+        { "id": "a", "text": "Low waist circumference", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Increased abdominal waist circumference", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Very low fasting glucose", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Low blood pressure only", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-029",
+      "questionText": "A core first-line intervention for obesity management is:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "metabolic-syndrome-and-obesity",
+      "orderIndex": 29,
+      "options": [
+        { "id": "a", "text": "No physical activity", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Sustained diet and physical activity changes", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Skipping all meals", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "High-sugar beverages", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-030",
+      "questionText": "Central obesity is associated with insulin resistance risk.",
+      "questionType": "true_false",
+      "sectionSlug": "metabolic-syndrome-and-obesity",
+      "orderIndex": 30,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-031",
+      "questionText": "What is the single most effective routine action to reduce healthcare-associated infection spread?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "prevention-and-infection-control",
+      "orderIndex": 31,
+      "options": [
+        { "id": "a", "text": "Hand hygiene at key moments", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Antibiotics for everyone", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Skipping glove changes", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Avoiding surface cleaning", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-032",
+      "questionText": "During PPE removal (doffing), which item is generally removed first because it is most contaminated?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "prevention-and-infection-control",
+      "orderIndex": 32,
+      "options": [
+        { "id": "a", "text": "Face shield", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Gloves", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Mask", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Hair cover", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-033",
+      "questionText": "Alcohol-based hand rub is sufficient even when hands are visibly soiled.",
+      "questionType": "true_false",
+      "sectionSlug": "prevention-and-infection-control",
+      "orderIndex": 33,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": true, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-034",
+      "questionText": "Which symptom cluster is most suggestive of lower respiratory infection?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "respiratory-infections",
+      "orderIndex": 34,
+      "options": [
+        { "id": "a", "text": "Productive cough with fever and shortness of breath", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Isolated itchy skin", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Only mild ankle pain", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Hair loss", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-035",
+      "questionText": "A key preventive strategy for severe respiratory infections is:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "respiratory-infections",
+      "orderIndex": 35,
+      "options": [
+        { "id": "a", "text": "Ignoring vaccinations", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Vaccination for indicated populations", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Routine antibiotic self-medication", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Avoiding all fluid intake", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-036",
+      "questionText": "Antibiotics are effective treatment for the common cold caused by viruses.",
+      "questionType": "true_false",
+      "sectionSlug": "respiratory-infections",
+      "orderIndex": 36,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": true, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-037",
+      "questionText": "What is the main immediate risk in acute infectious diarrhea?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "gastrointestinal-infections",
+      "orderIndex": 37,
+      "options": [
+        { "id": "a", "text": "Dehydration", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Improved appetite", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Weight gain", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Hair whitening", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-038",
+      "questionText": "What is the primary purpose of oral rehydration solution (ORS)?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "gastrointestinal-infections",
+      "orderIndex": 38,
+      "options": [
+        { "id": "a", "text": "Immediate pain elimination", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Replace water and electrolytes", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Stop all stool output instantly", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Act as an antibiotic", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-039",
+      "questionText": "Bloody diarrhea or high fever are warning signs that require urgent clinical assessment.",
+      "questionType": "true_false",
+      "sectionSlug": "gastrointestinal-infections",
+      "orderIndex": 39,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-040",
+      "questionText": "Which community action best reduces mosquito-borne disease risk?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "vector-borne-diseases",
+      "orderIndex": 40,
+      "options": [
+        { "id": "a", "text": "Store open standing water", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Eliminate standing water and use protection", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Avoid window screens", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Skip repellents in endemic areas", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-041",
+      "questionText": "Malaria is transmitted mainly through bites of:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "vector-borne-diseases",
+      "orderIndex": 41,
+      "options": [
+        { "id": "a", "text": "Female Anopheles mosquitoes", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Houseflies", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Ticks only", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Contaminated food directly", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-042",
+      "questionText": "Dengue is usually spread by casual person-to-person contact.",
+      "questionType": "true_false",
+      "sectionSlug": "vector-borne-diseases",
+      "orderIndex": 42,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": true, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-043",
+      "questionText": "When is the first prenatal visit ideally scheduled?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "prenatal-care-pathways",
+      "orderIndex": 43,
+      "options": [
+        { "id": "a", "text": "Third trimester only", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "First trimester", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "After delivery", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Only if symptoms appear", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-044",
+      "questionText": "Which finding during pregnancy should prompt urgent assessment?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "prenatal-care-pathways",
+      "orderIndex": 44,
+      "options": [
+        { "id": "a", "text": "Mild transient appetite change", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Vaginal bleeding with abdominal pain", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Occasional fetal movement", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Normal prenatal fatigue", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-045",
+      "questionText": "Folic acid before and in early pregnancy helps reduce neural tube defect risk.",
+      "questionType": "true_false",
+      "sectionSlug": "prenatal-care-pathways",
+      "orderIndex": 45,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-046",
+      "questionText": "Immediate newborn assessment focuses on:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "newborn-care-essentials",
+      "orderIndex": 46,
+      "options": [
+        { "id": "a", "text": "Breathing, tone, and color", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "School performance", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "Adult vaccination history", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Workplace stress", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-047",
+      "questionText": "Exclusive breastfeeding is generally recommended for about how long?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "newborn-care-essentials",
+      "orderIndex": 47,
+      "options": [
+        { "id": "a", "text": "1 month", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "3 months", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "6 months", "isCorrect": true, "orderIndex": 3 },
+        { "id": "d", "text": "12 months only", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-048",
+      "questionText": "Skin-to-skin contact helps with newborn temperature regulation.",
+      "questionType": "true_false",
+      "sectionSlug": "newborn-care-essentials",
+      "orderIndex": 48,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    },
+
+    {
+      "id": "q-049",
+      "questionText": "Which symptom in a child is a danger sign needing urgent care?",
+      "questionType": "multiple_choice",
+      "sectionSlug": "common-pediatric-illnesses",
+      "orderIndex": 49,
+      "options": [
+        { "id": "a", "text": "Mild playful behavior", "isCorrect": false, "orderIndex": 1 },
+        { "id": "b", "text": "Inability to drink with lethargy", "isCorrect": true, "orderIndex": 2 },
+        { "id": "c", "text": "Normal appetite", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "Brief hiccups", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-050",
+      "questionText": "For uncomplicated pediatric fever, the first management step includes:",
+      "questionType": "multiple_choice",
+      "sectionSlug": "common-pediatric-illnesses",
+      "orderIndex": 50,
+      "options": [
+        { "id": "a", "text": "Hydration and comfort care", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "Immediate broad-spectrum antibiotics", "isCorrect": false, "orderIndex": 2 },
+        { "id": "c", "text": "No fluid intake", "isCorrect": false, "orderIndex": 3 },
+        { "id": "d", "text": "No observation needed", "isCorrect": false, "orderIndex": 4 }
+      ]
+    },
+    {
+      "id": "q-051",
+      "questionText": "Persistent fast breathing in a child can be a sign of serious respiratory illness.",
+      "questionType": "true_false",
+      "sectionSlug": "common-pediatric-illnesses",
+      "orderIndex": 51,
+      "options": [
+        { "id": "a", "text": "True", "isCorrect": true, "orderIndex": 1 },
+        { "id": "b", "text": "False", "isCorrect": false, "orderIndex": 2 }
+      ]
+    }
+  ]
+}

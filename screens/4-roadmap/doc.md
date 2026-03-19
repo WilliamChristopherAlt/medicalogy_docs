@@ -12,17 +12,18 @@
 
 Hiển thị lộ trình học tập của một chủ đề, bao gồm các section và course theo thứ tự. Người dùng xem tiến độ và tiếp tục học course tiếp theo.
 
-> **Nguồn dữ liệu:** Ký hiệu dạng `bảng.cột` trong tài liệu tham chiếu đến cột trong database (schema v4).
+> **Nguồn dữ liệu:** Ký hiệu dạng `bảng.cột` trong tài liệu tham chiếu đến cột trong database (schema v5).
 >
 > | Bảng DB | Ý nghĩa | Cột chính sử dụng trong trang này |
 > |---------|---------|-----------------------------------|
 > | `theme` | Chủ đề học tập | `name`, `description`, `color_code`, `slug` |
 > | `section` | Phân mục trong theme | `name`, `order_index` |
-> | `course` | Khóa học trong section | `name`, `order_index`, `is_active`, `content` (cột JSON) |
-> | `section_test` | Bài test cuối section | `content` (cột JSON), `passing_score_percentage` |
+> | `course` | Khóa học trong section | `name`, `order_index`, `is_active`, `content_file_name` (file JSON) |
+> | `section_test` | Bài test cuối section | `content_file_name` (file JSON), `passing_score_percentage` |
 > | `user_course` | Tiến độ khóa học của user | `quizzes_correct`, `completed_at` |
 > | `user_section_test` | Kết quả test section của user | `score`, `completed_at` |
 > | `user_daily_streak` | Streak học tập hàng ngày | `current_streak` |
+> | `initial_user_section_proficiency` | Điểm đánh giá đầu vào theo section | `section_id`, `questions_seen`, `questions_correct` |
 
 ---
 
@@ -55,6 +56,7 @@ Các section sắp xếp theo `section.order_index` ASC. Mỗi section gồm:
 | **Unlocked** (xanh dương, arrow) | Course tiếp theo cần học, có hiệu ứng pulse | ✅ |
 | **Locked** (xám nhạt, lock) | Chưa mở khóa — course trước chưa đạt ≥80% quiz | ❌ |
 | **Stale** (xám trung bình, checkmark mờ) | Đã hoàn thành nhưng quá X ngày chưa ôn lại. Ribbon hiển thị "3 weeks ago". Hover → phục hồi màu xanh Completed | ✅ |
+| **Skippable** (xanh lá nhạt, badge "Already known · Onboarding") | Section có `questions_correct / questions_seen >= 0.80` trong `initial_user_section_proficiency`. Tất cả course trong section đều có thể click theo bất kỳ thứ tự nào — không phụ thuộc vào nhau. Section tiếp theo không bị khóa bởi section này. Không có ghi dữ liệu nào vào database | ✅ |
 
 ### 2.3. Bottom Sheet "Continue Learning" (cố định dưới)
 
@@ -119,5 +121,5 @@ Khi tất cả course + section test trong theme đã hoàn thành: hiển thị
 |---|-----|--------|-------------|
 | 1 | `/api/themes/:slug` | GET | Header → tên, mô tả, color_code |
 | 2 | `/api/themes/:themeId/sections` | GET | Body → danh sách section + course + section test (sắp xếp theo order_index) |
-| 3 | `/api/users/me/themes/:themeId/progress` | GET | Header → thanh tiến độ + trạng thái từng course (user_course, user_section_test) |
+| 3 | `/api/users/me/themes/:themeId/progress` | GET | Header → thanh tiến độ + trạng thái từng course (user_course, user_section_test, initial_user_section_proficiency) |
 | 4 | `/api/users/me/streak` | GET | Header → streak card |

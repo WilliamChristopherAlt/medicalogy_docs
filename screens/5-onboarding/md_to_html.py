@@ -1,0 +1,1144 @@
+#!/usr/bin/env python3
+"""
+BioBasics Initial Assessment JSON to HTML Converter
+Converts the onboarding/placement test JSON into an interactive HTML demo.
+
+Flow:
+  Step 1 — Age group selection
+  Step 2 — Knowledge quiz (questions from JSON)
+  Step 3 — Scoring explanation & result breakdown
+  Step 4 — Suggested learning path
+"""
+
+import json
+import sys
+from pathlib import Path
+
+
+# ---------------------------------------------------------------------------
+# Loader & validator
+# ---------------------------------------------------------------------------
+
+def load_assessment_json(filepath):
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if 'version' not in data or 'questions' not in data:
+            raise ValueError("Invalid assessment JSON: missing 'version' or 'questions'")
+        if not isinstance(data['questions'], list) or len(data['questions']) == 0:
+            raise ValueError("Invalid assessment JSON: 'questions' must be a non-empty array")
+        if 'ageGroups' not in data:
+            raise ValueError("Invalid assessment JSON: missing 'ageGroups'")
+        return data
+    except FileNotFoundError:
+        print(f"Error: File not found: {filepath}")
+        sys.exit(1)
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON format: {e}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error loading assessment: {e}")
+        sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
+# SVG icons — same set as json_to_html.py
+# ---------------------------------------------------------------------------
+
+SVG_QUIZ    = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>'
+SVG_TF      = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'
+SVG_BULB    = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>'
+SVG_TF_CHECK= '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'
+SVG_TF_X    = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+SVG_ARROW_RIGHT = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+SVG_ARROW_LEFT  = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>'
+SVG_USER    = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>'
+SVG_CHART   = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>'
+SVG_MAP     = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>'
+SVG_CHECK   = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'
+SVG_BOOK    = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>'
+
+
+# ---------------------------------------------------------------------------
+# Step generators
+# ---------------------------------------------------------------------------
+
+def generate_step1_age(age_groups):
+    """Step 1 — Age group picker"""
+    cards_html = ''
+    for ag in age_groups:
+        cards_html += f'''
+            <button class="age-card" data-age-id="{ag['id']}" onclick="selectAge(this)">
+                <span class="age-range">{ag['label']}</span>
+                <span class="age-desc">{ag['description']}</span>
+            </button>'''
+
+    return f'''
+        <div class="step" id="step-age">
+            <div class="step-header">
+                <span class="step-type-label label-user">{SVG_USER} Personal Info</span>
+            </div>
+            <div class="step-body">
+                <div class="question-text">Which age group are you in?</div>
+                <p class="step-hint">This helps us tailor content to suit you.</p>
+                <div class="age-grid">
+                    {cards_html}
+                </div>
+            </div>
+        </div>'''
+
+
+def generate_question_mc(q):
+    """Multiple choice question screen"""
+    options_html = ''
+    for opt in q['options']:
+        correct = str(opt['isCorrect']).lower()
+        options_html += f'''
+                    <button class="quiz-option" data-correct="{correct}" data-option-id="{opt['id']}">
+                        <span class="option-label">{opt['id'].upper()}</span>
+                        <span class="option-text">{opt['text']}</span>
+                        <span class="option-feedback"></span>
+                    </button>'''
+
+    return f'''
+        <div class="step quiz-step" id="q-{q['id']}" data-section="{q['sectionSlug']}">
+            <div class="step-header">
+                <span class="step-type-label label-quiz">{SVG_QUIZ} Question</span>
+            </div>
+            <div class="step-body">
+                <div class="question-text">{q['questionText']}</div>
+                <div class="quiz-options">
+                    {options_html}
+                </div>
+            </div>
+        </div>'''
+
+
+def generate_question_tf(q):
+    """True/False question screen"""
+    true_is_correct  = str(next(o['isCorrect'] for o in q['options'] if o['text'].lower() in ('true', 'đúng'))).lower()
+    false_is_correct = str(next(o['isCorrect'] for o in q['options'] if o['text'].lower() in ('false', 'sai'))).lower()
+
+    return f'''
+        <div class="step quiz-step" id="q-{q['id']}" data-section="{q['sectionSlug']}">
+            <div class="step-header">
+                <span class="step-type-label label-quiz">{SVG_TF} True or False?</span>
+            </div>
+            <div class="step-body">
+                <div class="question-text">{q['questionText']}</div>
+                <div class="quiz-options tf-options">
+                    <button class="quiz-option tf-option" data-correct="{true_is_correct}" data-value="true">
+                        <span class="option-label tf-check">{SVG_TF_CHECK}</span>
+                        <span class="option-text">True</span>
+                        <span class="option-feedback"></span>
+                    </button>
+                    <button class="quiz-option tf-option" data-correct="{false_is_correct}" data-value="false">
+                        <span class="option-label tf-x">{SVG_TF_X}</span>
+                        <span class="option-text">False</span>
+                        <span class="option-feedback"></span>
+                    </button>
+                </div>
+            </div>
+        </div>'''
+
+
+def generate_question_screen(q):
+    qtype = q.get('questionType')
+    if qtype == 'multiple_choice':
+        return generate_question_mc(q)
+    if qtype == 'true_false':
+        return generate_question_tf(q)
+    return f'<div class="step" id="q-{q["id"]}">Unknown question type: {qtype}</div>'
+
+
+def generate_step_explainer():
+    """Step 2 — Scoring & classification explanation, shown BEFORE the quiz"""
+    return f'''
+        <div class="step" id="step-explainer">
+            <div class="step-header">
+                <span class="step-type-label label-chart">{SVG_CHART} How We Assess You</span>
+            </div>
+            <div class="step-body">
+                <div class="question-text">How scoring &amp; classification works</div>
+                <p class="step-hint">Next you'll answer a short knowledge quiz. Here's how we use your results to personalise your learning path.</p>
+
+                <div class="structure-divider"><span>How your learning is structured</span></div>
+
+                <div class="structure-overview">
+                    <div class="struct-row">
+                        <div class="struct-icon struct-theme">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                        </div>
+                        <div class="struct-content">
+                            <div class="struct-label">Theme</div>
+                            <div class="struct-desc">A broad medical domain — e.g. Emergency Care, Nutrition, Mental Health. You enrol in themes to start learning.</div>
+                        </div>
+                    </div>
+                    <div class="struct-connector"></div>
+                    <div class="struct-row">
+                        <div class="struct-icon struct-section">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <div class="struct-content">
+                            <div class="struct-label">Section</div>
+                            <div class="struct-desc">A focused topic within a theme — e.g. "CPR Basics" inside Emergency Care. Each section ends with a test.</div>
+                        </div>
+                    </div>
+                    <div class="struct-connector"></div>
+                    <div class="struct-row">
+                        <div class="struct-icon struct-course">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        </div>
+                        <div class="struct-content">
+                            <div class="struct-label">Course</div>
+                            <div class="struct-desc">A short lesson of infographic screens and quizzes — typically 7 minutes. Completing a course marks it done and updates your streak.</div>
+                        </div>
+                    </div>
+                    <div class="struct-connector"></div>
+                    <div class="struct-row">
+                        <div class="struct-icon struct-test">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        </div>
+                        <div class="struct-content">
+                            <div class="struct-label">Section Test</div>
+                            <div class="struct-desc">A timed test at the end of each section. Pass it (70%+) to unlock the next section.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="structure-divider"><span>What your quiz result means</span></div>
+
+                <div class="scoring-tiers">
+                    <div class="tier-row tier-advanced">
+                        <div class="tier-badge">≥ 80% correct</div>
+                        <div class="tier-desc">Your roadmap will show that you already know this section — no need to complete it.</div>
+                    </div>
+                    <div class="tier-row tier-beginner">
+                        <div class="tier-badge">&lt; 80% correct</div>
+                        <div class="tier-desc">Normal flow — courses unlock one by one as you progress.</div>
+                    </div>
+                </div>
+            </div>
+        </div>'''
+
+
+def generate_step_results():
+    """After quiz — per-section score breakdown"""
+    return f'''
+        <div class="step" id="step-results">
+            <div class="step-header">
+                <span class="step-type-label label-chart">{SVG_CHART} Your Results</span>
+            </div>
+            <div class="step-body">
+                <div class="question-text">Here are your results</div>
+                <p class="step-hint">Based on your answers, here is your knowledge level per section:</p>
+                <div class="score-breakdown" id="scoreBreakdown">
+                    <!-- populated by JS after quiz -->
+                </div>
+            </div>
+        </div>'''
+
+
+def generate_step_path():
+    """Step 4 — Suggested learning path"""
+    return f'''
+        <div class="step" id="step-path">
+            <div class="step-header">
+                <span class="step-type-label label-map">{SVG_MAP} Your Learning Path</span>
+            </div>
+            <div class="step-body">
+                <div class="question-text">Your suggested learning path</div>
+                <p class="step-hint">Based on your results, here are the sections we recommend you start with:</p>
+                <div class="path-list" id="pathList">
+                    <!-- populated by JS -->
+                </div>
+                <div class="path-note">
+                    {SVG_BULB}
+                    <span>You can change your path any time from <strong>Themes</strong>.</span>
+                </div>
+                <button class="start-btn" onclick="finishOnboarding()">
+                    Start Learning {SVG_ARROW_RIGHT}
+                </button>
+            </div>
+        </div>'''
+
+
+# ---------------------------------------------------------------------------
+# Full HTML generator
+# ---------------------------------------------------------------------------
+
+def generate_html(data):
+    meta         = data.get('meta', {})
+    title        = meta.get('title', 'Placement Assessment')
+    subtitle     = meta.get('subtitle', 'Cá nhân hóa lộ trình học của bạn')
+    age_groups   = data['ageGroups']
+    questions    = sorted(data['questions'], key=lambda q: q['orderIndex'])
+    total_steps  = 1 + 1 + len(questions) + 1 + 1   # age + explainer + questions + results + path
+
+    # Build all steps HTML
+    # Order: age → explainer → questions → results → path
+    steps_html = generate_step1_age(age_groups)
+    steps_html += generate_step_explainer()
+    for q in questions:
+        steps_html += generate_question_screen(q)
+    steps_html += generate_step_results()
+    steps_html += generate_step_path()
+
+    # Build JS question data for scoring
+    questions_js = json.dumps([
+        {
+            'id': q['id'],
+            'sectionSlug': q['sectionSlug'],
+            'correctOptionId': next(
+                (o['id'] for o in q['options'] if o.get('isCorrect')),
+                'a' if q['questionType'] == 'multiple_choice' else None
+            ) if q['questionType'] == 'multiple_choice' else None,
+            'correctAnswer': next(
+                (o['isCorrect'] for o in q['options'] if o['text'].lower() in ('true', 'đúng')),
+                True
+            ) if q['questionType'] == 'true_false' else None,
+            'questionType': q['questionType'],
+        }
+        for q in questions
+    ], ensure_ascii=False, indent=2)
+
+    section_labels_js = json.dumps({
+        'emergency-care-fundamentals':      'Emergency Care Fundamentals',
+        'nutrition-basics':                 'Nutrition Basics',
+        'cardiovascular-anatomy':           'Cardiovascular Anatomy',
+        'mental-health-awareness':          'Mental Health Awareness',
+        'diabetes-endocrinology-basics':    'Diabetes & Endocrinology',
+    }, ensure_ascii=False)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicalogy – {title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>{CSS}
+    </style>
+</head>
+<body>
+{NAVBAR_HTML}
+{SIDEBAR_HTML}
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+        <div class="container">
+
+            <header class="assessment-header">
+                <div class="assessment-title-block">
+                    <h1 class="assessment-title">{title}</h1>
+                    <p class="assessment-subtitle">{subtitle}</p>
+                </div>
+            </header>
+
+            <!-- Progress bar -->
+            <div class="progress-container">
+                <div class="progress-meta">
+                    <span class="progress-label">Progress</span>
+                    <span class="progress-count" id="progressCount">1 / {total_steps}</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 8%"></div>
+                </div>
+            </div>
+
+            <!-- All steps -->
+            <div id="stepsContainer">
+                {steps_html}
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation" id="navButtons">
+                <button class="nav-btn" id="prevBtn" onclick="previousStep()">{SVG_ARROW_LEFT} Back</button>
+                <button class="nav-btn" id="nextBtn" onclick="nextStep()">Next {SVG_ARROW_RIGHT}</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const QUESTIONS = {questions_js};
+        const SECTION_LABELS = {section_labels_js};
+        const TOTAL_STEPS = {total_steps};
+        {JS}
+    </script>
+</body>
+</html>
+"""
+
+
+# ---------------------------------------------------------------------------
+# CSS
+# ---------------------------------------------------------------------------
+
+CSS = """
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f7;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f0f0;
+            --accent-primary: #1cb0f6;
+            --accent-primary-dark: #1899d6;
+            --accent-primary-light: #84d8ff;
+            --accent-success: #58cc02;
+            --accent-success-dark: #46a302;
+            --accent-success-light: #d7f5b1;
+            --accent-warning: #ff9600;
+            --accent-warning-dark: #e68600;
+            --accent-error: #ff4b4b;
+            --accent-error-dark: #dc2626;
+            --accent-purple: #ce82ff;
+            --text-primary: #3c3c3c;
+            --text-secondary: #777777;
+            --text-muted: #afafaf;
+            --border-color: #e5e5e5;
+            --border-dark: #cecece;
+            --border-radius: 16px;
+            --border-radius-sm: 12px;
+            --transition: all 0.2s ease;
+            --sidebar-width: 280px;
+            --navbar-height: 70px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-button: 0 4px 0 var(--border-dark);
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--navbar-height);
+            background: var(--bg-primary);
+            border-bottom: 2px solid var(--border-color);
+            display: flex; align-items: center;
+            padding: 0 30px; z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        .mobile-menu-btn {
+            display: none; width: 44px; height: 44px;
+            background: var(--bg-secondary); border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm); cursor: pointer;
+            align-items: center; justify-content: center; margin-right: 12px;
+        }
+        .hamburger-icon { width: 22px; height: 22px; stroke: var(--text-secondary); fill: none; }
+        .navbar-logo {
+            font-size: 1.6rem; font-weight: 800; color: var(--accent-primary);
+            text-decoration: none; margin-right: 40px; white-space: nowrap; letter-spacing: -0.5px;
+        }
+        .navbar-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; }
+        .nav-streak-indicator {
+            display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+            background: var(--bg-primary); border: 2px solid var(--accent-warning);
+            border-radius: var(--border-radius-sm);
+        }
+        .nav-streak-icon { width: 24px; height: 24px; fill: var(--accent-warning); }
+        .nav-streak-count { font-weight: 800; color: var(--accent-warning-dark); font-size: 1rem; }
+        .notification-btn {
+            position: relative; width: 44px; height: 44px;
+            background: var(--bg-secondary); border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm); cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: var(--transition);
+        }
+        .notification-btn:hover { background: var(--bg-hover); border-color: var(--border-dark); }
+        .notification-icon { width: 22px; height: 22px; stroke: var(--text-secondary); fill: none; }
+        .notification-badge {
+            position: absolute; top: -6px; right: -6px; width: 22px; height: 22px;
+            background: var(--accent-error); border-radius: 50%; border: 2px solid var(--bg-primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 800; color: white;
+        }
+        .account-menu { position: relative; }
+        .account-btn {
+            width: 44px; height: 44px; background: var(--accent-primary);
+            border: none; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; color: white; font-size: 1rem; transition: var(--transition);
+            box-shadow: 0 3px 0 var(--accent-primary-dark);
+        }
+        .account-btn:hover  { transform: translateY(-2px); box-shadow: 0 5px 0 var(--accent-primary-dark); }
+        .account-btn:active { transform: translateY(0);    box-shadow: 0 1px 0 var(--accent-primary-dark); }
+        .account-dropdown {
+            position: absolute; top: calc(100% + 10px); right: 0; width: 200px;
+            background: var(--bg-primary); border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-lg); border: 2px solid var(--border-color);
+            overflow: hidden; display: none;
+        }
+        .account-dropdown.active { display: block; }
+        .dropdown-item {
+            padding: 12px 16px; color: var(--text-secondary); text-decoration: none;
+            display: flex; align-items: center; gap: 10px; cursor: pointer;
+            transition: var(--transition); border-bottom: 2px solid var(--border-color);
+            font-weight: 700; font-size: 0.95rem;
+        }
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .dropdown-icon { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed; left: 0; top: var(--navbar-height);
+            width: var(--sidebar-width); height: calc(100vh - var(--navbar-height));
+            background: var(--bg-primary); border-right: 2px solid var(--border-color);
+            overflow-y: auto; padding: 20px 0; z-index: 900;
+        }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+        .sidebar-section { margin-bottom: 4px; padding: 0 16px; }
+        .sidebar-title {
+            font-size: 0.75rem; font-weight: 800; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 4px; margin-top: 16px; padding-left: 12px;
+        }
+        .sidebar-nav { list-style: none; }
+        .nav-item { margin-bottom: 4px; }
+        .nav-link {
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            color: var(--text-secondary); text-decoration: none;
+            border-radius: var(--border-radius-sm); transition: var(--transition);
+            font-weight: 700; border: 2px solid transparent;
+            font-family: 'Nunito', sans-serif; font-size: 1rem; line-height: 1.7;
+            background: none; width: 100%; text-align: left; cursor: pointer; box-sizing: border-box;
+        }
+        .nav-link:hover { background: var(--bg-secondary); color: var(--text-primary); }
+        .nav-link.active { background: rgba(28,176,246,0.1); color: var(--accent-primary); border-color: var(--accent-primary); }
+        .nav-icon { width: 24px; height: 24px; stroke: currentColor; fill: none; flex-shrink: 0; }
+        .nav-text { flex: 1; font-size: 1rem; }
+        .nav-link.has-submenu .nav-icon.chevron { margin-left: auto; transition: transform 0.3s ease; flex-shrink: 0; }
+        .nav-link.has-submenu.expanded .nav-icon.chevron { transform: rotate(180deg); }
+        .submenu { list-style: none; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-left: 52px; margin-top: -6px; }
+        .submenu.expanded { max-height: 500px; }
+        .submenu-item { margin-bottom: 0; }
+        .submenu-link {
+            display: block; padding: 4px 12px; color: var(--text-secondary);
+            text-decoration: none; border-radius: var(--border-radius-sm);
+            font-size: 0.95rem; font-weight: 600; transition: var(--transition);
+        }
+        .submenu-link:hover { background: var(--bg-secondary); color: var(--accent-primary); }
+        .submenu-link.active { color: var(--accent-primary); font-weight: 700; }
+        .sidebar-overlay {
+            display: none; position: fixed; top: var(--navbar-height);
+            left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 850;
+        }
+        .sidebar-overlay.active { display: block; }
+
+        /* ===== MAIN WRAPPER ===== */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--navbar-height);
+            min-height: calc(100vh - var(--navbar-height));
+            background: #f0f4f8;
+        }
+        .container { max-width: 780px; margin: 0 auto; padding: 36px 32px 120px; }
+
+        /* ===== ASSESSMENT HEADER ===== */
+        .assessment-header { margin-bottom: 24px; }
+        .assessment-title { font-size: 1.8rem; font-weight: 900; color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 6px; }
+        .assessment-subtitle { font-size: 1rem; color: var(--text-secondary); font-weight: 600; }
+
+        /* ===== PROGRESS ===== */
+        .progress-container {
+            margin-bottom: 24px; background: white;
+            border-radius: var(--border-radius); padding: 16px 20px;
+            border: 2px solid var(--border-color); box-shadow: var(--shadow-sm);
+        }
+        .progress-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .progress-label { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
+        .progress-count { font-size: 0.85rem; font-weight: 800; color: var(--accent-primary); }
+        .progress-bar { background: var(--border-color); height: 8px; border-radius: 20px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent-success); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 20px; }
+
+        /* ===== STEP CARDS ===== */
+        .step {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            border: 2px solid var(--border-color);
+            box-shadow: 0 2px 0 var(--border-dark), var(--shadow-sm);
+            overflow: hidden; display: none;
+            animation: slideUp 0.25s ease-out;
+        }
+        .step.active { display: block; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .step-header { padding: 20px 32px 18px; border-bottom: 2px solid var(--border-color); }
+        .quiz-step .step-header  { background: rgba(88,204,2,0.05);  border-bottom-color: rgba(88,204,2,0.15); }
+        .step-body { padding: 32px; }
+
+        /* Step type labels */
+        .step-type-label {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+        }
+        .step-type-label svg { width: 13px; height: 13px; stroke: currentColor; fill: none; flex-shrink: 0; }
+        .label-user  { background: rgba(28,176,246,0.12); color: var(--accent-primary-dark); border: 1.5px solid rgba(28,176,246,0.3); }
+        .label-quiz  { background: rgba(88,204,2,0.12);  color: var(--accent-success-dark);  border: 1.5px solid rgba(88,204,2,0.3); }
+        .label-chart { background: rgba(206,130,255,0.12); color: #7c3aed; border: 1.5px solid rgba(206,130,255,0.3); }
+        .label-map   { background: rgba(255,150,0,0.12); color: var(--accent-warning-dark);  border: 1.5px solid rgba(255,150,0,0.3); }
+
+        .question-text { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 12px; line-height: 1.5; }
+        .step-hint { font-size: 0.92rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 24px; line-height: 1.6; }
+
+        /* ===== AGE GRID ===== */
+        .age-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+        .age-card {
+            background: var(--bg-secondary); border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm); padding: 20px 16px;
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            cursor: pointer; transition: var(--transition); text-align: center;
+            font-family: 'Nunito', sans-serif;
+        }
+        .age-card:hover { border-color: var(--accent-primary); background: rgba(28,176,246,0.06); transform: translateY(-2px); }
+        .age-card.selected {
+            border-color: var(--accent-primary); background: rgba(28,176,246,0.1);
+            box-shadow: 0 3px 0 var(--accent-primary-dark);
+        }
+        .age-range { font-size: 1.2rem; font-weight: 900; color: var(--text-primary); }
+        .age-desc  { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+
+        /* ===== QUIZ OPTIONS ===== */
+        .quiz-options  { display: flex; flex-direction: column; gap: 12px; }
+        .tf-options    { flex-direction: row; gap: 14px; }
+        .quiz-option {
+            background: var(--bg-secondary); border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm); padding: 16px 20px;
+            font-size: 1rem; font-weight: 700; color: var(--text-primary);
+            cursor: pointer; transition: var(--transition);
+            display: flex; align-items: center; gap: 14px;
+            text-align: left; font-family: 'Nunito', sans-serif;
+        }
+        .quiz-option:hover:not(.answered) { border-color: var(--accent-primary); background: rgba(28,176,246,0.06); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+        .quiz-option:active:not(.answered) { transform: translateY(0); }
+        .tf-option { flex: 1; justify-content: center; }
+        .option-label {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: white; border: 2px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 0.85rem; color: var(--text-secondary);
+            flex-shrink: 0; transition: var(--transition);
+        }
+        .option-text { flex: 1; }
+        .option-feedback { margin-left: auto; font-size: 1.1rem; font-weight: 800; }
+        .quiz-option.answered { pointer-events: none; }
+        .quiz-option.correct   { background: rgba(88,204,2,0.08);  border-color: var(--accent-success); }
+        .quiz-option.correct  .option-label { background: var(--accent-success); border-color: var(--accent-success); color: white; }
+        .quiz-option.incorrect { background: rgba(255,75,75,0.06); border-color: var(--accent-error); }
+        .quiz-option.incorrect .option-label { background: var(--accent-error); border-color: var(--accent-error); color: white; }
+        .quiz-option.correct  .option-feedback::before { content:''; width:10px; height:10px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2346a302' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") center/contain no-repeat; display:inline-block; }
+        .quiz-option.incorrect .option-feedback::before { content:''; width:10px; height:10px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") center/contain no-repeat; display:inline-block; }
+        .option-feedback { opacity: 0; transition: opacity 0.2s; }
+        .quiz-option.correct .option-feedback, .quiz-option.incorrect .option-feedback { opacity: 1; }
+
+        /* ===== STRUCTURE OVERVIEW ===== */
+        .structure-divider {
+            display: flex; align-items: center; gap: 12px;
+            margin: 28px 0 16px; font-size: 0.72rem; font-weight: 800;
+            color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+        }
+        .structure-divider::before, .structure-divider::after {
+            content: ''; flex: 1; height: 2px; background: var(--border-color); border-radius: 2px;
+        }
+        .structure-overview { display: flex; flex-direction: column; gap: 0; }
+        .struct-row {
+            display: flex; align-items: flex-start; gap: 16px;
+            padding: 14px 18px; background: var(--bg-secondary);
+            border: 2px solid var(--border-color); border-radius: var(--border-radius-sm);
+        }
+        .struct-connector {
+            width: 2px; height: 16px; background: var(--border-color);
+            margin-left: 31px; flex-shrink: 0;
+        }
+        .struct-icon {
+            width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .struct-icon svg { width: 17px; height: 17px; stroke: currentColor; fill: none; }
+        .struct-theme   { background: rgba(28,176,246,0.12);  color: var(--accent-primary-dark); }
+        .struct-section { background: rgba(88,204,2,0.12);    color: var(--accent-success-dark); }
+        .struct-course  { background: rgba(255,150,0,0.12);   color: var(--accent-warning-dark); }
+        .struct-test    { background: rgba(206,130,255,0.12); color: #7c3aed; }
+        .struct-label { font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 3px; }
+        .struct-desc  { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); line-height: 1.5; }
+
+        /* ===== SCORING STEP ===== */
+        .scoring-tiers { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+        .tier-row {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 14px 18px; border-radius: var(--border-radius-sm);
+            border: 2px solid transparent;
+        }
+        .tier-beginner    { background: rgba(28,176,246,0.06);  border-color: rgba(28,176,246,0.2); }
+        .tier-intermediate{ background: rgba(255,150,0,0.06);   border-color: rgba(255,150,0,0.2); }
+        .tier-advanced    { background: rgba(88,204,2,0.06);    border-color: rgba(88,204,2,0.2); }
+        .tier-badge {
+            font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+            padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+        }
+        .tier-beginner     .tier-badge { background: rgba(28,176,246,0.15);  color: var(--accent-primary-dark); }
+        .tier-intermediate .tier-badge { background: rgba(255,150,0,0.15);   color: var(--accent-warning-dark); }
+        .tier-advanced     .tier-badge { background: rgba(88,204,2,0.15);    color: var(--accent-success-dark); }
+        .tier-desc { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); line-height: 1.5; }
+
+        .score-breakdown { display: flex; flex-direction: column; gap: 10px; }
+        .score-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px; background: var(--bg-secondary);
+            border: 2px solid var(--border-color); border-radius: var(--border-radius-sm);
+        }
+        .score-section-name { flex: 1; font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+        .score-fraction { font-size: 0.85rem; font-weight: 800; color: var(--text-muted); margin-right: 8px; }
+        .score-level-badge {
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+            padding: 3px 10px; border-radius: 20px;
+        }
+        .level-beginner     { background: rgba(28,176,246,0.12);  color: var(--accent-primary-dark); border: 1.5px solid rgba(28,176,246,0.3); }
+        .level-intermediate { background: rgba(255,150,0,0.12);   color: var(--accent-warning-dark); border: 1.5px solid rgba(255,150,0,0.3); }
+        .level-advanced     { background: rgba(88,204,2,0.12);    color: var(--accent-success-dark); border: 1.5px solid rgba(88,204,2,0.3); }
+
+        /* ===== PATH STEP ===== */
+        .path-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+        .path-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 20px; background: var(--bg-secondary);
+            border: 2px solid var(--border-color); border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+        }
+        .path-item:hover { border-color: var(--accent-primary); background: rgba(28,176,246,0.04); }
+        .path-item-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .path-item-icon svg { width: 18px; height: 18px; stroke: currentColor; fill: none; }
+        .path-item-name { flex: 1; font-size: 1rem; font-weight: 800; color: var(--text-primary); }
+        .path-item-level {
+            font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+            padding: 3px 10px; border-radius: 20px;
+        }
+        .path-note {
+            display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px;
+            background: rgba(255,150,0,0.06); border: 2px solid rgba(255,150,0,0.2);
+            border-radius: var(--border-radius-sm); margin-bottom: 28px;
+            font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); line-height: 1.5;
+        }
+        .path-note svg { width: 16px; height: 16px; stroke: var(--accent-warning); fill: none; flex-shrink: 0; margin-top: 2px; }
+        .start-btn {
+            width: 100%; padding: 16px 24px;
+            background: var(--accent-success); border: none;
+            border-radius: var(--border-radius-sm); color: white;
+            font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+            cursor: pointer; transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 4px 0 var(--accent-success-dark);
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .start-btn svg { stroke: white; }
+        .start-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--accent-success-dark); }
+        .start-btn:active { transform: translateY(1px); box-shadow: none; }
+
+        /* ===== NAVIGATION ===== */
+        .navigation { display: flex; gap: 12px; margin-top: 16px; }
+        .nav-btn {
+            flex: 1; background: white; border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm); padding: 14px 24px;
+            color: var(--text-secondary); font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem; font-weight: 800; cursor: pointer; transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 3px 0 var(--border-dark);
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .nav-btn svg { flex-shrink: 0; }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
+        .nav-btn:not(:disabled):hover { border-color: var(--border-dark); color: var(--text-primary); transform: translateY(-1px); box-shadow: 0 4px 0 var(--border-dark); }
+        .nav-btn:not(:disabled):active { transform: translateY(1px); box-shadow: none; }
+        #nextBtn:not(:disabled) { background: var(--accent-success); border-color: var(--accent-success-dark); color: white; box-shadow: 0 3px 0 var(--accent-success-dark); }
+        #nextBtn:not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--accent-success-dark); }
+        #nextBtn:disabled { opacity: 0.3; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            :root { --sidebar-width: 0px; }
+            .sidebar { width: 280px; transform: translateX(-100%); transition: transform 0.3s ease; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; }
+            .mobile-menu-btn { display: flex; }
+        }
+        @media (max-width: 600px) {
+            .navbar { padding: 0 16px; }
+            .navbar-logo { font-size: 1.3rem; margin-right: 16px; }
+            .container { padding: 24px 16px 80px; }
+            .step-body { padding: 20px; }
+            .age-grid { grid-template-columns: repeat(2, 1fr); }
+            .tf-options { flex-direction: column; }
+            .navigation { flex-direction: column; }
+        }
+"""
+
+
+# ---------------------------------------------------------------------------
+# JavaScript
+# ---------------------------------------------------------------------------
+
+JS = """
+        // ===== SIDEBAR & NAVBAR =====
+        function toggleMobileSidebar() {
+            document.getElementById('sidebar').classList.toggle('mobile-open');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+        function toggleAccountMenu() {
+            document.getElementById('accountDropdown').classList.toggle('active');
+        }
+        document.addEventListener('click', e => {
+            const menu = document.querySelector('.account-menu');
+            const dd   = document.getElementById('accountDropdown');
+            if (menu && dd && !menu.contains(e.target)) dd.classList.remove('active');
+        });
+        function toggleSubmenu(event, id) {
+            event.preventDefault();
+            event.currentTarget.classList.toggle('expanded');
+            document.getElementById(id).classList.toggle('expanded');
+        }
+
+        // ===== ONBOARDING STATE =====
+        const steps      = Array.from(document.querySelectorAll('.step'));
+        let currentStep  = 0;
+        let selectedAge  = null;
+
+        // Per-question answer tracking: { questionId: { answeredCorrectly: bool } }
+        const answers = {};
+
+        // Per-section score tracking: { sectionSlug: { seen: 0, correct: 0 } }
+        const sectionScores = {};
+
+        showStep(0);
+
+        function showStep(index) {
+            steps.forEach(s => s.classList.remove('active'));
+            steps[index].classList.add('active');
+            currentStep = index;
+            updateProgress();
+            updateNavButtons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress() {
+            const pct = ((currentStep + 1) / TOTAL_STEPS) * 100;
+            document.getElementById('progressBar').style.width = pct + '%';
+            document.getElementById('progressCount').textContent = (currentStep + 1) + ' / ' + TOTAL_STEPS;
+        }
+
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = currentStep === 0;
+
+            const step = steps[currentStep];
+
+            // Age step — disable Next until age selected
+            if (step.id === 'step-age') {
+                nextBtn.disabled = selectedAge === null;
+                return;
+            }
+
+            // Quiz step — disable Next until answered
+            if (step.classList.contains('quiz-step')) {
+                const qId = step.id.replace('q-', '');
+                nextBtn.disabled = !(qId in answers);
+                return;
+            }
+
+            // Explainer step — just enable Next
+            if (step.id === 'step-explainer') {
+                nextBtn.disabled = false;
+                nextBtn.style.display = '';
+                return;
+            }
+
+            // Results step — build breakdown before showing
+            if (step.id === 'step-results') {
+                buildScoreBreakdown();
+                nextBtn.disabled = false;
+                nextBtn.style.display = '';
+                return;
+            }
+
+            // Path step — build path before showing
+            if (step.id === 'step-path') {
+                buildPathList();
+                nextBtn.style.display = 'none';
+                return;
+            }
+
+            nextBtn.disabled = false;
+            nextBtn.style.display = '';
+        }
+
+        function nextStep() {
+            if (currentStep < steps.length - 1) showStep(currentStep + 1);
+        }
+
+        function previousStep() {
+            if (currentStep > 0) showStep(currentStep - 1);
+        }
+
+        // ===== AGE SELECTION =====
+        function selectAge(card) {
+            document.querySelectorAll('.age-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedAge = card.dataset.ageId;
+            updateNavButtons();
+        }
+
+        // ===== QUIZ INTERACTION =====
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function () {
+                if (this.classList.contains('answered')) return;
+
+                const isCorrect = this.dataset.correct === 'true';
+                const screen    = this.closest('.step');
+                const qStepId   = screen.id.replace('q-', '');
+
+                // Find matching question meta
+                const qMeta = QUESTIONS.find(q => q.id === qStepId);
+
+                // Mark all options answered
+                screen.querySelectorAll('.quiz-option').forEach(opt => opt.classList.add('answered'));
+
+                if (isCorrect) {
+                    this.classList.add('correct');
+                } else {
+                    this.classList.add('incorrect');
+                    screen.querySelectorAll('.quiz-option').forEach(opt => {
+                        if (opt.dataset.correct === 'true') opt.classList.add('correct');
+                    });
+                }
+
+                // Record answer
+                answers[qStepId] = { correct: isCorrect };
+
+                // Accumulate section score
+                if (qMeta) {
+                    const slug = qMeta.sectionSlug;
+                    if (!sectionScores[slug]) sectionScores[slug] = { seen: 0, correct: 0 };
+                    sectionScores[slug].seen++;
+                    if (isCorrect) sectionScores[slug].correct++;
+                }
+
+                // Enable Next
+                updateNavButtons();
+            });
+        });
+
+        // ===== SCORING BREAKDOWN =====
+        function getLevel(seen, correct) {
+            if (seen === 0) return 'fail';
+            return (correct / seen) >= 0.80 ? 'pass' : 'fail';
+        }
+
+        function levelLabel(level) {
+            return level === 'pass' ? 'Already known' : 'To learn';
+        }
+
+        function buildScoreBreakdown() {
+            const container = document.getElementById('scoreBreakdown');
+            if (container.children.length > 0) return; // already built
+            let html = '';
+            for (const [slug, score] of Object.entries(sectionScores)) {
+                const level = getLevel(score.seen, score.correct);
+                const label = SECTION_LABELS[slug] || slug;
+                const badgeClass = level === 'pass' ? 'level-advanced' : 'level-beginner';
+                html += `
+                <div class="score-row">
+                    <span class="score-section-name">${label}</span>
+                    <span class="score-fraction">${score.correct}/${score.seen}</span>
+                    <span class="score-level-badge ${badgeClass}">${levelLabel(level)}</span>
+                </div>`;
+            }
+            container.innerHTML = html || '<p style="color:var(--text-muted);font-weight:600;">No data available.</p>';
+        }
+
+        // ===== PATH LIST =====
+        function buildPathList() {
+            const container = document.getElementById('pathList');
+            if (container.children.length > 0) return;
+            let html = '';
+            for (const [slug, score] of Object.entries(sectionScores)) {
+                const level = getLevel(score.seen, score.correct);
+                const label = SECTION_LABELS[slug] || slug;
+                const c = level === 'pass'
+                    ? { bg: 'rgba(88,204,2,0.1)',   color: '#46a302' }
+                    : { bg: 'rgba(28,176,246,0.1)', color: '#1899d6' };
+                const badgeClass = level === 'pass' ? 'level-advanced' : 'level-beginner';
+                html += `
+                <div class="path-item">
+                    <div class="path-item-icon" style="background:${c.bg}; color:${c.color}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <span class="path-item-name">${label}</span>
+                    <span class="path-item-level ${badgeClass}">${levelLabel(level)}</span>
+                </div>`;
+            }
+            container.innerHTML = html || '<p style="color:var(--text-muted);font-weight:600;">No path available.</p>';
+        }
+
+        function finishOnboarding() {
+            alert('Onboarding complete! Redirecting to Themes...');
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') nextStep();
+            else if (e.key === 'ArrowLeft') previousStep();
+        });
+"""
+
+
+# ---------------------------------------------------------------------------
+# Navbar & Sidebar (identical to json_to_html.py)
+# ---------------------------------------------------------------------------
+
+NAVBAR_HTML = """
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">
+            <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <a href="/" class="navbar-logo">Medicalogy</a>
+        <div class="navbar-actions">
+            <div class="nav-streak-indicator">
+                <svg class="nav-streak-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2c1.5 3 4 5 6 8-2-1-4 0-5 2 0 0 0-1-1-2-1-1-2-1-3 0 0-3-3-5-5-8 1 4 0 8-2 12-1 2-1 4 0 6 1 3 4 4 7 4 4 0 7-2 8-5 1-2 1-5-1-8-1-2-3-4-4-9z"/>
+                </svg>
+                <span class="nav-streak-count">7</span>
+            </div>
+            <button class="notification-btn">
+                <svg class="notification-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notification-badge">3</span>
+            </button>
+            <div class="account-menu">
+                <button class="account-btn" onclick="toggleAccountMenu()">JD</button>
+                <div class="account-dropdown" id="accountDropdown">
+                    <a href="/settings" class="dropdown-item">
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                    <a href="/logout" class="dropdown-item">
+                        <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>"""
+
+SIDEBAR_HTML = """
+    <!-- SIDEBAR OVERLAY (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Onboarding</h3>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/onboarding" class="nav-link active">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span class="nav-text">Placement Assessment</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3 class="sidebar-title">Learning</h3>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="/themes" class="nav-link">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <span class="nav-text">Themes</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>"""
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
+def main():
+    input_path  = r"medicalogy_docs\screens\5-initial-assesment\initial_assessment.json"
+    output_path = r"medicalogy_docs\screens\5-initial-assesment\demo.html"
+
+    print(f"Loading assessment from: {input_path}")
+    data = load_assessment_json(input_path)
+
+    print("Generating HTML...")
+    print(f"  - Version:         {data['version']}")
+    print(f"  - Age groups:      {len(data['ageGroups'])}")
+    print(f"  - Questions:       {len(data['questions'])}")
+
+    sections = list({q['sectionSlug'] for q in data['questions']})
+    print(f"  - Sections tested: {len(sections)} ({', '.join(sections)})")
+
+    html = generate_html(data)
+
+    print(f"Writing HTML to: {output_path}")
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(html)
+
+    print(f"✓ Successfully generated {output_path}")
+
+
+if __name__ == "__main__":
+    main()

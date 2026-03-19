@@ -1203,6 +1203,40 @@
         .course-button.completed.stale:hover .course-name  { color: var(--text-primary) !important; }
         .course-button.completed.stale:hover .course-quiz-score { color: var(--accent-success-dark) !important; }
         .course-button.completed.stale:hover .checkmark-icon { color: var(--accent-success) !important; }
+
+        /* ===== SKIPPABLE SECTION (unlocked via onboarding) ===== */
+        .section.skippable .section-title-row {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .skippable-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 3px 10px;
+            background: rgba(88,204,2,0.1);
+            border: 1.5px solid rgba(88,204,2,0.35);
+            border-radius: 99px;
+            font-size: 0.7rem; font-weight: 800;
+            color: var(--accent-success-dark);
+            text-transform: uppercase; letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .skippable-badge svg { width: 11px; height: 11px; stroke: currentColor; fill: none; }
+        .section.skippable .course-button {
+            border-color: rgba(88,204,2,0.3);
+            background: rgba(88,204,2,0.04);
+        }
+        .section.skippable .course-button .course-icon {
+            background: rgba(88,204,2,0.15);
+            color: var(--accent-success-dark);
+        }
+        .section.skippable .course-button .course-name { color: var(--text-primary); }
+        .section.skippable .course-button .course-quiz-score { color: var(--accent-success-dark); }
+        .section.skippable .course-button:hover {
+            border-color: var(--accent-success);
+            background: rgba(88,204,2,0.08);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+        .section.skippable .course-connector { background: rgba(88,204,2,0.25); }
     </style>
 </head>
 <body>
@@ -1610,6 +1644,93 @@
                                 <div class="course-info">
                                     <span class="course-name">Section Test</span>
                                     <span class="course-quiz-score">15 questions — need ≥ 70%</span>
+                                </div>
+                            </div>
+                            <span class="icon-wrapper arrow-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Burns & Wounds (skippable — unlocked via onboarding) -->
+            <div class="section skippable">
+                <div class="section-title-row">
+                    <h2 class="section-title">Burns &amp; Wounds</h2>
+                    <span class="skippable-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Already known · Onboarding
+                    </span>
+                </div>
+                <div class="course-path">
+
+                    <div class="course-item">
+                        <button class="course-button" onclick="navigateToCourse('emergency-care', 'burns-wounds', 1)">
+                            <div class="course-content">
+                                <span class="course-icon">1</span>
+                                <div class="course-info">
+                                    <span class="course-name">Classifying Burns</span>
+                                    <span class="course-quiz-score">Optional — start any time</span>
+                                </div>
+                            </div>
+                            <span class="icon-wrapper arrow-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="course-connector active"></div>
+
+                    <div class="course-item">
+                        <button class="course-button" onclick="navigateToCourse('emergency-care', 'burns-wounds', 2)">
+                            <div class="course-content">
+                                <span class="course-icon">2</span>
+                                <div class="course-info">
+                                    <span class="course-name">First Aid for Burns</span>
+                                    <span class="course-quiz-score">Optional — start any time</span>
+                                </div>
+                            </div>
+                            <span class="icon-wrapper arrow-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="course-connector active"></div>
+
+                    <div class="course-item">
+                        <button class="course-button" onclick="navigateToCourse('emergency-care', 'burns-wounds', 3)">
+                            <div class="course-content">
+                                <span class="course-icon">3</span>
+                                <div class="course-info">
+                                    <span class="course-name">Wound Closure Techniques</span>
+                                    <span class="course-quiz-score">Optional — start any time</span>
+                                </div>
+                            </div>
+                            <span class="icon-wrapper arrow-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="course-connector active"></div>
+
+                    <div class="course-item">
+                        <button class="course-button test" onclick="navigateToCourse('emergency-care', 'burns-wounds', 'test')">
+                            <div class="course-content">
+                                <span class="course-icon">★</span>
+                                <div class="course-info">
+                                    <span class="course-name">Section Test</span>
+                                    <span class="course-quiz-score">12 questions — need ≥ 70%</span>
                                 </div>
                             </div>
                             <span class="icon-wrapper arrow-icon">
